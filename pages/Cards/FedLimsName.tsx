@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
         <CardHeader>
           <CardTitle>Federal Limits Apply With Name Change</CardTitle>
           <CardDescription>
-            If The CA DL | CA ID States <span className="text-blue-500">"Federal Limits Apply"</span> <span className="text-red-500">AND</span> Their Name Doesn&apos;t Match The Proof Document,<br/>
+            If The CA DL | CA ID States <span className="text-blue-500">&quote;Federal Limits Apply&quote;</span> <span className="text-red-500">AND</span> Their Name Doesn&apos;t Match The Proof Document,<br/>
             We Need One Of The Docs Below
             </CardDescription>
         </CardHeader>
