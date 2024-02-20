@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,37 +8,33 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center mb-10" >
-      <Card className="w-[350px]">
+      <div className="flex flex-col items-center justify-center w-full" >
+      <Card className="flex flex-col w-full">
         <CardHeader>
           <CardTitle>State ID Verification</CardTitle>
           <CardDescription>CA DOJ States The Following As Required Docs For Purchase</CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          A Valid CA DL | CA ID Issued By The DMV<br />
-          OR A Military ID With The Following:<br />
-          - PCS Orders
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Required Documents:</h2>
+          <ul className="list-disc pl-4">
+          <li>A Valid CA DL | CA ID Issued By The DMV</li>
+          <li>OR A Military ID With The Following:</li>
+            <ul className="list-disc pl-4">
+            <li>PCS Orders</li>
+            </ul>
+          </ul>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <span>
+          <p>
           Temporary DL | ID's Are <span className="text-red-500">NOT</span> Accepted Forms Of Proof Of Identity And Age
-          </span>
+          </p>
         </CardFooter>
       </Card>
 </div>

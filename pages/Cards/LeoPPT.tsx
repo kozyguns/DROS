@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -34,12 +22,15 @@ import { cn } from "../../components/lib/cn";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <span>
-                If You Haven't Already Asked If They Were With A Differenct Agency When They Purchased The Firearm,<br/> 
-                Do So Now, Before Moving Any Further<br/>
-                <br/>If They Were NOT Employed By A Different Agency, Look Up The Current Agency's Info Below<br/>
-                If They WERE Employed With A Different Agency, Reference That Agency's Group Info, Not The Current Agency's Group Info
-                </span>
+                <div className="max-w-[425px]">
+                <h2>Required Documents:</h2>
+                  <ul className="list-disc pl-4">
+                <li><p>If You Haven't Already Asked If They Were With A Differenct Agency When They Purchased The Firearm,</p>
+                <p>Do So Now, Before Moving Any Further</p></li>
+                <li>If They Were NOT Employed By A Different Agency, Look Up The Current Agency's Info Below</li>
+                <li>If They WERE Employed With A Different Agency, Reference That Agency's Group Info, Not The Current Agency's Group Info</li>
+                </ul>
+                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
 

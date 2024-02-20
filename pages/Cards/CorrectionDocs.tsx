@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,22 +8,13 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
         <div className="flex flex-col items-center justify-center w-full" >
-      <Card className="flex flex-col w-full">
+        <Card className="flex flex-col w-full">
         <CardHeader>
           <CardTitle>Accepted Address Correction Docs</CardTitle>
           <CardDescription>
@@ -34,17 +22,20 @@ import { cn } from "../../components/lib/cn";
             </CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          Most Recent Property Tax Bill (Meets ATF Federal Req)<br/>
-            Property Deed (Meets DOJ State Req)<br/>
-            Current Utility Bill<br/>
-            Most Recent W-2 + Current Utility Bill<br/>
-            Current & Valid CA DMV Disabled Placard<br/>
-            Valid CA CCW Permit<br/>
-            Valid CA Hunting License<br/>
-            Valid CA Fishing License<br/>
-            Current & Valid Guard Card + Exposed Carry Card
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Required Documents:</h2>
+          <ul className="list-disc pl-4">
+          <li>Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
+          <li>Property Deed (Meets DOJ State Req)</li>
+          <li>Current Utility Bill</li>
+          <li>Most Recent W-2 + Current Utility Bill</li>
+          <li>Current & Valid CA DMV Disabled Placard</li>
+          <li>Valid CA CCW Permit</li>
+          <li>Valid CA Hunting License</li>
+          <li>Valid CA Fishing License</li>
+          <li>Current & Valid Guard Card + Exposed Carry Card</li>
+            </ul>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
 

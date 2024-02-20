@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -31,17 +19,28 @@ import { cn } from "../../components/lib/cn";
                 <CardTitle>Reserve Officer Info</CardTitle>
                 <CardDescription>
                     
-                    </CardDescription>
+                </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <span>
-                Reserve Officers CAN Purchase Non-Roster Firearms &<br/>
-                They Are FSC Exempt<br/>
-                Reserve Officers Are <span className="text-red-500">NOT</span> 30 Day Exempt
-                <hr/>
-                <br/>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,<br/>
-                Don't Forget To Fill Out The <span className="text-blue-500">Blue Label</span> Form & Include It In The Pending Packet
-                </span>
+                <div className="max-w-[425px]">
+                <ul className="list-disc pl-4">
+                <li><p>Reserve Officers CAN Purchase Non-Roster Firearms AND They Are FSC Exempt</p></li>
+                <hr className="my-4" />
+                <p>FSC Exemption Code</p>
+                  <ul className="list-disc pl-4">
+                  <li>(X34 - PEACE OFFICER - RESERVE)</li>
+                  </ul>
+                <p>Non-Roster Exemption</p>
+                <ul className="list-disc pl-4">
+                <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
+                </ul>
+                <hr className="my-4" />
+                <p>Reserve Officers Are <span className="text-red-500">NOT</span> 30 Day Exempt</p>
+                <hr className="my-4" />
+                <p>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm, Fill Out The <span className="text-blue-500">Blue Label</span> Form</p>
+                <p>& Include It In The Pending Packet</p>
+                </ul>
+                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     

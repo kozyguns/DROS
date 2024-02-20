@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -35,17 +23,24 @@ import { cn } from "../../components/lib/cn";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <span>
-                If The Veteran's DL | ID Doesn't Indicate VETERAN Status,<br/>
-                      We Need A Copy Of Their DD-214 (Condition Of Discharge) -<br/>
-                      Make A Copy | Scan The DD-214 To Qualify For Blue Label &<br/>
-                      Write Down DOD ID#, Rank & Branch On Fed Doc Worksheet (Print From Link Below)
-                      <hr/>
-                      FSC Exemption Code<br/>
-                      (X25 - Military - Honorably Retired)
-                      <hr/>
-                      Veterans Are <span className="text-red-500">NOT</span> Non-Roster | 30 Day Exempt
-                </span>
+                <div className="max-w-[425px]">
+                <h2>Required Documents:</h2>
+                <ul className="list-disc pl-4">
+                <p>If The Veteran's DL | ID Doesn't Indicate VETERAN Status, We Need The Following:</p>
+                  <ul className="list-disc pl-4">
+                    <li>We Need A Copy Of Their DD-214 (Condition Of Discharge)</li>
+                    <li>Make A Copy | Scan The DD-214 To Qualify For Blue Label &</li>
+                    <li>Write Down DOD ID#, Rank & Branch On Fed Doc Worksheet (Print From Link Below)</li>
+                  </ul>
+                  <hr className="my-4" />
+                      <p>FSC Exemption Code</p>
+                        <ul className="list-disc pl-4">
+                          <li>(X25 - Military - Honorably Retired)</li>
+                        </ul>
+                        <hr className="my-4" />
+                      <p>Veterans Are <span className="text-red-500">NOT</span> Non-Roster | 30 Day Exempt</p>
+                  </ul>
+                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     

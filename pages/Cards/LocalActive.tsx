@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -35,16 +23,21 @@ import { cn } from "../../components/lib/cn";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <span>
-                Photo Copy | Scan CA DL | CA ID<br/>
-                      Write Down DOD ID#, Rank & Branch<br/>
-                      Proof Of CA Residence (Anything Listed In "Address Correction Docs")
-                      <hr/>
-                      FSC Exemption Code<br/>
-                      (X21 - Military - Active Duty | X22 - Military - Active Reserve)
-                      <hr/>
+                <div className="max-w-[425px]">
+                <h2>Required Documents:</h2>
+                <ul className="list-disc pl-4">
+                  <li>Photo Copy | Scan CA DL | CA ID</li>
+                  <li>Write Down DOD ID#, Rank & Branch</li>
+                  <li>Proof Of CA Residence (Anything Listed In "Address Correction Docs")</li>
+                  </ul>
+                      <hr className="my-4" />
+                      <p>FSC Exemption Code</p>
+                      <ul className="list-disc pl-4">
+                      <li>(X21 - Military - Active Duty | X22 - Military - Active Reserve)</li>
+                      </ul><br/>
+                      <hr className="my-4" />
                       Military Are <span className="text-red-500">NOT</span> Roster | 30 Day Exempt
-                </span>
+                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     

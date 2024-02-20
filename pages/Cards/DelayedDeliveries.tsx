@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -34,24 +22,38 @@ import { cn } from "../../components/lib/cn";
             </CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          27.a. Enter The New Earliest Delivery Date<br/>
-            If That Date Doesn’t Work,<br/> 
-            Remove 3 Days From The Current Date (The Day You Are Disposing The Firearm)<br/>
-            <hr/>
-            <br/> 27.b. DROS Number<br/>
-            In State Of CA, DOJ Submits All NICS FBI Background Checks, We Are To Utilize The Dros Number In Place Of The Nics Number<br/>
-            <hr/>
-            <br/> 27.c. Only “Delayed” Should Be Marked Here, Do Not Enter A Date For The “Firearms May Be Transferred On” Entry Field<br/>
-            This Question Is Asking For A Date To Be Entered If The “Delayed Delivery” Notice Specifies A Date That We Are Given As The Release Date (This Has Yet To Happen)<br/>
-            <hr/>
-            <br/>27.d. Select “Proceed” Then Enter The New Earliest Delivery Date<br/>
-            <hr/>
-            <br/>32. Enter “DOJ Undetermined, Extended BG Check 30 Days”<br/>
-            Continue With Normal Process To Complete The 4473<br/>
-            After Saving - Have Customer Recertify, Then Save, Print, Continue As Normal<br/>
-            <span className="text-red-500">REMEMBER TO DISPOSE THE FIREARM AFTER YOU PRINT A COPY OF THE 4473!</span>
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Deliverying An Undetermined | Approval After Delay Out Of Fastbound:</h2>
+        <br/>
+        <ul className="list-disc pl-4">
+          <li>27.a. Enter The New Earliest Delivery Date</li>
+        <ul className="list-disc pl-4">
+            <li>If That Date Doesn’t Work,
+            Remove 3 Days From The Current Date (The Day You Are Disposing The Firearm)</li>
+            </ul>
+            {/* Nested list item */}
+            <hr className="my-4" />
+            <li>27.b. DROS Number</li>
+            <ul className="list-disc pl-4">
+            <li>In State Of CA, DOJ Submits All NICS FBI Background Checks, We Are To Utilize The Dros Number In Place Of The Nics Number</li>
+            </ul>
+            {/* Nested list item */}
+            <hr className="my-4" />
+            <li>27.c. Only “Delayed” Should Be Marked Here, Do Not Enter A Date For The “Firearms May Be Transferred On” Entry Field.</li>
+            <ul className="list-disc pl-4">
+            <li>This Question Is Asking For A Date To Be Entered If The “Delayed Delivery” Notice Specifies A Date That We Are Given As The Release Date (This Has Yet To Happen)</li>
+            </ul>
+            {/* Nested list item */}
+            <hr className="my-4" />
+            <li>27.d. Select “Proceed” Then Enter The New Earliest Delivery Date</li>
+            <hr className="my-4" />
+            <li>32. Enter “DOJ Undetermined, Extended BG Check 30 Days”</li>
+            <hr className="my-4" />
+            <li>Continue With Normal Process To Complete The 4473</li>
+            <li>After Saving - Have Customer Recertify, Then Save, Print, Continue As Normal</li>
+            </ul>
+            <br/><span className="text-red-500">REMEMBER TO DISPOSE THE FIREARM AFTER YOU PRINT A COPY OF THE 4473!</span>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
 

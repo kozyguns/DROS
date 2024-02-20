@@ -1,7 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
 
   import {
     Card,
@@ -11,15 +9,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -38,19 +27,31 @@ import { cn } from "../../components/lib/cn";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <span>
-                FSC Exemption Code<br/>
-                      (X32 - Peace Officer - Federal - Active | X33 - Peace Officer - Federal - Honorably Retired)<br/>
-                      <span class="blue-text text-darken-3">ONLY USED FOR FEDERAL AGENTS</span><br/>
-                      <br/>Non-Roster Exemption<br/>
-                      (AGENCY THEY ARE EMPLOYED WITH)<br/>
-                      <br/>You <span class="red-text text-darken-2">CANNOT</span> Copy Federal ID's,<br/>
-                      - Here Are The Required Docs:<br/>
-                      A Scan | Copy Of CA DL | CA ID<br/>
-                      & A Business Card With Agency | Department Letterhead | Seal
+                <div className="max-w-[425px]">
+                <h2>DROS FSC Exemption Fields:</h2>
+                 <ul className="list-disc pl-4">
+                  <p>FSC Exemption Code</p>
+                    <ul className="list-disc pl-4">
+                      <li><p>(X32 - Peace Officer - Federal - Active |</p> 
+                      <p>X33 - Peace Officer - Federal - Honorably Retired)</p>
+                      <p><span class="blue-text text-darken-3">ONLY USED FOR FEDERAL AGENTS</span></p></li>
+                      </ul>
+                    <p>Non-Roster Exemption</p>
+                      <ul className="list-disc pl-4">
+                        <li>(AGENCY THEY ARE EMPLOYED WITH)
+                        <br/>You <span class="red-text text-darken-2">CANNOT</span> Copy Federal ID's,</li>
+                        </ul>
+                        </ul>
+                      <p>Here Are The Required Docs:</p>
+                        <ul className="list-disc pl-4">
+                        <li>A Scan | Copy Of CA DL | CA ID</li>
+                        <li>A Business Card With Agency | Department Letterhead | Seal</li>
+                        </ul>
+                      
+                      
                       <br/>
-                      Federal Agents Are <span className="text-red-500">NOT</span> 30 Day Exempt
-                </span>
+                      <p>Federal Agents Are <span className="text-red-500">NOT</span> 30 Day Exempt</p>
+                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     

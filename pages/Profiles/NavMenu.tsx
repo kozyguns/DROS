@@ -81,22 +81,6 @@ function Navbar({ className }: { className?: string }) {
             )}
             </div>
 
-            <div className="flex flex-col space-y-4 text-sm">
-              <DialogTrigger asChild>
-              <HoveredLink onClick={() => handleDialogOpen('federalIdVerification')} href="#">Federal ID Verification</HoveredLink>
-              </DialogTrigger>
-              {activeDialog === 'federalIdVerification' && (
-              <DialogContent className="sm:max-w-[425px]">
-                <FedsCard />
-                <DialogClose asChild>
-                <Button type="button" variant="secondary" onClick={handleDialogClose}>
-                  Close
-                </Button>
-              </DialogClose>
-              </DialogContent>
-              )}
-              </div>
-
               <div className="flex flex-col space-y-4 text-sm">
                 <DialogTrigger asChild>
                 <HoveredLink onClick={() => handleDialogOpen('fedLimits')} href="#">Federal Limits Apply</HoveredLink>
@@ -115,9 +99,9 @@ function Navbar({ className }: { className?: string }) {
 
                 <div className="flex flex-col space-y-4 text-sm">
                 <DialogTrigger asChild>
-                <HoveredLink onClick={() => handleDialogOpen('fedLimsNames')} href="#">Federal Limits Apply <span className="text-orange-500">With Name Change</span></HoveredLink>
+                <HoveredLink onClick={() => handleDialogOpen('fedLimits')} href="#">Federal Limits Apply <span className="text-red-500">WITH Name Change</span></HoveredLink>
                 </DialogTrigger>
-                {activeDialog === 'fedLimsNames' && (
+                {activeDialog === 'fedLimits' && (
                 <DialogContent className="sm:max-w-[425px]">
                   <FedLimsName />
                   <DialogClose asChild>
@@ -128,6 +112,7 @@ function Navbar({ className }: { className?: string }) {
                 </DialogContent>
                 )}
                 </div>
+
             </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Proof Of Residence Docs">
         <div className="flex flex-col space-y-4 text-sm">

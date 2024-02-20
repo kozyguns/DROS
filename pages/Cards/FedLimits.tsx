@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,44 +8,43 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
-  function IDsCard ({ className }: { className?: string }) {
+  function FedLimits ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center mb-10" >
-      <Card className="w-[350px]">
+      <div className="flex flex-col items-center justify-center w-full" >
+      <Card className="flex flex-col w-full">
         <CardHeader>
           <CardTitle>Federal Limits Apply</CardTitle>
           <CardDescription>
-            The ATF Requires A Valid Photo ID Along With One Other Valid Government-Issued Document That Shows The Current Address<br/>
-            The Following Are Accepted Documents, And Can Be Combined To Meet The Requirements</CardDescription>
+          <div className="max-w-[425px]">
+            <p>The ATF Requires A Valid Photo ID Along With One Other Valid Government-Issued Document That Shows The Current Address</p>
+            <p>The Following Are Accepted Documents, And Can Be Combined To Meet The Requirements</p></div></CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          <dl>
-            <dt>A Valid Photo DL | ID Containing The Following Info:</dt>
-            <dd>- Transferee’s Name</dd>
-            <dd>- Residence Address</dd>
-            <dd>- Date Of Birth</dd>
-            <dt>A Valid Passport Which Contains The Following Info:</dt>
-            <dd>- Transferee’s Name</dd>
-            <dd>- Date Of Birth</dd>
-            <dd>- Photograph Of Purchaser</dd>
-            <dt>Vehicle Registration Containing The Following Info:</dt>
-            <dd>- Current Physical Address</dd>
-            <dt>A Valid Hunting License</dt>
-        </dl>
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Required Documents:</h2>
+          <ul className="list-disc pl-4">
+            <li>A Valid Photo DL | ID Containing The Following Info:</li>
+              <ul className="list-disc pl-4">
+              <li>- Transferee’s Name</li>
+              <li>- Residence Address</li>
+              <li>- Date Of Birth</li>
+              </ul>
+            <li>A Valid Passport Which Contains The Following Info:</li>
+              <ul className="list-disc pl-4">
+              <li>- Transferee’s Name</li>
+              <li>- Date Of Birth</li>
+              <li>- Photograph Of Purchaser</li>
+              </ul>
+            <li>Vehicle Registration Containing The Following Info:</li>
+              <ul className="list-disc pl-4">
+              <li>- Current Physical Address</li>
+              </ul>
+            <li>A Valid Hunting License</li>
+        </ul>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
 
@@ -57,4 +53,4 @@ import { cn } from "../../components/lib/cn";
 </div>
     )
   }
-  export default IDsCard;
+  export default FedLimits;

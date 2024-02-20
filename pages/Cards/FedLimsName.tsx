@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,22 +8,13 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
         <div className="flex flex-col items-center justify-center w-full" >
-      <Card className="flex flex-col w-full">
+        <Card className="flex flex-col w-full">
         <CardHeader>
           <CardTitle>Federal Limits Apply With Name Change</CardTitle>
           <CardDescription>
@@ -35,18 +23,23 @@ import { cn } from "../../components/lib/cn";
             </CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          <dl>
-            <dt>An Adoption Document That Contains The Legal Name Of The Applicant As A Result Of The Adoption</dt>
-            <dt>A Name Change Document That Contains The Applicant’s Legal Name Both Before And, As A Result Of, The Name Change</dt>
-            <dt>Married | Divorced:</dt>
-            <dd>- A Marriage Certificate</dd>
-            <dd>- A Dissolution Of Marriage Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</dd>
-            <dt>Domestic Partnerships:</dt>
-            <dd>- A Certificate, Declaration Or Registration Document Verifying The Formation Of A Domestic Partnership</dd>
-            <dd>- A Dissolution Of Domestic Partnership Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</dd>
-        </dl>
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Required Documents:</h2>
+          <ul className="list-disc pl-4">
+            <li>An Adoption Document That Contains The Legal Name Of The Applicant As A Result Of The Adoption</li>
+            <li>A Name Change Document That Contains The Applicant’s Legal Name Both Before And, As A Result Of, The Name Change</li>
+            <li>Married | Divorced:</li>
+              <ul className="list-disc pl-4">
+                <li>A Marriage Certificate</li>
+                <li>A Dissolution Of Marriage Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
+              </ul>
+            <li>Domestic Partnerships:</li>
+              <ul className="list-disc pl-4">
+                <li>A Certificate, Declaration Or Registration Document Verifying The Formation Of A Domestic Partnership</li>
+                <li>A Dissolution Of Domestic Partnership Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
+              </ul>
+          </ul>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
 
