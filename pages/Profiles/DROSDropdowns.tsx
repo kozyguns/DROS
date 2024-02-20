@@ -115,7 +115,7 @@ const DROSDropdowns = () => {
           <br />
         </React.Fragment>
       ))}
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row justify-center mt-8 md:mt-10 lg:mt-12">
       <Button onClick={resetSelections} className="mr-1 flex-shrink">
           Reset Selections
         </Button>
