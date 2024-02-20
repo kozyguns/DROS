@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
         <CardHeader>
           <CardTitle>Accepted Address Correction Docs</CardTitle>
           <CardDescription>
-          Utilize This List If Their CA DL | CA ID Doesn't Have Their Current Physical Address
+          Utilize This List If Their CA DL | CA ID Doesn&apos;t Have Their Current Physical Address
             </CardDescription>
         </CardHeader>
         <CardContent>

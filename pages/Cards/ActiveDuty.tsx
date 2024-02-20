@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
                     <span className="text-orange-500">PRINT</span> THE Federal Doc Worksheet In The Link Below<br/>
                     <hr/>
                       <br/>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,<br/>
-                      Don't Forget To Fill Out The <span className="text-blue-500">Blue Label</span> Form & Include It In The Pending Packet
+                      Don&apos;t Forget To Fill Out The <span className="text-blue-500">Blue Label</span> Form & Include It In The Pending Packet
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

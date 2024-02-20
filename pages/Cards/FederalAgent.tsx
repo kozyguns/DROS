@@ -23,7 +23,7 @@ import { useRouter } from "next/router";
                 And <span className="text-orange-500">PRINT</span> THE Federal Doc Worksheet In The Info Section Below
                 <hr/>
                 <br/>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,<br/>
-                Don't Forget To Fill Out The <span className="text-red-500">Blue Label</span> Form & Include It In The Pending Packet
+                Don&apos;t Forget To Fill Out The <span className="text-red-500">Blue Label</span> Form & Include It In The Pending Packet
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -34,12 +34,12 @@ import { useRouter } from "next/router";
                     <ul className="list-disc pl-4">
                       <li><p>(X32 - Peace Officer - Federal - Active |</p> 
                       <p>X33 - Peace Officer - Federal - Honorably Retired)</p>
-                      <p><span class="blue-text text-darken-3">ONLY USED FOR FEDERAL AGENTS</span></p></li>
+                      <p><span className="blue-text text-darken-3">ONLY USED FOR FEDERAL AGENTS</span></p></li>
                       </ul>
                     <p>Non-Roster Exemption</p>
                       <ul className="list-disc pl-4">
                         <li>(AGENCY THEY ARE EMPLOYED WITH)
-                        <br/>You <span class="red-text text-darken-2">CANNOT</span> Copy Federal ID's,</li>
+                        <br/>You <span className="red-text text-darken-2">CANNOT</span> Copy Federal ID&apos;s,</li>
                         </ul>
                         </ul>
                       <p>Here Are The Required Docs:</p>

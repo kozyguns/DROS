@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
                 You Will Need To Scan The Front And Rear Of Their Department ID Card (Including ID Number), For Documentation<br/>
                 <hr/>
                 <br/>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,<br/>
-                Don't Forget To Fill Out The <span className="text-blue-500">Blue Label</span> Form & Include It In The Pending Packet
+                Don&apos;t Forget To Fill Out The <span className="text-blue-500">Blue Label</span> Form & Include It In The Pending Packet
                 </CardDescription>
             </CardHeader>
             <CardContent>

@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
         <CardHeader>
           <CardTitle>Accepted Proof Of Residence Docs</CardTitle>
           <CardDescription>
-          <p>Don't Forget To Check For Valid CA DL / ID Along With Either Their FSC, Or One Of The Many Exemptions,</p> 
+          <p>Don&apos;t Forget To Check For Valid CA DL / ID Along With Either Their FSC, Or One Of The Many Exemptions,</p> 
           <p>Such As Their Officer ID, CCW, Etc. Along With One Of The Following From Below:</p>
             </CardDescription>
         </CardHeader>

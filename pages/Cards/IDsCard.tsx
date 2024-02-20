@@ -33,7 +33,7 @@ import { useRouter } from "next/router";
         </CardContent>
         <CardFooter className="flex justify-between">
           <p>
-          Temporary DL | ID's Are <span className="text-red-500">NOT</span> Accepted Forms Of Proof Of Identity And Age
+          Temporary DL | ID&apos;s Are <span className="text-red-500">NOT</span> Accepted Forms Of Proof Of Identity And Age
           </p>
         </CardFooter>
       </Card>
