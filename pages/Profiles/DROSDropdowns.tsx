@@ -26,14 +26,19 @@ import {
   NavigationMenuViewport,
 } from "../../components/ui/navigation-menu"
 
+// Example type definition, adjust based on your actual data structure
+type DataItem = string[]; // If `data` is an array of arrays of strings
+type Data = DataItem[];
+type DataRow = string[]; // or more specific type reflecting your data structure
 
 
 const DROSDropdowns = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<DataRow[]>([]);
   const [selections, setSelections] = useState(Array(7).fill(null)); // Use null for uninitialized selections
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
   const [activeDialog, setActiveDialog] = useState(null);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +49,7 @@ const DROSDropdowns = () => {
     fetchData();
   }, []);
 
-  const handleSelectionChange = (selectIndex, value) => {
+  const handleSelectionChange = (selectIndex: number, value: string) => {
     let updatedSelections = [...selections];
     updatedSelections[selectIndex] = value === 'none' ? null : value; // Handle 'none' as null
     for (let i = selectIndex + 1; i < updatedSelections.length; i++) {
@@ -53,7 +58,7 @@ const DROSDropdowns = () => {
     setSelections(updatedSelections);
   };
 
-  const getOptionsForSelect = (index) => {
+  const getOptionsForSelect = (index: number) => {
     if (!data.length) return [];
     let filteredData = data;
     for (let i = 0; i <= index; i++) {
@@ -104,7 +109,7 @@ const DROSDropdowns = () => {
           </SelectContent>
         </Select>
       ))}
-      {columnHText && columnHText.split('\n').map((line, index) => (
+      {columnHText && (columnHText as string).split('\n').map((line, index) => (
         <React.Fragment key={index}>
           {line}
           <br />
