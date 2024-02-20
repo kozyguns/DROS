@@ -33,7 +33,7 @@ type DataRow = string[]; // or more specific type reflecting your data structure
 
 
 const DROSDropdowns = () => {
-  const [data, setData] = useState<DataRow[]>([]);
+  const [data, setData] = useState([]);
   const [selections, setSelections] = useState(Array(7).fill(null)); // Use null for uninitialized selections
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
