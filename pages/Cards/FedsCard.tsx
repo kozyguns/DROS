@@ -1,8 +1,5 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-  import { Button } from "../../components/ui/button"
-import { cn } from "../../components/lib/cn";
-
   import {
     Card,
     CardContent,
@@ -11,15 +8,6 @@ import { cn } from "../../components/lib/cn";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
-  import { Input } from "../../components/ui/input"
-  import { Label } from "../../components/ui/label"
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "../../components/ui/select"
   
   function IDsCard ({ className }: { className?: string }) {
   const router = useRouter();
@@ -35,22 +23,27 @@ import { cn } from "../../components/lib/cn";
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <span>
-          <dl>
-            <dt>Valid, Unexpired U.S. Passport Or Passport Card</dt>
-            <dt>Certified Copy Of U.S. Birth Certificate, Or One Of The Following, As Long As They Are Issued By The U.S. Department Of State</dt>
-            <dd>- Certification Of Birth Abroad (FS-545)</dd>
-            <dd>- Certification Of Report Of Birth (DS-1350)</dd>
-            <dd>- Consular Report Of Birth Abroad Of A Citizen Of The United States Of America (FS240)</dd>
-            <dt>Student | Work VISA Holders Must Have All Of The Following:</dt>
-            <dd>- Unexpired Foreign Passport</dd>
-            <dd>- Valid U.S. Immigrant VISA</dd>
-            <dd>- Approved Record Of Arrival|Departure (I-94) Form</dd>
-            <dt>Certified Copy Of Birth Certificate From A U.S. Territory</dt>
-            <dt>Certificate Of Naturalization Or U.S. Citizenship</dt>
-            <dt>Valid, Unexpired Permanent Resident Card</dt>
-          </dl>
-          </span>
+        <div className="max-w-[425px]">
+        <h2>Required Documents:</h2>
+          <ul className="list-disc pl-4">
+            <li>Valid, Unexpired U.S. Passport Or Passport Card</li>
+            <li>Certified Copy Of U.S. Birth Certificate, Or One Of The Following, As Long As They Are Issued By The U.S. Department Of State</li>
+              <ul className="list-disc pl-4">
+                <li>- Certification Of Birth Abroad (FS-545)</li>
+                <li>- Certification Of Report Of Birth (DS-1350)</li>
+                <li>- Consular Report Of Birth Abroad Of A Citizen Of The United States Of America (FS240)</li>
+              </ul>
+            <li>Student | Work VISA Holders Must Have All Of The Following:</li>
+              <ul className="list-disc pl-4">
+                <li>- Unexpired Foreign Passport</li>
+                <li>- Valid U.S. Immigrant VISA</li>
+                <li>- Approved Record Of Arrival|Departure (I-94) Form</li>
+                <li>Certified Copy Of Birth Certificate From A U.S. Territory</li>
+                <li>Certificate Of Naturalization Or U.S. Citizenship</li>
+                <li>Valid, Unexpired Permanent Resident Card</li>
+              </ul>
+          </ul>
+          </div>
         </CardContent>
         <CardFooter className="flex justify-between">
 

@@ -17,6 +17,7 @@ import FederalAgent from "../Cards/FederalAgent";
 import ActiveDuty from "../Cards/ActiveDuty";
 import LocalActive from "../Cards/LocalActive";
 import RetiredMilitary from "../Cards/RetiredMilitary";
+import InterimDl from "../Cards/InterimDl";
 import Image from 'next/image';
 import { Meteors } from "../../components/ui/meteors";
 import {
@@ -81,6 +82,23 @@ function Navbar({ className }: { className?: string }) {
             )}
             </div>
 
+            <div className="flex flex-col space-y-4 text-sm">
+            <DialogTrigger asChild>
+            <HoveredLink onClick={() => handleDialogOpen('fedsIdVerification')} href="#">Federal ID Verification</HoveredLink>
+            </DialogTrigger>
+            {activeDialog === 'fedsIdVerification' && (
+            <DialogContent className="sm:max-w-[425px]">
+              <FedsCard />
+              <DialogClose asChild>
+              <Button type="button" variant="secondary" onClick={handleDialogClose}>
+                Close
+              </Button>
+            </DialogClose>
+            </DialogContent>
+            )}
+            </div>
+              <hr className="my-4"/>
+
               <div className="flex flex-col space-y-4 text-sm">
                 <DialogTrigger asChild>
                 <HoveredLink onClick={() => handleDialogOpen('fedLimits')} href="#">Federal Limits Apply</HoveredLink>
@@ -99,9 +117,9 @@ function Navbar({ className }: { className?: string }) {
 
                 <div className="flex flex-col space-y-4 text-sm">
                 <DialogTrigger asChild>
-                <HoveredLink onClick={() => handleDialogOpen('fedLimits')} href="#">Federal Limits Apply <span className="text-red-500">WITH Name Change</span></HoveredLink>
+                <HoveredLink onClick={() => handleDialogOpen('fedLimsName')} href="#">Federal Limits Apply <span className="text-red-500">WITH Name Change</span></HoveredLink>
                 </DialogTrigger>
-                {activeDialog === 'fedLimits' && (
+                {activeDialog === 'fedLimsName' && (
                 <DialogContent className="sm:max-w-[425px]">
                   <FedLimsName />
                   <DialogClose asChild>
@@ -287,10 +305,20 @@ function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Interim | Temp ID's">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+            <DialogTrigger asChild>
+            <HoveredLink onClick={() => handleDialogOpen('interimDl')} href="#">Interim ID&apos;s | DL&apos;s Info</HoveredLink>
+            </DialogTrigger>
+            {activeDialog === 'interimDl' && (
+            <DialogContent className="sm:max-w-[425px]">
+              <InterimDl />
+            <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>
+              <DialogClose asChild>
+              <Button type="button" variant="secondary" onClick={handleDialogClose}>
+                Close
+              </Button>
+            </DialogClose>
+            </DialogContent>
+            )}
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="DROS Exemptions Guide">
