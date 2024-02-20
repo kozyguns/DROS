@@ -37,7 +37,7 @@ const MenuTest = () => {
 
   return (
     <div className="relative w-full flex items-center justify-center mt-10 ">
-      <Navbar className="top-8" />
+      <Navbar className="top-10" />
     </div>
   );
 }
