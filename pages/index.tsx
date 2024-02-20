@@ -79,7 +79,7 @@ const Home: NextPage = () => {
                 Navigation Menu
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
-              Slim Jim's Page
+              Slim Jim&apos;s Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/DROSDropdowns")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
               DROS Support Page

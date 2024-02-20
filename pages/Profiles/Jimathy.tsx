@@ -31,7 +31,7 @@ const JimathyPage = () => {
 
   return (
     <div>
-      <p>This is Slim Jim's profile page.</p>
+      <p>This is Slim Jim&apos;s profile page.</p>
       <div className="flex justify-center">
       {/* 
         Replace "example.jpg" with the name of your image file. 
@@ -66,13 +66,13 @@ const JimathyPage = () => {
               Home
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Sammy")} className="ml-1 flex-shrink">
-                Sammy's Profile
+                Sammy&apos;s Profile
             </Button>
             <Button onClick={() => handleButtonClick("/DynamicDropdown")} className="ml-2 flex-shrink">
               Dynamic Dropdown Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
-              Slim Jim's Page
+              Slim Jim&apos;s Page
             </Button>
             <Button onClick={() => handleButtonClick("/Payments/data-table")} className="ml-2 flex-shrink">
               Data Table Page
@@ -155,7 +155,7 @@ const JimathyPage = () => {
             </div>
             <div style={{ marginTop: '1rem' }}>
           <Button onClick={() => handleButtonClick("/")} className="mr-1 flex-shrink">
-            Let's Go Home!
+            Let&apoos;s Go Home!
             </Button>
           </div>
         </div>

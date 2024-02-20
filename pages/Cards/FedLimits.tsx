@@ -28,13 +28,13 @@ import { useRouter } from "next/router";
           <ul className="list-disc pl-4">
             <li>A Valid Photo DL | ID Containing The Following Info:</li>
               <ul className="list-disc pl-4">
-              <li>- Transferee’s Name</li>
+              <li>- Transferee&apos;s Name</li>
               <li>- Residence Address</li>
               <li>- Date Of Birth</li>
               </ul>
             <li>A Valid Passport Which Contains The Following Info:</li>
               <ul className="list-disc pl-4">
-              <li>- Transferee’s Name</li>
+              <li>- Transferee&apos;s Name</li>
               <li>- Date Of Birth</li>
               <li>- Photograph Of Purchaser</li>
               </ul>

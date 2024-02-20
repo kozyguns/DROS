@@ -30,7 +30,7 @@ import { useRouter } from "next/router";
                     <h2>Required Documents:</h2>
                     <ul className="list-disc pl-4">
                       <li>PCS Orders Containing Effective Date & Order Number</li>
-                      <li>Proof Of CA Residence (Anything Listed In "Address Correction Docs")</li>
+                      <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                       <li>
                         Photo Copy Out Of State DL / ID As Normal
                         <ul className="list-disc pl-4">

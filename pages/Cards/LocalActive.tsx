@@ -28,12 +28,13 @@ import { useRouter } from "next/router";
                 <ul className="list-disc pl-4">
                   <li>Photo Copy | Scan CA DL | CA ID</li>
                   <li>Write Down DOD ID#, Rank & Branch</li>
-                  <li>Proof Of CA Residence (Anything Listed In "Address Correction Docs")</li>
+                  <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                   </ul>
                       <hr className="my-4" />
                       <p>FSC Exemption Code</p>
                       <ul className="list-disc pl-4">
-                      <li>(X21 - Military - Active Duty | X22 - Military - Active Reserve)</li>
+                      <li><p>(X21 - Military - Active Duty |</p> 
+                      <p>X22 - Military - Active Reserve)</p></li>
                       </ul><br/>
                       <hr className="my-4" />
                       Military Are <span className="text-red-500">NOT</span> Roster | 30 Day Exempt

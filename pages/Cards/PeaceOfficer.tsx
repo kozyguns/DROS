@@ -35,7 +35,7 @@ import { useRouter } from "next/router";
               </ul>
             <li>Any County Correctional Officer = PUBLIC OFFICER</li>
               <ul className="list-disc pl-4">
-              <li>These Officers Are Considered "Particular And Limited Authority Peace Officers"</li>
+              <li>These Officers Are Considered &quot;Particular And Limited Authority Peace Officers&quot;</li>
               <li>(PENAL CODE 831.x Found On Rear Of Department ID Card Typically)</li>
               </ul>
             <li>You Can Verify Any Other PC Code Variations In The Link Below</li>

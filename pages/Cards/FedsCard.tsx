@@ -30,7 +30,7 @@ import { cn } from "../../components/lib/cn";
         <CardHeader>
           <CardTitle>Federal Limits Apply</CardTitle>
           <CardDescription>
-          If The Purchaser&apos;s VALID CA DL | CA ID States <span className="text-blue-500">"Federal Limits Apply"</span> In The Top Right Corner,<br/> 
+          If The Purchaser&apos;s VALID CA DL | CA ID States <span className="text-blue-500">"&quot;ederal Limits Apply&quot;</span> In The Top Right Corner,<br/> 
           We Need One Of The Docs Below
           </CardDescription>
         </CardHeader>

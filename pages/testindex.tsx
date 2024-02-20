@@ -90,13 +90,13 @@ const Home: NextPage = () => {
               Hello Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Sammy")} className="ml-1 flex-shrink">
-                Sammy's Profile
+                Sammy&apos;s Profile
             </Button>
             <Button onClick={() => handleButtonClick("/DynamicDropdown")} className="ml-2 flex-shrink">
               Dynamic Dropdown Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
-              Slim Jim's Page
+              Slim Jim&apos;s Page
             </Button>
             <Button onClick={() => handleButtonClick("/Payments/data-table")} className="ml-2 flex-shrink">
               Data Table Page
@@ -176,7 +176,7 @@ const Home: NextPage = () => {
               />
             </div>
             <div className="flex items-center justify-center">
-    <Select>
+    {/* <Select>
       <SelectTrigger className="w-[180px]" id="options">
         <SelectValue placeholder="Count" />
       </SelectTrigger>
@@ -185,7 +185,7 @@ const Home: NextPage = () => {
       <SelectItem value="B" onClick={handleSelectItemClick}>Two</SelectItem>
       <SelectItem value="C" onClick={handleSelectItemClick}>Three</SelectItem>
       </SelectContent>
-    </Select>
+    </Select> */}
   </div>
             <div className="flex items-center justify-center">
               <Button type="submit">Save</Button>

@@ -85,7 +85,7 @@ const Home: NextPage = () => {
               Dynamic Select Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
-              Slim Jim's Page
+              Slim Jim&apos;s Page
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/CascadingPage")} className="ml-2 flex-shrink">
               Cascading Dropdown Page
