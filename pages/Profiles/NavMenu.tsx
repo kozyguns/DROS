@@ -36,7 +36,7 @@ const MenuTest = () => {
 
 
   return (
-    <div className="relative w-full flex items-center justify-center mt-10">
+    <div className="relative w-full flex items-center justify-center mt-10 ">
       <Navbar className="top-8" />
     </div>
   );
@@ -47,6 +47,7 @@ const MenuTest = () => {
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleDialogOpen = (dialog: string) => {
     setActiveDialog(dialog);
@@ -57,7 +58,6 @@ function Navbar({ className }: { className?: string }) {
   };
 
   return (
-
     
     <div className={cn("fixed top-10 inset-x-0 max-w-6xl mx-auto z-50 text-sm", className)}>
       <Dialog>

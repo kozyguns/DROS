@@ -51,7 +51,29 @@
   }
 }
 
+/* Example of responsive navbar adjustments */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .theme-picker {
+    padding: 8px;
+    top: 5px; /* Adjust based on desired spacing */
+    left: 5px; /* Adjust based on desired spacing */
+  }
+  .menu-item {
+    padding: 5px 0; /* Increase vertical padding for touch targets */
+  }
+}
 
+/* Base padding for larger screens */
+.theme-picker {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
  
 @layer base {
   * {
