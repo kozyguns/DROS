@@ -67,6 +67,11 @@
   }
 }
 
+.cardContent {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 /* Base padding for larger screens */
 .theme-picker {
   padding: 10px;
@@ -75,34 +80,6 @@
   left: 0;
 }
  
-
-.cardContent {
-  max-height: 900px; 
-  overflow-y: auto; 
-}
-
-
-.scrollableCardContent {
-  max-height: 500px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: blue gray;
-}
-
-
-.scrollableCardContent::-webkit-scrollbar {
-  width: 12px;
-}
-
-.scrollableCardContent::-webkit-scrollbar-track {
-  background: gray;
-}
-
-.scrollableCardContent::-webkit-scrollbar-thumb {
-  background-color: blue;
-  border-radius: 20px;
-}
-
 @layer base {
   * {
     @apply border-border;
