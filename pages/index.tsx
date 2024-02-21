@@ -90,6 +90,9 @@ const Home: NextPage = () => {
             <Button onClick={() => handleButtonClick("/Profiles/GeneratePage")} className="ml-2 flex-shrink">
               Text Generation Page
             </Button>
+        <Button onClick={() => handleButtonClick("/DROS")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
+              DROS
+            </Button>
             </div>
         <div className="max-w-8xl mx-auto py-10">
           <form className="py-5 space-y-5" onSubmit={handleSubmit}>
