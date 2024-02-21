@@ -133,7 +133,9 @@ const handleCloseDialog = () => setActiveDialog(null);
             </li>
             <li>
               <DialogTrigger asChild>
-              <HoveredLink onClick={() => handleOpenDialog('fedLimsName')} href="#">Federal Limits Apply <span className="text-orange-500">With Name Change</span></HoveredLink>
+              <HoveredLink onClick={() => handleOpenDialog('fedLimsName')} href="#">Federal Limits Apply<br/>
+                <span className="text-orange-500">With Name Change</span>
+              </HoveredLink>
               </DialogTrigger>
               {activeDialog === 'fedLimsName' && (
                 <DialogContent>
