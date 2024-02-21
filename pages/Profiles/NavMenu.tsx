@@ -18,6 +18,7 @@ import ActiveDuty from "../Cards/ActiveDuty";
 import LocalActive from "../Cards/LocalActive";
 import RetiredMilitary from "../Cards/RetiredMilitary";
 import InterimDl from "../Cards/InterimDl";
+import PeaceOfficerDROS from "../Cards/PeaceOfficerDROS";
 import Image from 'next/image';
 import { Meteors } from "../../components/ui/meteors";
 import {
@@ -319,11 +320,21 @@ function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="DROS Exemptions Guide">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+        <div className="flex flex-col space-y-4 text-sm">
+            <DialogTrigger asChild>
+            <HoveredLink onClick={() => handleDialogOpen('peaceOfficerDROS')} href="#">Peace Officer DROS Guide</HoveredLink>
+            </DialogTrigger>
+            {activeDialog === 'peaceOfficerDROS' && (
+            <DialogContent className="sm:max-w-[425px]">
+              <PeaceOfficerDROS />
+              <HoveredLink href="https://oag.ca.gov/firearms/exemptpo"><span className="text-blue-500">Agency Group Details</span></HoveredLink>
+              <DialogClose asChild>
+              <Button type="button" variant="secondary" onClick={handleDialogClose}>
+                Close
+              </Button>
+            </DialogClose>
+            </DialogContent>
+            )}
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Ammo Purchases">

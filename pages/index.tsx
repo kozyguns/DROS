@@ -5,6 +5,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes/dist/types";
 import { Button } from "../components/ui/button";
 import { useRouter } from "next/router";
+import { Meteors } from "../components/ui/meteors";
 import {
   Select,
   SelectContent,
@@ -77,8 +78,8 @@ const Home: NextPage = () => {
       <div className="flex flex-row justify-center">
             {/* <Button onClick={() => handleButtonClick("/Navigation/NavMenu")} className="ml-1 flex-shrink">
                 Navigation Menu
-            </Button>
-            <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
+            </Button> */}
+            {/* <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
               Slim Jim&apos;s Page
             </Button> */}
             <Button onClick={() => handleButtonClick("/Profiles/DROSDropdowns")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
@@ -181,7 +182,7 @@ const Home: NextPage = () => {
             </div>
           </form>
         </div>
-        
+
       </main>
 
   );

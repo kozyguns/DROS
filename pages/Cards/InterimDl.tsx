@@ -19,7 +19,7 @@ import { useRouter } from "next/router";
                 <CardHeader>
                 <CardTitle>Interim ID&apos;s | DL&apos;s Info</CardTitle>
                 <CardDescription>
-                <p>We <span className="text-red-500">CANNOT</span> Accept &quot;Temporary ID | DL&quot; Printouts Or Cards</p>
+                <p>We <span className="text-red-500">CANNOT</span> Accept &quot;TEMPORARY ID | DL&quot; Printouts Or Cards</p>
                 </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -28,7 +28,8 @@ import { useRouter } from "next/router";
                  <ul className="list-disc pl-4">
                   <p>We <span className="text-cyan-500">DO</span> Accept &quot;INTERIM ID&apos;s | DL&apos;s&quot;</p>
                     <p>But It Must Be Accompanied By The Old Photo ID | DL</p> 
-                    <p>& The Old Photo ID <span className="red-text text-darken-3">CANNOT</span> Have A Hole Punched In It</p>
+                    <p>& The Old Photo ID <span className="red-text text-darken-3">CANNOT</span></p> 
+                    <p>Have A Hole Punched In It</p>
                     <p>& The Interim ID | DL <span className="text-blue-500">MUST BE SIGNED</span></p>
                 </ul>
                 </div>

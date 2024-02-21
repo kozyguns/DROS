@@ -5,7 +5,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
 import { cn } from "../../components/lib/cn";
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
-import NavMenu from './NavMenu';
+import NavMenu from '../Navigation/NavMenu';
 import Link from "next/link";
 import { TextGenerateEffect } from "../../components/ui/text-generate-effect";
 import {
@@ -87,12 +87,11 @@ const DROSDropdowns = () => {
 
   return (
     <div >
-      <header className="sticky top-0 z-10 flex items-center justify-between p-4">
-        <div className="relative w-full flex items-center justify-center">
-          <NavMenu />
-        </div>
-      </header>
-    <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-8">
+     <div className="flex flow-row items-center justify-center max w-full mb-12">
+         <NavMenu />
+         </div>
+    <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-12">
+        
       {selections.map((selection, index) => (
         <Select key={index}
                 disabled={index > 0 && selections[index - 1] === null}
@@ -115,11 +114,11 @@ const DROSDropdowns = () => {
           <br />
         </React.Fragment>
       ))}
-      <div className="flex flex-row justify-center mt-8 md:mt-10 lg:mt-12">
-      <Button onClick={resetSelections} className="mr-1 flex-shrink">
+      <div className="flex flex-row justify-center mt-10 md:mt-10 lg:mt-12">
+      <Button onClick={resetSelections} className="mr-1 flex-shrink mt-10 py-2">
           Reset Selections
         </Button>
-        <Button onClick={() => router.push("/")} className="mr-1 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
+        <Button onClick={() => router.push("/")} className="mr-1 flex-shrink mt-10 px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
           Home Page
         </Button>
       </div>

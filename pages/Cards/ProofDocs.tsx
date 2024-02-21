@@ -24,18 +24,34 @@ import { useRouter } from "next/router";
         </CardHeader>
         <CardContent>
         <div className="max-w-[425px]">
-        <h2>Required Documents:</h2>
+        <h2>Any ONE Of The Following Docs Below Will Suffice For A Handgun Purchase:</h2>
+        <p>Customer Must Have A Valid FSC Card OR Valid CA CCW Permit</p>
           <ul className="list-disc pl-4">
+            <li>Valid CA Registration With The Current Physical Address For Any Of The Following:</li>
+            <ul className="list-disc pl-4">
+              <li>Vehicle Registration</li>
+              <li>Boat Registration</li>
+              <li>Motorcycle Registration</li>
+              <li>Off Road Vehicle Registration</li>
+            </ul>
             <li>Signed & Dated Lease Agreement For A Duration Of 1 Year</li>
-            <li>Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
+            <li>(If The Customer Is The Homeowner) - Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
             <li>Property Deed (Meets DOJ State Req)</li>
-            <li>Current Utility Bill</li>
-            <li>Most Recent W-2 + Current Utility Bill</li>
+            <li>Current (Within 90 Days) Utility Bill For Current Physical Address, Such As:</li>
+            <ul className="list-disc pl-4">
+              <li>Electric Bill</li>
+              <li>Land Line Phone Bill</li>
+              <li>Cable Bill</li>
+              <li>Garbage Bill</li>
+              <li>Internet Bill</li>
+              <li>Water Bill</li>
+            </ul>
+            <li>Most Recent W-2 + Current (Within 90 Days) Utility Bill</li>
             <li>Current & Valid CA DMV Disabled Placard</li>
             <li>Valid CA CCW Permit</li>
             <li>Valid CA Hunting License</li>
             <li>Valid CA Fishing License</li>
-            <li>Current & Valid Guard Card + Exposed Carry Card</li>
+            <li>Current & Valid Guard Card + Exposed Carry Card With Current Physical Address</li>
               </ul>
           </div>
         </CardContent>

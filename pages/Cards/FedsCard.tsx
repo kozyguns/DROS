@@ -13,8 +13,8 @@ import { useRouter } from "next/router";
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center mb-10" >
-      <Card className="w-[350px]">
+        <div className="flex flex-col items-center justify-center w-full" >
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>Federal Limits Apply</CardTitle>
           <CardDescription>
