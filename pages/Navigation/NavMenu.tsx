@@ -25,11 +25,13 @@ import ReserveInfo from "../Cards/ReserveInfo";
 import {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  NavigationMenuViewport
 } from "../../components/ui/navigation-menu"
 import {
     Dialog,
@@ -93,7 +95,7 @@ const handleCloseDialog = () => setActiveDialog(null);
             {/* State ID Verification */}
             <li>
               <DialogTrigger asChild>
-              <HoveredLink onClick={() => handleOpenDialog('stateIdVerification')} href="#">State ID Verification</HoveredLink>
+              <HoveredLink className={navigationMenuTriggerStyle()} onClick={() => handleOpenDialog('stateIdVerification')} href="#">State ID Verification</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'stateIdVerification' && (
                 <DialogContent>
@@ -123,7 +125,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('fedLimits')} href="#">Federal Limits Apply</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'fedLimits' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <FedLimits />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -134,11 +136,11 @@ const handleCloseDialog = () => setActiveDialog(null);
             <li>
               <DialogTrigger asChild>
               <HoveredLink onClick={() => handleOpenDialog('fedLimsName')} href="#">Federal Limits Apply<br/>
-                <span className="text-orange-500">With Name Change</span>
+              <span className="text-orange-500">With Name Change</span>
               </HoveredLink>
               </DialogTrigger>
               {activeDialog === 'fedLimsName' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <FedLimsName />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -158,7 +160,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('proofResDocs')} href="#"><span className="text-cyan-500">Accepted Proof Of Residence Docs</span></HoveredLink>
               </DialogTrigger>
               {activeDialog === 'proofResDocs' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <ProofDocs />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -171,7 +173,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('correctionDocs')} href="#">Accepted Address Correction Docs</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'correctionDocs' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <CorrectionDocs />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -191,7 +193,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('delayedDeliveries')} href="#">Delayed Deliveries</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'delayedDeliveries' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <DelayedDeliveries />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -211,7 +213,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('leoPPT')} href="#">Off-Roster LEO PPT Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'leoPPT' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <LeoPPT />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -224,7 +226,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('peaceOfficer')} href="#">Peace | Public Officer Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'peaceOfficer' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <PeaceOfficer />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -237,7 +239,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('reserveInfo')} href="#">Reserve Officer Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'reserveInfo' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <ReserveInfo />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -250,7 +252,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('federalAgent')} href="#">Federal Agent DROS Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'federalAgent' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <FederalAgent />
                   <DialogClose asChild>
                     <Button onClick={handleCloseDialog}>Close</Button>
@@ -270,7 +272,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('activeDuty')} href="#">Active Duty Out Of State Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'activeDuty' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <ActiveDuty />
                   <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>
                   <DialogClose asChild>
@@ -284,7 +286,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('localActive')} href="#">Local Active Duty Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'localActive' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <LocalActive />
                   <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>
                   <DialogClose asChild>
@@ -298,7 +300,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('retiredMilitary')} href="#">Retired Military Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'retiredMilitary' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <RetiredMilitary />
                   <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>
                   <DialogClose asChild>
@@ -319,7 +321,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('interimDl')} href="#">Interim ID&apos;s | DL&apos;s Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'interimDl' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <InterimDl />
                   
                   <DialogClose asChild>
@@ -340,7 +342,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('peaceOfficerDROS')} href="#">Peace Officer DROS Guide</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'peaceOfficerDROS' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <PeaceOfficerDROS />
               <HoveredLink href="https://oag.ca.gov/firearms/exemptpo"><span className="text-blue-500">Agency Group Details</span></HoveredLink>
                   <DialogClose asChild>
@@ -361,7 +363,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('peaceOfficerDROS')} href="#">Peace Officer DROS Guide</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'peaceOfficerDROS' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <PeaceOfficerDROS />
               <HoveredLink href="https://oag.ca.gov/firearms/exemptpo"><span className="text-blue-500">Agency Group Details</span></HoveredLink>
                   <DialogClose asChild>
@@ -382,7 +384,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('peaceOfficerDROS')} href="#">Peace Officer DROS Guide</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'peaceOfficerDROS' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <PeaceOfficerDROS />
               <HoveredLink href="https://oag.ca.gov/firearms/exemptpo"><span className="text-blue-500">Agency Group Details</span></HoveredLink>
                   <DialogClose asChild>
@@ -396,7 +398,7 @@ const handleCloseDialog = () => setActiveDialog(null);
               <HoveredLink onClick={() => handleOpenDialog('reserveOfficer')} href="#">Reserve Officer Info</HoveredLink>
               </DialogTrigger>
               {activeDialog === 'reserveOfficer' && (
-                <DialogContent>
+                <DialogContent className="cardContent">
                   <ReserveOfficer />
               
                   <DialogClose asChild>
