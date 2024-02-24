@@ -46,30 +46,28 @@ const DialogTest = () => {
           listStyle: "none",
           margin: 0,
           marginBottom: 15,
-          padding: 0
+          padding: 1
         }}
       >
-        {["one", "two", "three loooong", "four"].map((item) => {
-          return (
-            <NavigationMenu.Item key={item} value={item}>
-              <NavigationMenu.Trigger
-                ref={(node: HTMLButtonElement) => {
-                  if (item === value && activeTrigger !== node) {
-                    setActiveTrigger(node);
-                  }
-                  return node;
-                }}
-              >
-                {item}
-              </NavigationMenu.Trigger>
-              <NavigationMenu.Content
-                style={{ width: 200, height: 100 }}
-              >
-                <button>{item} content</button>
-              </NavigationMenu.Content>
-            </NavigationMenu.Item>
-          );
-        })}
+        {["Forms Of ID Guide", "Proof Of Residence Docs", "4473 | Fastbound", "Law Enforcement", "Military", "Interim | Temp ID's", "DROS Exemptions Guide", "Ammo Purchases", "VISA's | Submitted Residents | EAD's"].map((item) => (
+  <NavigationMenu.Item key={item} value={item}>
+    <NavigationMenu.Trigger
+      ref={(node: HTMLButtonElement) => {
+        if (item === value && activeTrigger !== node) {
+          setActiveTrigger(node);
+        }
+        return node;
+      }}
+      style={{ padding: '10px' }} // Direct inline styling
+    >
+      {item}
+    </NavigationMenu.Trigger>
+    <NavigationMenu.Content style={{ width: 200, height: 100, left: 0 }}>
+      <button>{item} content</button>
+    </NavigationMenu.Content>
+  </NavigationMenu.Item>
+))}
+
 
         <NavigationMenu.Indicator
           style={{
@@ -88,11 +86,13 @@ const DialogTest = () => {
           top: "100%",
           width: "100%",
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
+          columns: 2,
         }}
       >
         <NavigationMenu.Viewport
           style={{
+            left: 0,
             display: !offset ? "none" : undefined,
             transform: `translateX(${offset}px)`,
             top: "100%",
