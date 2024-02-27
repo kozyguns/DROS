@@ -4,6 +4,8 @@ import SmoothNavMenu from "../components/ui/SmoothNavMenu";
 import { useRouter } from "next/router";
 import { Button } from "../components/ui/button";
 import NavMenu from './Navigation/NavMenu';
+import MappedDynamicMenu from '../components/ui/MappedDynamicMenu';
+import DynamicMenu from '../components/ui/DynamicMenu';
 import {
   Select,
   SelectContent,
@@ -72,7 +74,7 @@ const DialogPage = () => {
   return (
     <div >
      <div className="flex flow-row items-center justify-center max w-full mb-12">
-         <SmoothNavMenu />
+         <DynamicMenu />
          </div>
     <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-12">
         

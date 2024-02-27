@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
     CardTitle,
   } from "../../components/ui/card"
   
-  function IDsCard ({ className }: { className?: string }) {
+  function FedsCard ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
@@ -52,4 +52,4 @@ import { useRouter } from "next/router";
 </div>
     )
   }
-  export default IDsCard;
+  export default FedsCard;
