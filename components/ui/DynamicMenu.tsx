@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import IDsCard from "../../pages/Cards/IDsCard";
+import { string } from "zod";
 
 // Define MenuItem type
 type MenuItem = {
@@ -31,7 +32,7 @@ const SmoothNavMenu = () => {
       try {
         const response = await fetch(`/api/sheetData?range=NavMenu!A2:B`);
         const jsonData = await response.json();
-        setMenuItems(jsonData.map(item => ({
+        setMenuItems(jsonData.map((item [string, string]) => ({
           label: item[0],
           dialogId: item[1],
         })));
