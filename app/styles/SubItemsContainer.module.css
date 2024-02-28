@@ -1,0 +1,10 @@
+/* SubItemsContainer.module.css */
+.subItemsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust minmax for your needs */
+  gap: 10px;
+}
+
+.twoColumns {
+  grid-template-columns: repeat(2, 1fr); /* Specifically for two columns layout */
+}
