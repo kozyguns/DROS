@@ -50,7 +50,7 @@ const SmoothNavMenu = () => {
     }
   };
 
-  return (
+  return null;(
     <div ref={menuRef} style={{ position: "relative", display: "flex", justifyContent: "center" }}>
       <NavigationMenu.Root>
         <NavigationMenu.List style={{ display: "flex", flexDirection: "row", listStyle: "none", margin: 0, padding: 0 }}>

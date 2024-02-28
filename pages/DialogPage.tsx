@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DialogTest from "./../components/ui/DialogTest";
-import SmoothNavMenu from "../components/ui/SmoothNavMenu";
+// import SmoothNavMenu from "../components/ui/SmoothNavMenu";
 import { useRouter } from "next/router";
 import { Button } from "../components/ui/button";
 import NavMenu from './Navigation/NavMenu';
