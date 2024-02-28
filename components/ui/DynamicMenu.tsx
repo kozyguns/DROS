@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import IDsCard from "../../pages/Cards/IDsCard";
+import FedsCard from "../../pages/Cards/FedsCard";
 import { string } from "zod";
 
 // Define MenuItem type
@@ -9,6 +10,7 @@ type MenuItem = {
   dialogId: string; // Identifier for the content card.
 };
 
+
 // Placeholder content cards for demonstration
 const ContentCard1 = () => <div><IDsCard/></div>;
 const ContentCard2 = () => <div>This is the content for Dialog ID 2.</div>;
@@ -16,12 +18,14 @@ const ContentCard2 = () => <div>This is the content for Dialog ID 2.</div>;
 
 // Mapping dialog IDs to their content cards
 const contentCardsMapping = {
-  "dialogId1": <ContentCard1 />,
-  "dialogId2": <ContentCard2 />,
+  "dialogId1": <IDsCard />,
+  "dialogId2": <FedsCard />,
   // Add more mappings as necessary
 };
 
-const SmoothNavMenu = () => {
+type DialogId = 'dialogId1' | 'dialogId2'; // Add any additional keys as needed.
+
+const DynamicMenu = () => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const dialogRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null); // Reference to the menu container
@@ -45,17 +49,18 @@ const SmoothNavMenu = () => {
 
   useEffect(() => {
     // Click outside to hide dialog
-    const handleClickOutside = (event) => {
-      if (!menuRef.current.contains(event.target) && dialogRef.current && !dialogRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!menuRef.current?.contains(event.target as Node) && dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
         setSelectedContentCard(null); // Hide the selected content card
       }
     };
-
+  
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  
 
-  const handleMenuItemEnter = (event, dialogId) => {
+  const handleMenuItemEnter = (event: React.MouseEvent<HTMLElement>, dialogId: DialogId) => {
     if (dialogRef.current) {
       const menuItemRect = event.currentTarget.getBoundingClientRect();
       dialogRef.current.style.visibility = 'visible';
@@ -64,7 +69,9 @@ const SmoothNavMenu = () => {
       // Set the selected content card based on dialogId
       setSelectedContentCard(contentCardsMapping[dialogId]);
     }
-  };
+};
+
+  
 
   return (
     <div ref={menuRef} style={{ position: "relative", display: "flex", justifyContent: "center" }}>
@@ -103,4 +110,4 @@ const SmoothNavMenu = () => {
   );
 };
 
-export default SmoothNavMenu;
+export default DynamicMenu;
