@@ -32,7 +32,7 @@ const SmoothNavMenu = () => {
       try {
         const response = await fetch(`/api/sheetData?range=NavMenu!A2:B`);
         const jsonData = await response.json();
-        setMenuItems(jsonData.map((item [string, string]) => ({
+        setMenuItems(jsonData.map((item: [string, string]) => ({
           label: item[0],
           dialogId: item[1],
         })));
