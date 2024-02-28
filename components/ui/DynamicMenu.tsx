@@ -80,7 +80,7 @@ const DynamicMenu = () => {
           {menuItems.map(({ label, dialogId }, index) => (
             <NavigationMenu.Item key={index}>
               <NavigationMenu.Trigger
-                onMouseEnter={(e) => handleMenuItemEnter(e, dialogId)}
+                onMouseEnter={(e) => handleMenuItemEnter(e, dialogId as DialogId)}
                 style={{ padding: '10px' }}
               >
                 {label}
