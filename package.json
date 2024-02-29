@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.2.0",
+    "dompurify": "^3.0.9",
     "embla-carousel-react": "^8.0.0-rc22",
     "framer-motion": "^11.0.3",
     "google-auth-library": "^9.4.2",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.4.0",
+    "@types/dompurify": "^3.0.5",
     "@types/node": "17.0.14",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.2",

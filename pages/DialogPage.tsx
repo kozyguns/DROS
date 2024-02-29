@@ -6,6 +6,8 @@ import { Button } from "../components/ui/button";
 import NavMenu from './Navigation/NavMenu';
 import  MappedDynamicMenu  from '../components/ui/MappedDynamicMenu'; // Import MappedDynamicMenu from '../components/ui/MappedDynamicMenu';
 import DynamicMenu from '../components/ui/DynamicMenu';
+import TestingMapDyn from '../components/ui/TestingMapDyn';
+import LinkingPage from '../components/ui/LinkingPage';
 import {
   Select,
   SelectContent,
@@ -13,6 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
+import IDsCard from '../pages/Cards/IDsCard';
+import FedsCard from '../pages/Cards/FedsCard';
 
 // Example type definition, adjust based on your actual data structure
 type DataItem = string[]; // If `data` is an array of arrays of strings
@@ -25,6 +29,25 @@ const DialogPage = () => {
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
   const [activeDialog, setActiveDialog] = useState(null);
+  const [activeDialogContentId, setActiveDialogContentId] = useState<string | null>(null);
+
+  // Function to handle clicks on sub-item labels in MappedDynamicMenu
+  const handleSubItemClick = (contentId: string) => {
+    setActiveDialogContentId(contentId);
+  };
+
+  // Render the appropriate content based on activeDialogContentId
+  const renderDialogContent = () => {
+    switch(activeDialogContentId) {
+      case 'IDsCard':
+        return <IDsCard />;
+      case 'FedsCard':
+        return <FedsCard />;
+      // Handle other cases...
+      default:
+        return null;
+    }
+  };
   
 
   useEffect(() => {
@@ -74,7 +97,9 @@ const DialogPage = () => {
   return (
     <div >
      <div className="flex flow-row items-center justify-center max w-full mb-12">
-         <MappedDynamicMenu />
+         <LinkingPage />
+         {/* Render dialog content */}
+      {activeDialogContentId && renderDialogContent()}
          </div>
     <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-12">
         

@@ -104,17 +104,13 @@ const colorMapping = {
 type SubItem = {
   label: string;
   contentId: string;
-  link?: string;
+  link: string;
 };
 
 type MenuItem = {
   label: string;
   dialogId: string;
   subItems: SubItem[];
-};
-
-type DialogContentComponents = {
-  [key: string]: React.ComponentType<any>;
 };
 
 const dialogContentComponents = {
@@ -138,20 +134,12 @@ const dialogContentComponents = {
   // Add other mappings as necessary
 };
 
-const dialogContentComponentss: DialogContentComponents = {
-  IDsCard: IDsCard,
-  FedsCard: FedsCard,
-  FedLimits: FedLimits,
-  // ... other component definitions
-};
-
-const MappedDynamicMenu = () => {
+const LinkingPage = () => {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const dialogRef = useRef<HTMLDivElement>(null);
     const [activeDialogContent, setActiveDialogContent] = useState<React.ReactNode | null>(null);
     const [activeDialog, setActiveDialog] = useState(null);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const [activeSubItem, setActiveSubItem] = useState<SubItem | null>(null);
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -177,31 +165,17 @@ const MappedDynamicMenu = () => {
     // Close active dialog
     const closeDialog = () => setActiveDialog(null);
 
-    // When rendering the dialog content
-const renderDialogContent = () => {
-  if (!activeSubItem) return null; // Guard against null values
-
-  // Obtain the component to render based on the contentId
-  const DialogContentComponent = dialogContentComponentss[activeSubItem.contentId];
-
-
-  // Render the component, the link, and any additional elements like a close button
-  return (
-    <Dialog>
-      <DialogContent>
-        {DialogContentComponent}
-        {activeSubItem.link && (
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <a href={activeSubItem.link} target="_blank" rel="noopener noreferrer">More Info</a>
-          </div>
-        )}
-        <DialogClose asChild>
-          <button>Close</button>
-        </DialogClose>
-      </DialogContent>
-    </Dialog>
-  );
-};
+    // Render dialog content based on the active dialog
+    const renderDialogContent = () => {
+      if (!activeDialog) return null;
+      const ContentComponent = dialogContentComponents[activeDialog];
+      return (
+        <DialogContainer ref={dialogRef}>
+          {ContentComponent}
+          <CloseButton onClick={closeDialog}>Close</CloseButton>
+        </DialogContainer>
+      );
+    };
 
   const handleSubItemClick = (contentId: string) => {
     const contentComponent = dialogContentComponents[contentId as keyof typeof dialogContentComponents];
@@ -276,4 +250,4 @@ const renderDialogContent = () => {
   );
 };
 
-export default MappedDynamicMenu;
+export default LinkingPage;
