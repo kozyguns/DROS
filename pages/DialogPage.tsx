@@ -96,7 +96,7 @@ const DialogPage = () => {
   const columnHText = canShowColumnH() ? data.find(row => selections.every((selection, index) => !selection || row[index] === selection))?.[7] : '';
   return (
     <div >
-     <div className="flex flow-row items-center justify-center max w-full mb-12">
+     <div className="flex flow-row items-center justify-center max w-full mb-24">
          <LinkingPage />
          {/* Render dialog content */}
       {activeDialogContentId && renderDialogContent()}
