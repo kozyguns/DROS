@@ -33,7 +33,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <p>Make Sure You Print The <span className="text-amber-500">Federal Doc Worksheet</span></p>
                     <p>Here Are The Required Docs:</p>
                       <ul className="list-none pl-4">
-                        <li><HoveredLink onClick={() => handleOpenDialog('fedsIdVerification')} href="#">Federal ID Verification</HoveredLink></li>
+                        <li><HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink></li>
                         <li>A Business Card With Agency | Department Letterhead | Seal</li>
                       </ul>
                        <br/>
