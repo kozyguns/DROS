@@ -5,20 +5,20 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes/dist/types";
 import { Button } from "../components/ui/button";
 import { useRouter } from "next/router";
-import DialogPage from "./DialogPage"
-import DialogHover from "./DialogHover";
+import { Checkbox } from "../components/ui/checkbox";
+import { Switch } from "../components/ui/switch";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select"
-import { Textarea } from "../components/ui/textarea"
-import { Label } from "../components/ui/label"
-import { Input } from "../components/ui/input"
+} from "../components/ui/select";
+import { Textarea } from "../components/ui/textarea";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
 
-const Home: NextPage = () => {
+const Audits = () => {
   const router = useRouter();
 
   const handleButtonClick = (path: string) => {
@@ -40,13 +40,13 @@ const Home: NextPage = () => {
     e.preventDefault();
   
     let form = {
-      name,
+      dros,
       email,
       phone,
       message,
       whateva,
       options,
-      sheetName: "Test1" // supposed to be dynamic but this doesn't actually affect it for some reason
+      sheetName: "Audits" // supposed to be dynamic but this doesn't actually affect it for some reason
     };
   
     const sheetName = "Test1"; // supposed to be dynamic but this doesnt work either - reference submit.ts
@@ -83,9 +83,6 @@ const Home: NextPage = () => {
             {/* <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
               Slim Jim&apos;s Page
             </Button> */}
-            <Button onClick={() => handleButtonClick("/Audits")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              DROS Audits
-            </Button>
             <Button onClick={() => handleButtonClick("/DROSInWorks")} className="ml-2 flex-shrink">
               Future DROS
             </Button>
@@ -107,23 +104,53 @@ const Home: NextPage = () => {
               DROS
             </Button>
             </div>
-        <div className="max-w-8xl mx-auto py-10">
+        <div className="flex flex-col max-w-8xl mx-auto py-10">
           <form className="py-5 space-y-5" onSubmit={handleSubmit}>
-            <div className="flex items-center justify-center">
-              <label htmlFor="name" className="sr-only">
-                Name
-              </label>
+          <div className="flex flex-row justify-start items-center space-x-4">
+            {/* Switch and its Label */}
+            <div className="flex flex-row items-center space-x-2">
+                <Switch id="dros-switch" />
+                <Label htmlFor="dros-switch">DROS Audits</Label>
+            </div>
+
+            {/* Checkbox, its Label, and Description */}
+            <div className="flex items-center space-x-2">
+                <Checkbox id="cancelled" />
+                <div className="grid gap-1.5">
+                    <label
+                        htmlFor="cancelled"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                        DROS Has Been Cancelled
+                    </label>
+                    <p className="text-sm">
+                        Only Check If DROS Was Cancelled
+                    </p>
+                    </div>
+                </div>
+            </div>
+
+
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                name="name"
-                id="name"
+                name="dros"
+                id="dros"
                 className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-                placeholder="Wuz Yo Name"
+                placeholder="Include '-' From DROS"
                 style={{ padding: "0.5rem" }}
               />
-            </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="terms" />
+                <Label
+                    htmlFor="terms"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                    Accept terms and conditions
+                </Label>
+                </div>
+
             <div className="flex items-center justify-center">
               <label htmlFor="email" className="sr-only">
                 Email
@@ -204,4 +231,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Audits;
