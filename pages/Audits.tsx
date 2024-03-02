@@ -40,7 +40,6 @@ const Audits = () => {
     e.preventDefault();
   
     let form = {
-      dros,
       email,
       phone,
       message,
