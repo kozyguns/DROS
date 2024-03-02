@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import * as React from "react"
 import { useRouter } from "next/router";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
   import {
     Card,
     CardContent,
@@ -11,7 +10,6 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
   } from "../../components/ui/card"
   
   function FedsAgentLeo ({ className }: { className?: string }) {
-
   const router = useRouter();
 
     return (
