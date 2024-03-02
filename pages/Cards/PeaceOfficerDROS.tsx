@@ -29,13 +29,13 @@ import { useRouter } from "next/router";
             <CardContent>
             <div className="max-w-[425px]">
             <h2>Required Documents:</h2>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
             <li>Any County Probation Or Parole Officer = PEACE OFFICER</li>
-              <ul className="list-disc pl-4">
+              <ul className="list-none pl-4">
               <li>(PENAL CODE 830.x Found On Rear Of Department ID Card Typically)</li>
               </ul>
             <li>Any County Correctional Officer = PUBLIC OFFICER</li>
-              <ul className="list-disc pl-4">
+              <ul className="list-none pl-4">
               <li>These Officers Are Considered &quot;Particular And Limited Authority Peace Officers&quot;</li>
               <li>(PENAL CODE 831.x Found On Rear Of Department ID Card Typically)</li>
               </ul>

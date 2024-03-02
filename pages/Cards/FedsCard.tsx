@@ -25,16 +25,16 @@ import { useRouter } from "next/router";
         <CardContent>
         <div className="max-w-[425px]">
         <h2>Required Documents:</h2>
-          <ul className="list-disc pl-4">
+          <ul className="list-none pl-4">
             <li>Valid, Unexpired U.S. Passport Or Passport Card</li>
             <li>Certified Copy Of U.S. Birth Certificate, Or One Of The Following, As Long As They Are Issued By The U.S. Department Of State</li>
-              <ul className="list-disc pl-4">
+              <ul className="list-none pl-4">
                 <li>- Certification Of Birth Abroad (FS-545)</li>
                 <li>- Certification Of Report Of Birth (DS-1350)</li>
                 <li>- Consular Report Of Birth Abroad Of A Citizen Of The United States Of America (FS240)</li>
               </ul>
             <li>Student | Work VISA Holders Must Have All Of The Following:</li>
-              <ul className="list-disc pl-4">
+              <ul className="list-none pl-4">
                 <li>- Unexpired Foreign Passport</li>
                 <li>- Valid U.S. Immigrant VISA</li>
                 <li>- Approved Record Of Arrival|Departure (I-94) Form</li>

@@ -24,7 +24,7 @@ import { useRouter } from "next/router";
                 <CardContent>
                 <div className="max-w-[425px]">
                 <h2>Required Documents:</h2>
-                  <ul className="list-disc pl-4">
+                  <ul className="list-none pl-4">
                 <li><p>If You Haven&apos;t Already Asked If They Were With A Differenct Agency When They Purchased The Firearm,</p>
                 <p>Do So Now, Before Moving Any Further</p></li>
                 <li>If They Were NOT Employed By A Different Agency, Look Up The Current Agency&apos;s Info Below</li>

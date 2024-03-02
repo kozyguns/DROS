@@ -23,15 +23,15 @@ import { useRouter } from "next/router";
                 </CardHeader>
                 <CardContent>
                 <div className="max-w-[425px]">
-                <ul className="list-disc pl-4">
+                <ul className="list-none pl-4">
                 <li><p>Reserve Officers CAN Purchase Non-Roster Firearms AND They Are FSC Exempt</p></li>
                 <hr className="my-4" />
                 <p>FSC Exemption Code</p>
-                  <ul className="list-disc pl-4">
+                  <ul className="list-none pl-4">
                   <li>(X34 - PEACE OFFICER - RESERVE)</li>
                   </ul>
                 <p>Non-Roster Exemption</p>
-                <ul className="list-disc pl-4">
+                <ul className="list-none pl-4">
                 <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
                 </ul>
                 <hr className="my-4" />

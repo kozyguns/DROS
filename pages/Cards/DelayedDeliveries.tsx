@@ -25,22 +25,22 @@ import { useRouter } from "next/router";
         <div className="max-w-[425px]">
         <h2>Deliverying An Undetermined | Approval After Delay Out Of Fastbound:</h2>
         <br/>
-        <ul className="list-disc pl-4">
+        <ul className="list-none pl-4">
           <li>27.a. Enter The New Earliest Delivery Date</li>
-        <ul className="list-disc pl-4">
+        <ul className="list-none pl-4">
             <li>If That Date Doesn’t Work,
             Remove 3 Days From The Current Date (The Day You Are Disposing The Firearm)</li>
             </ul>
             {/* Nested list item */}
             <hr className="my-4" />
             <li>27.b. DROS Number</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
             <li>In State Of CA, DOJ Submits All NICS FBI Background Checks, We Are To Utilize The Dros Number In Place Of The Nics Number</li>
             </ul>
             {/* Nested list item */}
             <hr className="my-4" />
             <li>27.c. Only “Delayed” Should Be Marked Here, Do Not Enter A Date For The “Firearms May Be Transferred On” Entry Field.</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
             <li>This Question Is Asking For A Date To Be Entered If The “Delayed Delivery” Notice Specifies A Date That We Are Given As The Release Date (This Has Yet To Happen)</li>
             </ul>
             {/* Nested list item */}

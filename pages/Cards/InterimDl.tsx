@@ -25,7 +25,7 @@ import { useRouter } from "next/router";
                 <CardContent>
                 <div className="max-w-[425px]">
                 <h2>Interim ID | DL&apos;s:</h2>
-                 <ul className="list-disc pl-4">
+                 <ul className="list-none pl-4">
                   <p>We <span className="text-cyan-500">DO</span> Accept &quot;INTERIM ID&apos;s | DL&apos;s&quot;</p>
                     <p>But It Must Be Accompanied By The Old Photo ID | DL</p> 
                     <p>& The Old Photo ID <span className="red-text text-darken-3">CANNOT</span></p> 

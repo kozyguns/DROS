@@ -25,14 +25,14 @@ import { useRouter } from "next/router";
                 <CardContent>
                 <div className="max-w-[425px]">
                 <h2>Required Documents:</h2>
-                <ul className="list-disc pl-4">
+                <ul className="list-none pl-4">
                   <li>Photo Copy | Scan CA DL | CA ID</li>
                   <li>Write Down DOD ID#, Rank & Branch</li>
                   <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                   </ul>
                       <hr className="my-4" />
                       <p>FSC Exemption Code</p>
-                      <ul className="list-disc pl-4">
+                      <ul className="list-none pl-4">
                       <li><p>(X21 - Military - Active Duty |</p> 
                       <p>X22 - Military - Active Reserve)</p></li>
                       </ul><br/>

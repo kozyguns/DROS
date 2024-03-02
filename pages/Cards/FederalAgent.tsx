@@ -29,21 +29,21 @@ import { useRouter } from "next/router";
                 <CardContent>
                 <div className="max-w-[425px]">
                 <h2>DROS FSC Exemption Fields:</h2>
-                 <ul className="list-disc pl-4">
+                 <ul className="list-none pl-4">
                   <p>FSC Exemption Code</p>
-                    <ul className="list-disc pl-4">
+                    <ul className="list-none pl-4">
                       <li><p>(X32 - Peace Officer - Federal - Active |</p> 
                       <p>X33 - Peace Officer - Federal - Honorably Retired)</p>
                       <p><span className="blue-text text-darken-3">ONLY USED FOR FEDERAL AGENTS</span></p></li>
                       </ul>
                     <p>Non-Roster Exemption</p>
-                      <ul className="list-disc pl-4">
+                      <ul className="list-none pl-4">
                         <li>(AGENCY THEY ARE EMPLOYED WITH)
                         <br/>You <span className="red-text text-darken-2">CANNOT</span> Copy Federal ID&apos;s,</li>
                         </ul>
                         </ul>
                       <p>Here Are The Required Docs:</p>
-                        <ul className="list-disc pl-4">
+                        <ul className="list-none pl-4">
                         <li>A Scan | Copy Of CA DL | CA ID</li>
                         <li>A Business Card With Agency | Department Letterhead | Seal</li>
                         </ul>

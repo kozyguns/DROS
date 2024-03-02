@@ -26,9 +26,9 @@ import { useRouter } from "next/router";
         <div className="max-w-[425px]">
         <h2>Any ONE Of The Following Docs Below Will Suffice For A Handgun Purchase:</h2>
         <p>Customer Must Have A Valid FSC Card OR Valid CA CCW Permit</p>
-          <ul className="list-disc pl-4">
+          <ul className="list-none pl-4">
             <li>Valid CA Registration With The Current Physical Address For Any Of The Following:</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
               <li>Vehicle Registration</li>
               <li>Boat Registration</li>
               <li>Motorcycle Registration</li>
@@ -38,7 +38,7 @@ import { useRouter } from "next/router";
             <li>(If The Customer Is The Homeowner) - Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
             <li>Property Deed (Meets DOJ State Req)</li>
             <li>Current (Within 90 Days) Utility Bill For Current Physical Address, Such As:</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
               <li>Electric Bill</li>
               <li>Land Line Phone Bill</li>
               <li>Cable Bill</li>

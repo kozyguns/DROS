@@ -22,10 +22,10 @@ import { useRouter } from "next/router";
         <CardContent>
         <div className="max-w-[425px]">
         <h2>Required Documents:</h2>
-          <ul className="list-disc pl-4">
+          <ul className="list-none pl-4">
           <li>A Valid CA DL | CA ID Issued By The DMV</li>
           <li>OR A Military ID With The Following:</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
             <li>PCS Orders</li>
             </ul>
           </ul>

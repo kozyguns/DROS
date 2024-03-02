@@ -23,7 +23,7 @@ import { useRouter } from "next/router";
                 </CardHeader>
                 <CardContent>
                 <div className="max-w-[425px]">
-                <ul className="list-disc pl-4">
+                <ul className="list-none pl-4">
                 <p>Reserve Officers CAN Purchase Non-Roster Firearms</p>
                 <p>AND They Are FSC Exempt</p>
                 <p>Reserve Officers Are <span className="text-red-500">NOT</span> 30 Day Exempt</p>
@@ -32,11 +32,11 @@ import { useRouter } from "next/router";
                 <p>& Include It In The Pending Packet</p>
                 <hr className="my-4" />
                 <p>FSC Exemption Code</p>
-                  <ul className="list-disc pl-4">
+                  <ul className="list-none pl-4">
                   <li>(X34 - PEACE OFFICER - RESERVE)</li>
                   </ul>
                 <p>Non-Roster Exemption</p>
-                <ul className="list-disc pl-4">
+                <ul className="list-none pl-4">
                 <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
                 </ul>
                 <hr className="my-4" />
