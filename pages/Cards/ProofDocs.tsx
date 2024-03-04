@@ -28,14 +28,14 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <div className="max-w-full">
         <h2>Any ONE Of The Following Docs Below Will Suffice For A Handgun Purchase:</h2>
         <p>Customer Must Have A Valid FSC Card OR Valid CA CCW Permit</p>
-          <ul className="list-none pl-4">
+          <ul className="list-disc pl-4">
             <li>Valid CA Registration With The Current Physical Address For Any Of The Following:</li>
             <ul className="list-none pl-4">
               <li>Vehicle Registration</li>
               <li>Boat Registration</li>
               <li>Motorcycle Registration</li>
               <li>Off Road Vehicle Registration</li>
-            </ul>
+            </ul >
             <li>Signed & Dated Lease Agreement For A Duration Of 1 Year</li>
             <li>(If The Customer Is The Homeowner) - Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
             <li>Property Deed (Meets DOJ State Req)</li>

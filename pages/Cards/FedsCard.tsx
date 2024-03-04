@@ -20,8 +20,8 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <CardHeader>
           <CardTitle>Federal Limits Apply</CardTitle>
           <CardDescription>
-          If The Purchaser&apos;s VALID CA DL | CA ID States <span className="text-blue-500">&quot;Federal Limits Apply&quot;</span> In The Top Right Corner,<br/> 
-          We Need One Of The Docs Below
+          If The Purchaser&apos;s VALID CA DL | CA ID States <span className="text-blue-500">&quot;Federal Limits Apply&quot;</span> 
+          In The Top Right Corner, We Need One Of The Docs Below
           </CardDescription>
         </CardHeader>
         <CardContent>

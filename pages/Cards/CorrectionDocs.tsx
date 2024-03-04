@@ -27,7 +27,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <div className="max-w-full">
         <h2>Any ONE Of The Following Docs Below Will Suffice For A Handgun Purchase:</h2>
         <p>Customer Must Have A Valid FSC Card OR Valid CA CCW Permit</p>
-          <ul className="list-none pl-4">
+          <ul className="list-disc pl-4">
             <li>Valid CA Registration With The Current Physical Address For Any Of The Following:</li>
             <ul className="list-none pl-4">
               <li>Vehicle Registration</li>
@@ -40,7 +40,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
           <li>Valid CA Fishing License</li>
           <li>Current & Valid Guard Card + Exposed Carry Card With Current Physical Address</li>
           <li>Most Recent Property Tax Bill (Meets ATF Federal Req), With One Of The Following:</li>
-            <ul className="list-none pl-4">
+            <ul className="list-disc pl-4">
               <li>Property Deed (Meets DOJ State Req)</li>
               <li>Current (Wtihin 90 Days) Utility Bill</li>
             </ul>
