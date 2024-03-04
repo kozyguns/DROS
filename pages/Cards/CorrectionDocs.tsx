@@ -40,7 +40,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
           <li>Valid CA Fishing License</li>
           <li>Current & Valid Guard Card + Exposed Carry Card With Current Physical Address</li>
           <li>Most Recent Property Tax Bill (Meets ATF Federal Req), With One Of The Following:</li>
-            <ul className="list-disc pl-4">
+            <ul className="list-none pl-4">
               <li>Property Deed (Meets DOJ State Req)</li>
               <li>Current (Wtihin 90 Days) Utility Bill</li>
             </ul>
