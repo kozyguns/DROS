@@ -1,5 +1,7 @@
 import * as React from "react"
 import { useRouter } from "next/router";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   import {
     Card,
     CardContent,
@@ -13,7 +15,7 @@ import { useRouter } from "next/router";
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >
             <Card className="flex flex-col w-full">
                 <CardHeader>
                 <CardTitle>Federal Agent Info</CardTitle>
@@ -22,21 +24,18 @@ import { useRouter } from "next/router";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <div className="max-w-[425px]">
+                <div className="max-w-full">
                 <h2>Federal Agents Are Listed As <span className="text-amber-500">Group 1</span></h2>
-                <p>You <span className="text-red-500">CANNOT</span> Copy Federal ID&apos;s,</p>
-                <p>Make Sure You Print The <span className="text-amber-500">Federal Doc Worksheet</span></p>
-                    <p>You Can Print The Federal Doc Worksheet Here:</p>
-                      <ul className="list-none pl-4">
-                        <li><a href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></a></li>
-                      </ul>
-                      <hr/>
-                      <br/>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,<br/>
-                      Don&apos;t Forget To Fill Out The <span className="text-red-500">Blue Label</span> Form & Include It In The Pending Packet
+                <hr className="my-4" />
+                <p>Because You <span className="text-red-500">CANNOT</span> Copy Federal ID&apos;s,<br/>
+                Make Sure You Print The <span className="text-amber-500">Federal Doc Worksheet</span> In The Info Section Below</p>
+                <hr className="my-4" />
+                    <p>If The Transaction Is For A <span className="text-blue-500">Blue Label</span> Firearm,</p>
+                    Don&apos;t Forget To Fill Out The <span className="text-red-500">Blue Label</span> Form & Include It In The Pending Packet
                 </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    
+                <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>
                 </CardFooter>
             </Card>
         </div>

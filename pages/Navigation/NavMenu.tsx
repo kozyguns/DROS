@@ -13,14 +13,14 @@ import ProofDocs from "../Cards/ProofDocs";
 import CorrectionDocs from "../Cards/CorrectionDocs";
 import DelayedDeliveries from "../Cards/DelayedDeliveries";
 import LeoPPT from "../Cards/LeoPPT";
-import PeaceOfficer from "../Cards/PeaceOfficer";
+import PeaceOfficer from "../Cards/PeaceOfficerDROS";
 import ReserveOfficer from "../Cards/ReserveOfficer";
 import FederalAgent from "../Cards/FederalAgent";
 import ActiveDuty from "../Cards/ActiveDuty";
 import LocalActive from "../Cards/LocalActive";
 import RetiredMilitary from "../Cards/RetiredMilitary";
 import InterimDl from "../Cards/InterimDl";
-import PeaceOfficerDROS from "../Cards/PeaceOfficerDROS";
+import PeaceOfficerDROS from "../Cards/PeaceOfficer";
 import ReserveInfo from "../Cards/ReserveInfo";
 import {
   NavigationMenu,

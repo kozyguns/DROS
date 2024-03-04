@@ -20,15 +20,17 @@ import ProofDocs from "../../pages/Cards/ProofDocs";
 import CorrectionDocs from "../../pages/Cards/CorrectionDocs";
 import DelayedDeliveries from "../../pages/Cards/DelayedDeliveries";
 import LeoPPT from "../../pages/Cards/LeoPPT";
-import PeaceOfficer from "../../pages/Cards/PeaceOfficer";
+import PeaceOfficer from "../../pages/Cards/PeaceOfficerDROS";
 import ReserveOfficer from "../../pages/Cards/ReserveOfficer";
 import FederalAgent from "../../pages/Cards/FederalAgent";
 import ActiveDuty from "../../pages/Cards/ActiveDuty";
 import LocalActive from "../../pages/Cards/LocalActive";
 import RetiredMilitary from "../../pages/Cards/RetiredMilitary";
 import InterimDl from "../../pages/Cards/InterimDl";
-import PeaceOfficerDROS from "../../pages/Cards/PeaceOfficerDROS";
+import PeaceOfficerDROS from "../../pages/Cards/PeaceOfficer";
 import ReserveInfo from "../../pages/Cards/ReserveInfo";
+import FedsAgentLeo from "../../pages/Cards/FedsAgentLeo";
+import PartiucularLimDROS from "../../pages/Cards/PartiucularLimDROS";
 // Add other imports as needed
 
 // Styled components
@@ -131,6 +133,8 @@ const dialogContentComponents = {
   InterimDl: <InterimDl />,
   PeaceOfficerDROS: <PeaceOfficerDROS />,
   ReserveInfo: <ReserveInfo />,
+  FedsAgentLeo: <FedsAgentLeo />,
+  PartiucularLimDROS: <PartiucularLimDROS />,
   // Add other mappings as necessary
 };
 

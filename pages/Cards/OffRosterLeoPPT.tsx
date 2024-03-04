@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   
   function OffRosterLeoPPT ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >
             <Card className="flex flex-col w-full">
                 <CardHeader>
                 <CardTitle>DROS Exemption Fields For Particular &amp Limited Authority</CardTitle>
@@ -22,7 +24,7 @@ import { useRouter } from "next/router";
                 </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <div className="max-w-[425px]">
+                <div className="max-w-full">
                 <ul className="list-none pl-4">
                 <li><p> </p></li>
                 <hr className="my-4" />

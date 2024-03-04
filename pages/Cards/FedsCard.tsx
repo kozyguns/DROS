@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   
   function FedsCard ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Federal Limits Apply</CardTitle>
@@ -23,7 +25,7 @@ import { useRouter } from "next/router";
           </CardDescription>
         </CardHeader>
         <CardContent>
-        <div className="max-w-[425px]">
+        <div className="max-w-full">
         <h2>Required Documents:</h2>
           <ul className="list-none pl-4">
             <li>Valid, Unexpired U.S. Passport Or Passport Card</li>

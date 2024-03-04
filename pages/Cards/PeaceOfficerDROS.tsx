@@ -1,5 +1,10 @@
 import * as React from "react"
 import { useRouter } from "next/router";
+import { Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from "../../components/ui/tabs"
   import {
     Card,
     CardContent,
@@ -8,12 +13,14 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   
-  function IDsCard ({ className }: { className?: string }) {
+  function PeaceOfficerDROS ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >  
         <Card className="flex flex-col w-full">
             <CardHeader>
             <CardTitle>Peace Officer DROS Guide</CardTitle>
@@ -27,27 +34,70 @@ import { useRouter } from "next/router";
                 </CardDescription>
             </CardHeader>
             <CardContent>
-            <div className="max-w-[425px]">
-            <h2>Required Documents:</h2>
+            <Tabs defaultValue="" className="w-full">
+          <TabsList>
+            <TabsTrigger value="account">Without 10 Day Exemption Letter</TabsTrigger>
+            <TabsTrigger value="password">With 10 Day Exemption Letter</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
+          <div className="flex flex-col w-full">
+            <h2><span className="text-amber-500">Start By Selecting &quot;Exempt Handgun Sale&quot;</span></h2>
+            <hr className="my-4" />
             <ul className="list-none pl-4">
-            <li>Any County Probation Or Parole Officer = PEACE OFFICER</li>
-              <ul className="list-none pl-4">
-              <li>(PENAL CODE 830.x Found On Rear Of Department ID Card Typically)</li>
-              </ul>
-            <li>Any County Correctional Officer = PUBLIC OFFICER</li>
-              <ul className="list-none pl-4">
-              <li>These Officers Are Considered &quot;Particular And Limited Authority Peace Officers&quot;</li>
-              <li>(PENAL CODE 831.x Found On Rear Of Department ID Card Typically)</li>
-              </ul>
-            <li>You Can Verify Any Other PC Code Variations In The Link Below</li>
-            </ul>
+                  <p>FSC Exemption Code</p>
+                    <ul className="list-none pl-4">
+                      <li>(X31 - PEACE OFFICER - CALIFORNIA - ACTIVE)</li>
+                      </ul>
+                      <p>30-Day Restriction Exemption</p>
+                      <ul className="list-none pl-4">
+                        <li>(PEACE OFFICER - CALIFORNIA - ACTIVE)</li>
+                      </ul>
+                      <p>Waiting Period Exemption | 10 Day Wait</p>
+                      <ul className="list-none pl-4">
+                        <li>(Letter Required Dated Within 30 Days)</li>
+                      </ul>
+                  <p>Non-Roster Exemption</p>
+                      <ul className="list-none pl-4">
+                        <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
+                      </ul>
+                      </ul>
             </div>
+            <hr className="my-4" />
+            </TabsContent>
+          <TabsContent value="password">
+          <div className="flex flex-col w-full">
+            <h2><span className="text-amber-500">Start By Selecting &quot;Peace Officer Non-Roster Handgun Sale (Letter Required)&quot;</span></h2>
+            <hr className="my-4" />
+            <ul className="list-none pl-4">
+                  <p>FSC Exemption Code</p>
+                    <ul className="list-none pl-4">
+                      <li>(X31 - PEACE OFFICER - CALIFORNIA - ACTIVE)</li>
+                      </ul>
+                      <p>30-Day Restriction Exemption</p>
+                      <ul className="list-none pl-4">
+                        <li>(PEACE OFFICER - ACTIVE - LETTER REQUIRED)</li>
+                      </ul>
+                      <p>Waiting Period Exemption | 10 Day Wait</p>
+                      <ul className="list-none pl-4">
+                        <li>(PEACE OFFICER (LETTER REQUIRED))</li>
+                      </ul>
+                  <p>Non-Roster Exemption</p>
+                      <ul className="list-none pl-4">
+                        <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
+                      </ul>
+                      </ul>
+            </div>
+            <hr className="my-4" />
+            </TabsContent>
+            
+            </Tabs>
             </CardContent>
             <CardFooter className="flex justify-between">
-                
+            <HoveredLink href="https://law.justia.com/codes/california/2022/code-pen/part-2/title-3/chapter-4-5/"><span className="text-orange-500">Penal Codes Defined</span></HoveredLink>  
             </CardFooter>
             </Card>
+            
         </div>
     )
   }
-  export default IDsCard;
+  export default PeaceOfficerDROS;

@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   
-  function IDsCard ({ className }: { className?: string }) {
+  function DelayedDeliveries ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >
       <Card className="flex flex-col w-full">
         <CardHeader>
           <CardTitle>Delayed Deliveries | Undetermined</CardTitle>
@@ -22,7 +24,7 @@ import { useRouter } from "next/router";
             </CardDescription>
         </CardHeader>
         <CardContent>
-        <div className="max-w-[425px]">
+        <div className="max-w-full">
         <h2>Deliverying An Undetermined | Approval After Delay Out Of Fastbound:</h2>
         <br/>
         <ul className="list-none pl-4">
@@ -62,4 +64,4 @@ import { useRouter } from "next/router";
 </div>
     )
   }
-  export default IDsCard;
+  export default DelayedDeliveries;

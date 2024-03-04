@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
+
   
-  function IDsCard ({ className }: { className?: string }) {
+  function LocalActive ({ className }: { className?: string }) {
   const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center w-full" >
+        <div className="flex flex-col items-center justify-center w-[515px]" >
             <Card className="flex flex-col w-full">
                 <CardHeader>
                 <CardTitle>Local Active Duty Info</CardTitle>
@@ -23,7 +25,7 @@ import { useRouter } from "next/router";
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <div className="max-w-[425px]">
+                <div className="max-w-full">
                 <h2>Required Documents:</h2>
                 <ul className="list-none pl-4">
                   <li>Photo Copy | Scan CA DL | CA ID</li>
@@ -41,10 +43,10 @@ import { useRouter } from "next/router";
                 </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    
+                <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>    
                 </CardFooter>
             </Card>
         </div>
     )
   }
-  export default IDsCard;
+  export default LocalActive;
