@@ -38,7 +38,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
           </TabsList>
           <TabsContent value="account">
           <div className="flex flex-col w-full">
-            <h2>If Their Department ID Is For COUNTY Probation | Correctional | Sheriff's Office,
+            <h2>If Their Department ID Is For COUNTY Probation | Correctional | Sheriff&apos;s Office,
             & If They Are Neither Peace | Public Officer, But Their ID States Security Guard:
             </h2><br/>
               <p>FSC Exemption Code</p>
