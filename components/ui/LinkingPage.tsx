@@ -31,6 +31,9 @@ import PeaceOfficerDROS from "../../pages/Cards/PeaceOfficer";
 import ReserveInfo from "../../pages/Cards/ReserveInfo";
 import FedsAgentLeo from "../../pages/Cards/FedsAgentLeo";
 import PartiucularLimDROS from "../../pages/Cards/PartiucularLimDROS";
+import SecurityGuards from "../../pages/Cards/SecurityGuards";
+import FFL03COE from "../../pages/Cards/FFL03COE";
+import ConsignRedemp from "../../pages/Cards/ConsignRedemp";
 // Add other imports as needed
 
 // Styled components
@@ -63,6 +66,13 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
   // Style your close button as needed
+`;
+
+const LineSeparator = styled.div`
+  height: 1px;
+  background-color: #ccc;
+  width: 100%;
+  margin: 8px 0;
 `;
 
 const colorMapping = {
@@ -135,6 +145,9 @@ const dialogContentComponents = {
   ReserveInfo: <ReserveInfo />,
   FedsAgentLeo: <FedsAgentLeo />,
   PartiucularLimDROS: <PartiucularLimDROS />,
+  SecurityGuards: <SecurityGuards />,
+  FFL03COE: <FFL03COE />,
+  ConsignRedemp: <ConsignRedemp />,
   // Add other mappings as necessary
 };
 
@@ -153,9 +166,9 @@ const LinkingPage = () => {
       const itemsMap = new Map();
 
       jsonData.forEach((item: [string, string, string, string, string]) => {
-        const [label, dialogId, subItemLabel, contentId, link] = item;
+        const [label, subItemLabel, contentId, link] = item;
         if (!itemsMap.has(label)) {
-          itemsMap.set(label, { label, dialogId, subItems: [] });
+          itemsMap.set(label, { label, subItems: [] });
         }
         const menuItem = itemsMap.get(label);
         menuItem.subItems.push({ label: subItemLabel, contentId, link });
