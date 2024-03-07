@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { ChangeEvent } from 'react';
 import { FormEvent, useState } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes/dist/types";
@@ -17,37 +17,43 @@ import {
 import { Textarea } from "../components/ui/textarea"
 import { Label } from "../components/ui/label"
 import { Input } from "../components/ui/input"
+import { Checkbox } from "../components/ui/checkbox";
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleButtonClick = (path: string) => {
     router.push(path);
   };
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-  const [whateva, setWhateva] = useState("");
+  const [cancel, setCancel] = useState(false);
+  const [dros, setDROS] = useState("");
+  const [salesrep, setRep] = useState("");
+  const [error, setError] = useState("");
+  const [details, setDetails] = useState("");
+  const [notes, setNotes] = useState("");
   const [options, setOptions] = useState("");
 
-  const handleSelectChange = (value: string) => {
-    setOptions(value);
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
   };
+  
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
     let form = {
-      name,
-      email,
-      phone,
-      message,
-      whateva,
+      cancel: cancel ? "TRUE" : "FALSE",
+      dros,
+      salesrep,
+      error,
+      details,
+      notes,
       options,
-      sheetName: "Test1" // supposed to be dynamic but this doesn't actually affect it for some reason
-    };
+      sheetName: "Test1"
+  };  
+  
   
     const sheetName = "Test1"; // supposed to be dynamic but this doesnt work either - reference submit.ts
   
@@ -65,11 +71,12 @@ const Home: NextPage = () => {
     // alert(content.data.tableRange);
   
     // Reset the form fields
-    setMessage("");
-    setPhone("");
-    setName("");
-    setEmail("");
-    setWhateva("");
+    setCancel(false);
+    setDROS("");
+    setRep("");
+    setError("");
+    setDetails("");
+    setNotes("");
     setOptions("");
   };
 
@@ -109,71 +116,84 @@ const Home: NextPage = () => {
             </div>
         <div className="max-w-8xl mx-auto py-10">
           <form className="py-5 space-y-5" onSubmit={handleSubmit}>
+          <div className="flex items-center ">
+          <Input
+                type="checkbox"
+                id="cancel"
+                checked={cancel}
+                onChange={(e) => setCancel(e.target.checked)}
+                placeholder="Cancelled DROS"
+                name="cancel"
+              />
+                <label htmlFor="cancel" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Select For Cancelled DROS
+                </label>
+            </div>
             <div className="flex items-center justify-center">
-              <label htmlFor="name" className="sr-only">
-                Name
+              <label htmlFor="dros" className="sr-only">
+                DROS
               </label>
               <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={dros}
+                onChange={(e) => setDROS(e.target.value)}
                 type="text"
-                name="name"
-                id="name"
+                name="dros"
+                id="dros"
                 className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-                placeholder="Wuz Yo Name"
+                placeholder="Enter DROS Number"
                 style={{ padding: "0.5rem" }}
               />
             </div>
             <div className="flex items-center justify-center">
               <label htmlFor="email" className="sr-only">
-                Email
+                Sales Rep
               </label>
               <Input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                name="email"
-                id="email"
+                value={salesrep}
+                onChange={(e) => setRep(e.target.value)}
+                type="text"
+                name="salesrep"
+                id="salesrep"
                 className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-                placeholder="Email Shawty"
+                placeholder="Which Sales Rep"
                 style={{ padding: "0.5rem" }}
               />
             </div>
             <div className="flex items-center justify-center">
-              <label htmlFor="phone" className="sr-only">
-                Phone
+              <label htmlFor="error" className="sr-only">
+              Error Location
               </label>
               <Input
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                type="tel"
-                name="phone"
-                id="phone"
+                value={error}
+                onChange={(e) => setError(e.target.value)}
+                type="text"
+                name="error"
+                id="error"
                 className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-                placeholder="Dem Digitz"
+                placeholder="Error Location"
                 style={{ padding: "0.5rem" }}
               />
             </div>
             <div className="flex items-center justify-center">
-              <label htmlFor="message" className="sr-only">
-                Message
+              <label htmlFor="details" className="sr-only">
+                Error Details
               </label>
               <Textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                id="message"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                id="details"
                 className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-                placeholder="Yo Message"
+                placeholder="Error Details"
                 style={{ padding: "0.5rem" }}
               />
             </div>
             <div className="flex items-center justify-center ">
               <Textarea 
-                value={whateva}
-                onChange={(e) => setWhateva(e.target.value)}
-                name="whateva" // Add the name attribute
-                placeholder="YeahKWhateva." 
-                id="whateva" 
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                name="notes" // Add the name attribute
+                placeholder="Error Notes | Details" 
+                id="notes" 
                 className="w-64 gap-1.5"
               />
             </div>

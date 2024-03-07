@@ -2,11 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { google } from "googleapis"; 
 
 type SheetForm = {
-    name: string;
-    email: string;
-    phone: string;
-    message: string;
-    whateva: string;
+    cancel: string;
+    dros: string;
+    salesrep: string;
+    error: string;
+    details: string;
+    notes: string;
     options: string;
     sheetName: string;
 };
@@ -46,11 +47,11 @@ export default async function handler(
 
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
-            range: `${body.sheetName}!A1:F`, // Dynamically set sheet name and range
+            range: `${body.sheetName}!A1:G`, // Dynamically set sheet name and range
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [
-                    [body.name, body.email, body.phone, body.message, body.whateva, body.options],
+                    [body.cancel, body.dros, body.salesrep, body.error, body.details, body.notes, body.options],
                 ],
             },
         });
