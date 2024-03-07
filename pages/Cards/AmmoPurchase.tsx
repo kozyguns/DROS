@@ -68,8 +68,8 @@ const StyledTabsList = styled(TabsList)`
             <ul className="list-none pl-4">
             <li>Valid Passport</li>
             <li>Certified Birth Certificate</li>
-            <li><span className="text-amber-500">IN ADDITION TO</span> A Valid CA ID | DL</li>
             </ul>
+            <p>These Will Be <span className="text-amber-500">IN ADDITION TO</span> A Valid CA ID | DL</p>
             </div>
             <hr className="my-4" />
             </TabsContent>
