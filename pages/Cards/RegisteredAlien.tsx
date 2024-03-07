@@ -35,7 +35,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                     <p>If They Have An Older Version Of The Alien Registration ID Card:</p>
                         <ul className="list-disc pl-4">
                     <li>The Alien Registration Number (AR#) Will Need To Be Entered With A Leading Zero (0)
-                    And NOT The Leading Letter ("A") On Their Card, Like The Current AR#&quot;s Start With</li>
+                    And NOT The Leading Letter (&quot;A&quot;) On Their Card, Like The Current AR#&apos;s Start With</li>
                     <ul className="list-none list-inside pl-4">
                         <li>- Example: &quot;0A12345678&quot;</li>
                     </ul>

@@ -26,7 +26,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 </CardHeader>
                 <CardContent>
                   <div className="max-w-[425px]">
-                    <p>Permanent Residents Are Granted Their Permanent Resident ID's, Which Are Referred To As A <span className="text-green-600">&quot;Green Card&quot;</span> (Because They Are Colored <span className="text-green-600">Green)</span></p>
+                    <p>Permanent Residents Are Granted Their Permanent Resident ID&apos;s, Which Are Referred To As A <span className="text-green-600">&quot;Green Card&quot;</span> (Because They Are Colored <span className="text-green-600">Green)</span></p>
                     <hr className="my-4" />
                     <p>Applications For Permanent Residency Are <span className="text-red-500">NOT</span> Accepted As Proof Of Residency Docs</p>
                 <hr className="my-4" />

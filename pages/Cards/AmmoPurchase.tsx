@@ -58,7 +58,7 @@ const StyledTabsList = styled(TabsList)`
                         <li>Utility Bill Dated Within The Last 90 Days</li>
                         <li>Valid CA DMV Registration</li>
                         <li>Valid CA CCW Permit</li>
-                        <li>Along With Any Other Doc Listed In "Address Correction Docs"</li>
+                        <li>Along With Any Other Doc Listed In &quot;Address Correction Docs&quot;</li>
                     </ul>
                 </div>
                 </TabsContent>
@@ -78,7 +78,7 @@ const StyledTabsList = styled(TabsList)`
             <h2>Customer Must Have The Following:</h2>
                     <ul className="list-disc pl-4">
                       <li>PCS Orders Containing Effective Date & Order Number</li>
-                      <li>Proof Of CA Residence (Anything Listed In "Address Correction Docs")</li>
+                      <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                       </ul>
                       <hr className="my-4" />
                       <p>Photo Copy Out Of State DL | ID As Normal</p>

@@ -25,7 +25,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 </CardHeader>
                 <CardContent>
                   <div className="max-w-[425px]">
-                    <p>Employment Authorization Documents (EAD) | Work Authorization Docs Are NOT Equal To Work VISA's</p>
+                    <p>Employment Authorization Documents (EAD) | Work Authorization Docs Are NOT Equal To Work VISA&apos;s</p>
                     <hr className="my-4" />
                     <p>EAD&quot;s Are An Approval To Work While Awaiting Status Change From Asylum Seeker | Refugee To Permanent Resident</p>
                     <p>OR For Student VISA (Or Any Other Dependent VISA) Holders To Work Legally, For A Specific Period Of Time</p>
