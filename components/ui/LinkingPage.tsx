@@ -269,7 +269,7 @@ const LinkingPage = () => {
               )}
             </NavigationMenu.Item>
           ))}
-          <NavigationMenu.Indicator style={{ bottom: 0, height: 5, backgroundColor: "black", transition: "all 0.5s ease" }} />
+          <NavigationMenu.Indicator style={{ bottom: 0, height: 5, backgroundColor: "aqua", transition: "all 0.5s ease" }} />
         </NavigationMenu.List>
       </NavigationMenu.Root>
       {activeDialogContent && (
