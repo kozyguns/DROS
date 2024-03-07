@@ -18,7 +18,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
       <div className="flex flex-col items-center justify-center w-[515px]" >
       <Card className="flex flex-col w-full">
         <CardHeader>
-          <CardTitle><span className="text-cyan-300">Accepted Proof Of Residence Docs</span></CardTitle>
+          <CardTitle style={{ color: "#1583B3" }}>Accepted Proof Of Residence Docs</CardTitle>
           <CardDescription>
           <p>Don&apos;t Forget To Check For Valid CA DL | ID Along With Either Their FSC, Or One Of The Many Exemptions,</p> 
           <p>Such As Their Officer ID, CCW, Etc. Along With One Of The Following From Below:</p>
