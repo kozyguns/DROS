@@ -18,7 +18,9 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <div className="flex flex-col items-center justify-center w-full" >
             <Card className="flex flex-col w-full">
                 <CardHeader>
-                <CardTitle>Pending Permanent Residents (Submitted Application For Residency)</CardTitle>
+                <CardTitle><p>Pending Permanent Residents</p> 
+                <p>(Submitted Application For Residency)</p>
+                </CardTitle>
                 <CardDescription>
                 We <span className="text-red-500">CANNOT ACCEPT</span> Applications For Permanent Residency<br/>
                 We MUST Have The PHYSICAL <span className="text-green-600">GREEN CARD</span> Present To Move Forward
@@ -41,6 +43,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
+                <a href="https://www.uscis.gov/i-9-central/form-i-9-resources/handbook-for-employers-m-274/130-acceptable-documents-for-verifying-employment-authorization-and-identity/131-list-a-documents-that-establish-identity-and-employment-authorization"><span className="text-orange-500">All Immigration Doc Examples</span></a>
                 </CardFooter>
             </Card>
         </div>
