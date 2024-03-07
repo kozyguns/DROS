@@ -30,7 +30,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <CardContent>
                   <div className="max-w-[425px]">
                     <h2>Required Documents:</h2>
-                    <ul className="list-none pl-4">
+                    <ul className="list-disc pl-4">
                       <li>PCS Orders Containing Effective Date & Order Number</li>
                       <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                       <li>

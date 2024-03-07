@@ -18,7 +18,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
       <div className="flex flex-col items-center justify-center w-[515px]" >
       <Card className="flex flex-col w-full">
         <CardHeader>
-          <CardTitle>Accepted Proof Of Residence Docs</CardTitle>
+          <CardTitle><span className="text-cyan-300">Accepted Proof Of Residence Docs</span></CardTitle>
           <CardDescription>
           <p>Don&apos;t Forget To Check For Valid CA DL | ID Along With Either Their FSC, Or One Of The Many Exemptions,</p> 
           <p>Such As Their Officer ID, CCW, Etc. Along With One Of The Following From Below:</p>
@@ -30,23 +30,23 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <p>Customer Must Have A Valid FSC Card OR Valid CA CCW Permit</p>
           <ul className="list-disc pl-4">
             <li>Valid CA Registration With The Current Physical Address For Any Of The Following:</li>
-            <ul className="list-none pl-4">
-              <li>Vehicle Registration</li>
-              <li>Boat Registration</li>
-              <li>Motorcycle Registration</li>
-              <li>Off Road Vehicle Registration</li>
+            <ul className="list-none list-inside pl-4">
+              <li>- Vehicle Registration</li>
+              <li>- Boat Registration</li>
+              <li>- Motorcycle Registration</li>
+              <li>- Off Road Vehicle Registration</li>
             </ul >
             <li>Signed & Dated Lease Agreement For A Duration Of 1 Year</li>
             <li>(If The Customer Is The Homeowner) - Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
             <li>Property Deed (Meets DOJ State Req)</li>
             <li>Current (Within 90 Days) Utility Bill For Current Physical Address, Such As:</li>
-            <ul className="list-none pl-4">
-              <li>Electric Bill</li>
-              <li>Land Line Phone Bill</li>
-              <li>Cable Bill</li>
-              <li>Garbage Bill</li>
-              <li>Internet Bill</li>
-              <li>Water Bill</li>
+            <ul className="list-none list-inside pl-4">
+              <li>- Electric Bill</li>
+              <li>- Land Line Phone Bill</li>
+              <li>- Cable Bill</li>
+              <li>- Garbage Bill</li>
+              <li>- Internet Bill</li>
+              <li>- Water Bill</li>
             </ul>
             <li>Most Recent W-2 + Current (Within 90 Days) Utility Bill</li>
             <li>Current & Valid CA DMV Disabled Placard</li>

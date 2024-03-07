@@ -1,6 +1,10 @@
 import * as React from "react"
 import { useRouter } from "next/router";
-
+import { Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger 
+} from "../../components/ui/tabs"
   import {
     Card,
     CardContent,
@@ -26,24 +30,47 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
+                <Tabs defaultValue="" className="w-full">
+                <TabsList className=" grid grid-cols-2 mb-4">
+                  <TabsTrigger value="active">Federal Active</TabsTrigger>
+                  <TabsTrigger value="retired">Federal Retired</TabsTrigger>
+                </TabsList>
+                <TabsContent value="active">
                 <div className="max-w-full">
-                <h2>DROS FSC Exemption Fields:</h2><br/>
+                <h2>DROS FSC Exemption Fields:</h2>
                  <ul className="list-none pl-4">
                   <p>FSC Exemption Code</p>
                     <ul className="list-none pl-4">
-                      <li>(X32 - Peace Officer - Federal - Active) OR</li>
-                      <li>(X33 - Peace Officer - Federal - Honorably Retired)</li>
-                      <li><span className="text-blue-500">ONLY USED FOR FEDERAL AGENTS</span></li>
+                      <li><p>(X32 - Peace Officer - Federal - Active)</p></li>
                       </ul>
                     <p>Non-Roster Exemption</p>
                       <ul className="list-none pl-4">
                         <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
                       </ul>
                       </ul>
+                      </div>
+                      </TabsContent>
+                <TabsContent value="retired">
+                <div className="max-w-full">
+                <h2>DROS FSC Exemption Fields:</h2>
+                 <ul className="list-none pl-4">
+                  <p>FSC Exemption Code</p>
+                    <ul className="list-none pl-4">
+                       <li>(X33 - Peace Officer - Federal - Honorably Retired)</li>
+                      </ul>
+                    <p>Non-Roster Exemption</p>
+                      <ul className="list-none pl-4">
+                        <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
+                      </ul>
+                      </ul>
+                      </div>
+                  </TabsContent>
+                      </Tabs>
                       <hr className="my-4" />
+                <div className="max-w-full">
                     <h2>Because You <span className="text-red-500">CANNOT</span> Copy Federal ID&apos;s, 
                     Print & Fill Out Federal Doc Worksheet Along With Scanning The Required Docs Below:</h2>
-                      <ul className="list-none pl-4">
+                      <ul className="list-disc pl-4">
                         <li>A Scan | Copy Of CA DL | CA ID</li>
                         <li>A Business Card With Agency | Department Letterhead | Seal</li>
                       </ul>

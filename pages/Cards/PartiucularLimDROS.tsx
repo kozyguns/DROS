@@ -25,8 +25,9 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 </CardHeader>
                 <CardContent>
                 <div className="max-w-full">
+                  <h2>This Would Include County Correctional Officers, Security Guards, etc. (Think Of Purcell & Marcus)</h2>
+                  <hr className="my-4" />
                 <ul className="list-none pl-4">
-                <hr className="my-4" />
                 <p>FSC Exemption Code</p>
                   <ul className="list-none pl-4">
                   <li>(X91 - PARTICULAR AND LIMITED AUTHORITY PEACE OFFICER)</li>

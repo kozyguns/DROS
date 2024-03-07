@@ -27,21 +27,21 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <CardContent>
         <div className="max-w-full">
         <h2>Required Documents:</h2>
-          <ul className="list-none pl-4">
+          <ul className="list-disc pl-4">
             <li>A Valid Photo DL | ID Containing The Following Info:</li>
-              <ul className="list-none pl-4">
+              <ul className="list-none list-inside pl-4">
               <li>- Transferee&apos;s Name</li>
               <li>- Residence Address</li>
               <li>- Date Of Birth</li>
               </ul>
             <li>A Valid Passport Which Contains The Following Info:</li>
-              <ul className="list-none pl-4">
+              <ul className="list-none list-inside pl-4">
               <li>- Transferee&apos;s Name</li>
               <li>- Date Of Birth</li>
               <li>- Photograph Of Purchaser</li>
               </ul>
             <li>Vehicle Registration Containing The Following Info:</li>
-              <ul className="list-none pl-4">
+              <ul className="list-none list-inside pl-4">
               <li>- Current Physical Address</li>
               </ul>
             <li>A Valid Hunting License</li>

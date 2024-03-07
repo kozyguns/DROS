@@ -29,10 +29,12 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <h2>Required Documents:</h2>
                 <ul className="list-none pl-4">
                 <p>If The Veteran&apos;s DL | ID Doesn&apos;t Indicate VETERAN Status, We Need The Following:</p>
-                  <ul className="list-none pl-4">
-                    <li>We Need A Copy Of Their DD-214 (Condition Of Discharge)</li>
-                    <li>Make A Copy | Scan The DD-214 To Qualify For Blue Label &</li>
-                    <li>Write Down DOD ID#, Rank & Branch On Fed Doc Worksheet (Print From Link Below)</li>
+                  <ul className="list-disc pl-4">
+                    <li>A Copy Of Their DD-214 (Condition Of Discharge)</li>
+                    <ul className="list-disc pl-4">
+                    <li>Remember To Copy | Scan Their DD-214 To Submit For <span className="text-blue-500">Blue Label</span></li>
+                    </ul>
+                    <li>Write Down DOD ID#, Rank & Branch On Fed Doc Worksheet <span className="text-orange-500">(Print From Link Below)</span></li>
                   </ul>
                   <hr className="my-4" />
                       <p>FSC Exemption Code</p>

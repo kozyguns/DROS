@@ -34,18 +34,26 @@ import PartiucularLimDROS from "../../pages/Cards/PartiucularLimDROS";
 import SecurityGuards from "../../pages/Cards/SecurityGuards";
 import FFL03COE from "../../pages/Cards/FFL03COE";
 import ConsignRedemp from "../../pages/Cards/ConsignRedemp";
+import AmmoPurchase from "../../pages/Cards/AmmoPurchase";
+import RegisteredAlien from "../../pages/Cards/RegisteredAlien";
+import StudentVISA from "../../pages/Cards/StudentVISA";
+import WorkVISA from "../../pages/Cards/WorkVISA";
+import EmpAuth from "../../pages/Cards/EmpAuth";
+import PendingResident from "../../pages/Cards/PendingResident";
 // Add other imports as needed
 
 // Styled components
 const SubItemsContainer = styled.div`
   position: absolute;
   display: none; // Initially hidden
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 10px;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 8px;
+  padding: 8px;
   background: none; // Background color for the sub-items container
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Optional: shadow for the sub-items container
-  z-index: 10; // Ensure it's above other content
+  z-index: 0; // Ensure it's above other content
+  min-width: 300px;
+  white-space: nowrap;
 `;
 
 const DialogContainer = styled.div`
@@ -148,6 +156,12 @@ const dialogContentComponents = {
   SecurityGuards: <SecurityGuards />,
   FFL03COE: <FFL03COE />,
   ConsignRedemp: <ConsignRedemp />,
+  AmmoPurchase: <AmmoPurchase />,
+  RegisteredAlien: <RegisteredAlien />,
+  StudentVISA: <StudentVISA />,
+  WorkVISA: <WorkVISA />,
+  EmpAuth: <EmpAuth />,
+  PendingResident: <PendingResident />,
   // Add other mappings as necessary
 };
 
@@ -255,7 +269,7 @@ const LinkingPage = () => {
               )}
             </NavigationMenu.Item>
           ))}
-          <NavigationMenu.Indicator style={{ bottom: 0, height: 5, backgroundColor: "grey", transition: "all 0.5s ease" }} />
+          <NavigationMenu.Indicator style={{ bottom: 0, height: 5, backgroundColor: "black", transition: "all 0.5s ease" }} />
         </NavigationMenu.List>
       </NavigationMenu.Root>
       {activeDialogContent && (

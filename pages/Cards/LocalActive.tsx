@@ -8,6 +8,11 @@ import { useRouter } from "next/router";
     CardHeader,
     CardTitle,
   } from "../../components/ui/card"
+  import { Tabs, 
+    TabsContent, 
+    TabsList, 
+    TabsTrigger 
+  } from "../../components/ui/tabs"
 import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/navbar-menu";
 
   
@@ -25,22 +30,39 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                <div className="max-w-full">
+                <Tabs defaultValue="" className="w-full">
+                <TabsList className=" grid grid-cols-2 mb-4">
+                  <TabsTrigger value="active">Local Active Duty</TabsTrigger>
+                  <TabsTrigger value="activereserve">Local Active Reserve</TabsTrigger>
+                </TabsList>
+                <TabsContent value="active">
+                  <div className="max-w-full">
+                    <hr className="my-4" />
+                      <p>FSC Exemption Code</p>
+                        <ul className="list-none pl-4">
+                         <li><p>(X21 - Military - Active Duty)</p></li>
+                    </ul>
+                  </div>
+                </TabsContent>
+                <TabsContent value="activereserve">
+                  <div className="max-w-full">
+                    <hr className="my-4" />
+                      <p>FSC Exemption Code</p>
+                       <ul className="list-none pl-4">
+                          <li><p>(X22 - Military - Active Reserve)</p></li>
+                      </ul>
+                      </div>
+                </TabsContent>
+                </Tabs>
+                <hr className="my-4" />
                 <h2>Required Documents:</h2>
-                <ul className="list-none pl-4">
+                <ul className="list-disc pl-4">
                   <li>Photo Copy | Scan CA DL | CA ID</li>
                   <li>Write Down DOD ID#, Rank & Branch</li>
                   <li>Proof Of CA Residence (Anything Listed In &quot;Address Correction Docs&quot;)</li>
                   </ul>
-                      <hr className="my-4" />
-                      <p>FSC Exemption Code</p>
-                      <ul className="list-none pl-4">
-                      <li><p>(X21 - Military - Active Duty |</p> 
-                      <p>X22 - Military - Active Reserve)</p></li>
-                      </ul><br/>
-                      <hr className="my-4" />
+                  <hr className="my-4" />
                       Military Are <span className="text-red-500">NOT</span> Roster | 30 Day Exempt
-                </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                 <HoveredLink href="https://drive.google.com/file/d/1ruAqN1-iRgUtTeSfiVmYZHOiosLzFjmE/view?usp=drive_link"><span className="text-orange-500">Federal Doc Worksheet</span></HoveredLink>    

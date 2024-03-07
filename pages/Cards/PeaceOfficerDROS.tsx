@@ -49,26 +49,28 @@ const StyledTabsList = styled(TabsList)`
             </CardHeader>
             <CardContent>
             <Tabs defaultValue="" className="w-full">
-          <TabsList className="flex flex-wrap mb-16 w-full">
-            <div className="flex flex-row w-full justify-center mb-6">
-            <TabsTrigger value="info">General Info</TabsTrigger>
-            </div>
+          <TabsList className=" grid grid-cols-2 mb-4">
+            <TabsTrigger value="info">Peace vs Public Officer Info</TabsTrigger><br/>
             <TabsTrigger value="withoutletter">Without 10 Day Exemption</TabsTrigger>
             <TabsTrigger value="withletter">With 10 Day Exemption</TabsTrigger>
           </TabsList>
           <TabsContent value="info">
           <div className="max-w-full">
-            <h2>Required Documents:</h2>
+            <h2 className="flex justify-center"><span className="text-amber-500">A Quick Breakdown Of Peace vs Public Officers</span></h2>
+            <hr className="my-4" />
             <ul className="list-none pl-4">
-            <li>Any County Probation Or Parole Officer = PEACE OFFICER</li>
+            <li>Any County Probation Or Parole Officer = <span className="text-blue-500">PEACE OFFICER</span></li>
               <ul className="list-none pl-4">
-              <li>(PENAL CODE 830.x Found On Rear Of Department ID Card Typically)</li>
+              <li>(PENAL CODE 830.x Found On Rear Of Department ID Card)</li>
               </ul>
-            <li>Any County Correctional Officer = PUBLIC OFFICER</li>
+              <hr className="my-4" />
+            <li>Any County Correctional Officer = <span className="text-yellow-400">PUBLIC OFFICER</span></li>
               <ul className="list-none pl-4">
               <li>These Officers Are Considered &quot;Particular And Limited Authority Peace Officers&quot;</li>
-              <li>(PENAL CODE 831.x Found On Rear Of Department ID Card Typically)</li>
+              <li>(P.C. 831.x Found On Rear Of Department ID Card)</li>
+              <li>(Example: Jeff Purcell &amp; Marcus Pereira)</li>
               </ul>
+              <hr className="my-4" />
             <li>You Can Verify Any Other PC Code Variations In The Link Below</li>
             </ul>
             </div>

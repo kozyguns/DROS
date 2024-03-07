@@ -18,10 +18,10 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <div className="flex flex-col items-center justify-center w-[515px]" >
             <Card className="flex flex-col w-full">
                 <CardHeader>
-                <CardTitle>FFL03 With COE DROS Guide</CardTitle>
+                <CardTitle>Consignment Redemption DROS Guide</CardTitle>
                 <CardDescription>
                     <h2><span className="text-red-500">NOTE:</span><br/>
-                    This Is Only Utilized In Cases Where We Are Returning The Consignment Seller&apos;s Firearm Back To Them</h2>
+                    This Is Only Utilized In Cases Where We Are <span className="text-purple-500">Returning</span> The Consignment Seller&apos;s Firearm Back To Them</h2>
                 </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -30,7 +30,8 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                   <ul className="list-none pl-4">
                   <li>(X03 - Return To Owner)</li>
                   </ul>
-                <p>Utilize This FSC Exemption Code For All Consignment Redemptions</p>
+                  <hr className="my-4" />
+                <p>Utilize This FSC Exemption Code For <span className="text-purple-500">ALL</span> Consignment Redemptions</p>
                 </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">

@@ -27,18 +27,18 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         <CardContent>
         <div className="max-w-full">
         <h2>Required Documents:</h2>
-          <ul className="list-none pl-4">
+          <ul className="list-disc pl-4">
             <li>An Adoption Document That Contains The Legal Name Of The Applicant As A Result Of The Adoption</li>
             <li>A Name Change Document That Contains The Applicant’s Legal Name Both Before And, As A Result Of, The Name Change</li>
             <li>Married | Divorced:</li>
-              <ul className="list-none pl-4">
-                <li>A Marriage Certificate</li>
-                <li>A Dissolution Of Marriage Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
+              <ul className="list-none list-inside pl-4">
+                <li>- A Marriage Certificate</li>
+                <li>- A Dissolution Of Marriage Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
               </ul>
             <li>Domestic Partnerships:</li>
-              <ul className="list-none pl-4">
-                <li>A Certificate, Declaration Or Registration Document Verifying The Formation Of A Domestic Partnership</li>
-                <li>A Dissolution Of Domestic Partnership Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
+              <ul className="list-none list-inside pl-4">
+                <li>- A Certificate, Declaration Or Registration Document Verifying The Formation Of A Domestic Partnership</li>
+                <li>- A Dissolution Of Domestic Partnership Document That Contains The Legal Name Of The Applicant As A Result Of The Court Action</li>
               </ul>
           </ul>
           </div>
