@@ -51,7 +51,7 @@ const SubItemsContainer = styled.div`
   padding: 8px;
   background: none; // Background color for the sub-items container
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Optional: shadow for the sub-items container
-  z-index: 0; // Ensure it's above other content
+  z-index: 15; // Ensure it's above other content
   min-width: 300px;
   white-space: nowrap;
 `;
