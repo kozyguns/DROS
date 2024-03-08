@@ -90,8 +90,8 @@ const Home: NextPage = () => {
             {/* <Button onClick={() => handleButtonClick("/Profiles/Jimathy")} className="ml-2 flex-shrink">
               Slim Jim&apos;s Page
             </Button> */}
-            <Button onClick={() => handleButtonClick("/Audits")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              DROS Audits
+            <Button onClick={() => handleButtonClick("/AuditForm")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
+              Auditing Form
             </Button>
             <Button onClick={() => handleButtonClick("/DROSInWorks")} className="ml-2 flex-shrink">
               Future DROS
