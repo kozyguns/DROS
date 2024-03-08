@@ -2,15 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import styled from 'styled-components';
 import DOMPurify from 'dompurify';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-    DialogClose,
-  } from "../../components/ui/dialog"
 // Importing dialog content components directly
 import IDsCard from "../../pages/Cards/IDsCard";
 import FedsCard from "../../pages/Cards/FedsCard";

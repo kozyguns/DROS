@@ -1,19 +1,8 @@
 import type { NextPage } from "next";
 import React, { ChangeEvent } from 'react';
 import { FormEvent, useState } from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
 import { Button } from "../components/ui/button";
 import { useRouter } from "next/router";
-import DialogPage from "./DialogPage"
-import DialogHover from "./DialogHover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select"
 import { Textarea } from "../components/ui/textarea"
 import { Label } from "../components/ui/label"
 import { Input } from "../components/ui/input"
@@ -97,10 +86,10 @@ const Home: NextPage = () => {
               Future DROS
             </Button>
             <Button onClick={() => handleButtonClick("/DialogHover")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              Hovering Page
+              Menu & Short Form
             </Button>
             <Button onClick={() => handleButtonClick("/DialogPage")} className="ml-2 flex-shrink">
-              Dialog Page
+              Full Menu
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/DROSDropdowns")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
               DROS Support Page
@@ -111,24 +100,11 @@ const Home: NextPage = () => {
               Text Generation Page
             </Button>
         <Button onClick={() => handleButtonClick("/DROS")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              DROS
+              Full Menu & Form
             </Button>
             </div>
         <div className="max-w-8xl mx-auto py-10">
           <form className="py-5 space-y-5" onSubmit={handleSubmit}>
-          <div className="flex items-center ">
-          <Input
-                type="checkbox"
-                id="cancel"
-                checked={cancel}
-                onChange={(e) => setCancel(e.target.checked)}
-                placeholder="Cancelled DROS"
-                name="cancel"
-              />
-                <label htmlFor="cancel" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Select For Cancelled DROS
-                </label>
-            </div>
             <div className="flex items-center justify-center">
               <label htmlFor="dros" className="sr-only">
                 DROS

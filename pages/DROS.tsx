@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Button } from "../components/ui/button";
-import NavMenu from './Navigation/NavMenu';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { CalendarIcon } from "@radix-ui/react-icons"
+import { format } from "date-fns"
+import { Textarea } from "../components/ui/textarea"
+import LinkingPage from '../components/ui/LinkingPage'
+import Link from "next/link"
+import { cn } from "../components/lib/utils"
+import { MultiSelect } from "../components/ui/multi-select"
 import {
   Select,
   SelectContent,
@@ -9,6 +18,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../components/ui/form"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../components/ui/popover"
+import { toast } from "../components/ui/use-toast"
+import { Input } from "../components/ui/input"
+import { Checkbox } from "../components/ui/checkbox"
+import { Calendar } from "../components/ui/calendar"
+import { Switch } from "../components/ui/switch"
+import { Label } from "../components/ui/label"
+
+const formSchema = z.object({
+  drosCancel: z.boolean().default(false),
+  salesRep: z.string(),
+  auditType: z.string(),
+  transDate: z.date(),
+  auditDate: z.date(),
+  errorLocation: z.string(),
+  errorDetails: z.string().optional(),
+  errorNotes: z.string(),
+})
+
 
 // Example type definition, adjust based on your actual data structure
 type DataItem = string[]; // If `data` is an array of arrays of strings
@@ -22,6 +63,19 @@ const DROS = () => {
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
   const [activeDialog, setActiveDialog] = useState(null);
+  const [selected, setSelected] = useState<string[]>([]);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      drosCancel: false,
+      salesRep: "",
+      auditType: "",
+    },
+  })
+
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values)
+  }
   
 
   useEffect(() => {
@@ -70,41 +124,226 @@ const DROS = () => {
   const columnHText = canShowColumnH() ? data.find(row => selections.every((selection, index) => !selection || row[index] === selection))?.[7] : '';
 
   return (
-    <div >
-     <div className="flex flow-row items-center justify-center max w-full mb-12">
-         <NavMenu />
+    <main>
+        <header>
+        <div className="flex flow-row items-center justify-center max w-full mb-24">
+         <LinkingPage />
          </div>
-    <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-12">
+        </header>
         
-      {selections.map((selection, index) => (
-        <Select key={index}
-                disabled={index > 0 && selections[index - 1] === null}
-                onValueChange={(value) => handleSelectionChange(index, value)}
-                value={selection || 'none'}>
-          <SelectTrigger className="flex max-w-[300px]">
-            <SelectValue placeholder={`Select from ${String.fromCharCode('A'.charCodeAt(0) + index)}`} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="none">Select...</SelectItem>
-            {getOptionsForSelect(index).map((option, optionIndex) => (
-              <SelectItem key={optionIndex} value={option}>{option}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      ))}
-      {columnHText && (columnHText as string).split('\n').map((line, index) => (
-        <React.Fragment key={index}>
-          {line}
-          <br />
-        </React.Fragment>
-      ))}
-      <div className="flex flex-row justify-center mt-10 md:mt-10 lg:mt-12">
-      <Button onClick={resetSelections} className="mr-1 flex-shrink mt-10 py-2">
-          Reset Selections
-        </Button>
-      </div>
-    </div>
-    </div>
+        <Form {...form}>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col justify-center mx-auto p-4 space-y-8 max-w-md">
+      <FormField
+          control={form.control}
+          name="drosCancel"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
+              <FormControl>
+                <Checkbox
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+              <FormLabel>Cancelled DROS</FormLabel>
+              <FormDescription>
+                Select When DROS Was Cancelled
+              </FormDescription>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="salesRep"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Sales Rep</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select The Sales Rep" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="AJ">AJ</SelectItem>
+                  <SelectItem value="Sammy">Sammy</SelectItem>
+                  <SelectItem value="Amanda">Amanda</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <Link href="/examples/forms">email settings</Link>.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="auditType"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Audit Type</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select The Audit Type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Firearms">Firearms</SelectItem>
+                  <SelectItem value="Ammo">Ammo</SelectItem>
+                  <SelectItem value="AIM">AIM</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <Link href="/examples/forms">email settings</Link>.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="transDate"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Transaction Date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Select A Date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                The Transaction Date (Purchase Date)
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="auditDate"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Audit Date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Select Date Of Audit</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("1900-01-01")
+                    }
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                The Date That You Are Auditing
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+    control={form.control}
+    name="errorLocation"
+    render={({ field }) => (
+        <FormItem>
+            <FormLabel>Select Frameworks</FormLabel>
+                <MultiSelect
+                    selected={field.value}
+                    options={[
+                    {
+			            value: "next.js",
+			            label: "Next.js",
+			          },
+			          {
+			            value: "sveltekit",
+			            label: "SvelteKit",
+			          },
+			          {
+			            value: "nuxt.js",
+			            label: "Nuxt.js",
+			          },
+			          {
+			            value: "remix",
+			            label: "Remix",
+			          },
+			          {
+			            value: "astro",
+			            label: "Astro",
+			          },
+			          {
+			            value: "wordpress",
+			            label: "WordPress",
+			          },
+			          {
+			            value: "express.js",
+			            label: "Express.js",
+			          }
+                    ]}
+                    {...field}
+                    className="sm:w-[510px]"
+                />
+            <FormMessage />
+        </FormItem>
+    )}
+ />
+                
+        <Button type="submit">Submit</Button>
+      </form>
+    </Form>
+        </main>
   );
 };
 
