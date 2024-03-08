@@ -62,7 +62,6 @@ const DROS = () => {
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
   const [activeDialog, setActiveDialog] = useState(null);
-  const [selected, setSelected] = useState<string[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
