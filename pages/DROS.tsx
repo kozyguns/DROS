@@ -10,7 +10,6 @@ import { Textarea } from "../components/ui/textarea"
 import LinkingPage from '../components/ui/LinkingPage'
 import Link from "next/link"
 import { cn } from "../components/lib/utils"
-import { MultiSelect } from "../components/ui/multi-select"
 import {
   Select,
   SelectContent,
@@ -294,52 +293,7 @@ const DROS = () => {
             </FormItem>
           )}
         />
-        <FormField
-    control={form.control}
-    name="errorLocation"
-    render={({ field }) => (
-        <FormItem>
-            <FormLabel>Select Frameworks</FormLabel>
-                <MultiSelect
-                    selected={field.value}
-                    options={[
-                    {
-			            value: "next.js",
-			            label: "Next.js",
-			          },
-			          {
-			            value: "sveltekit",
-			            label: "SvelteKit",
-			          },
-			          {
-			            value: "nuxt.js",
-			            label: "Nuxt.js",
-			          },
-			          {
-			            value: "remix",
-			            label: "Remix",
-			          },
-			          {
-			            value: "astro",
-			            label: "Astro",
-			          },
-			          {
-			            value: "wordpress",
-			            label: "WordPress",
-			          },
-			          {
-			            value: "express.js",
-			            label: "Express.js",
-			          }
-                    ]}
-                    {...field}
-                    className="sm:w-[510px]"
-                />
-            <FormMessage />
-        </FormItem>
-    )}
- />
-                
+        
         <Button type="submit">Submit</Button>
       </form>
     </Form>
