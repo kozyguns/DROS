@@ -132,7 +132,6 @@ const onSubmit = async (formData: FormData) => {
     // Prepare the single row to be appended, with multiple selections separated by newlines
     const values = [[
       formData.drosNumber,
-      formData.drosCancel ? "Yes" : "No",
       formData.salesRep,
       formData.auditType.join(",\n"),
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
@@ -140,6 +139,7 @@ const onSubmit = async (formData: FormData) => {
       formData.errorLocation.join(",\n"), 
       formData.errorDetails.join(",\n"),  
       formData.errorNotes,
+      formData.drosCancel ? "Yes" : "No",
       // Add more fields as necessary
     ]];
 
