@@ -44,14 +44,15 @@ import { DataTableFacetedFilter } from "../components/ui/faceted-filter";
 import { SheetRow as ImportedSheetRow } from '../types/types';
 
 const formSchema = z.object({
-  drosCancel: z.boolean().optional(),
-  salesRep: z.string().optional(),
-  auditType: z.string().optional(),
-  transDate: z.date().optional(),
-  auditDate: z.date().optional(),
-  errorLocation: z.array(z.string()).optional(),
-  errorDetails: z.array(z.string()).optional(),
-  errorNotes: z.string().optional(),
+  drosNumber: z.string(),
+  drosCancel: z.boolean(),
+  salesRep: z.string(),
+  auditType: z.string(),
+  transDate: z.date(),
+  auditDate: z.date(),
+  errorLocation: z.array(z.string()),
+  errorDetails: z.array(z.string()),
+  errorNotes: z.string(),
 });
 
 type OptionType = {
@@ -112,6 +113,7 @@ const DROS = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      drosNumber: '',
       drosCancel: false,
       salesRep: '',
       auditType: '',
@@ -176,13 +178,13 @@ const DROS = () => {
     : "";
 
   return (
-    <main>
+    <main >
       <header>
         <div className="flex flow-row items-center justify-center max w-full mb-24">
           <LinkingPage />
         </div>
       </header>
-
+      <div className="flex flex-row item-center justify-center w-full max-w-[2250px] p-4">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(data => console.log(data))}>
             {/* Controllers with DataTableFacetedFilter */}
@@ -190,7 +192,7 @@ const DROS = () => {
             control={form.control}
             name="drosCancel"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md mb-4">
                 <FormControl>
                   <Checkbox
                     checked={field.value}
@@ -200,18 +202,35 @@ const DROS = () => {
                 <div className="space-y-1 leading-none">
                   <FormLabel>Cancelled DROS</FormLabel>
                   <FormDescription>
-                    Select When DROS Was Cancelled
+                    Only Select When DROS Was Cancelled
                   </FormDescription>
                 </div>
                 <FormMessage />
               </FormItem>
             )}
           />
+          <div className="flex flex-col md:flex-row md:space-x-4 mb-4">
+          <FormField
+          control={form.control}
+          name="drosNumber"
+          render={({ field }) => (
+            <FormItem className="flex flex-col mb-4 w-full">
+              <FormLabel>DROS | Acquisition # </FormLabel>
+              <FormControl>
+                <Input placeholder="Enter The 'Dash' In The DROS #" {...field} />
+              </FormControl>
+              <FormDescription>
+                Enter The DROS # Or Acquisition # For Consignments
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
             control={form.control}
             name="salesRep"
             render={({ field: { onChange, value } }) => (
-              <FormItem>
+              <FormItem className="flex flex-col mb-4 w-full">
                 <FormLabel>Sales Rep</FormLabel>
                 <Select onValueChange={onChange} defaultValue={value}>
                   <FormControl>
@@ -239,7 +258,7 @@ const DROS = () => {
             control={form.control}
             name="auditType"
             render={({ field: { onChange, value } }) => (
-              <FormItem>
+              <FormItem className="flex flex-col mb-4 w-full">
                 <FormLabel>Audit Type</FormLabel>
                 <Select onValueChange={onChange} defaultValue={value}>
                   <FormControl>
@@ -262,11 +281,13 @@ const DROS = () => {
               </FormItem>
             )}
           />
+          </div>
+          <div className="flex flex-row md:flex-row md:space-x-4 mb-4">
           <FormField
             control={form.control}
             name="transDate"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
+              <FormItem className="flex flex-col mb-4">
                 <FormLabel>Transaction Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -310,7 +331,7 @@ const DROS = () => {
             control={form.control}
             name="auditDate"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
+              <FormItem className="flex flex-col mb-4">
                 <FormLabel>Audit Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -350,6 +371,8 @@ const DROS = () => {
               </FormItem>
             )}
           />
+          </div>
+          <div className="flex flex-row md:flex-row md:space-x-4 mb-4">
           <Controller
                 name="errorLocation"
                 control={form.control}
@@ -374,12 +397,12 @@ const DROS = () => {
                     />
                 )}
             />
-
+          </div>
           <FormField
             control={form.control}
             name="errorNotes"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex flex-col mb-4">
                 <FormLabel>Enter Error Notes | Details</FormLabel>
                 <FormControl>
                   <Textarea
@@ -389,7 +412,7 @@ const DROS = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  You can <span>@mention</span> other users and organizations.
+                  Press The Enter Key For New Line
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -398,6 +421,7 @@ const DROS = () => {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      </div>
     </main>
   );
 };
