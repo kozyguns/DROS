@@ -129,20 +129,19 @@ const form = useForm<FormData>({
 
 // Assuming you're calling this inside your component where useForm hook is used
 const onSubmit = async (formData: FormData) => {
-  const values = [
-    [
-      formData.drosNumber,
-      formData.drosCancel ? "Yes" : "No",
-      formData.salesRep,
-      formData.auditType,
-      formData.transDate,
-      formData.auditDate,
-      formData.errorLocation,
-      formData.errorDetails,
-      formData.errorNotes,
-      // Continue transforming the rest of your formData fields
-    ],
-  ];
+  const values = [[
+    formData.drosNumber,
+    formData.drosCancel ? "Yes" : "No", // Example transformation
+    formData.salesRep,
+    formData.auditType,
+    formData.transDate ? format(formData.transDate, "yyyy-MM-dd") : "", // Formatting date
+    formData.auditDate ? format(formData.auditDate, "yyyy-MM-dd") : "",
+    // Assuming errorLocation and errorDetails are arrays, join them or handle as needed
+    formData.errorLocation.join(", "), 
+    formData.errorDetails.join(", "),
+    formData.errorNotes,
+    // Add more fields as per your form structure
+  ]];
   try {
     const response = await fetch("/api/writeToSheet", {
       method: "POST",
