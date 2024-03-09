@@ -136,8 +136,8 @@ const onSubmit = async (formData: FormData) => {
       formData.auditType.join(",\n"),
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
-      formData.errorLocation.join(",\n"), // Join multiple selections with a newline
-      formData.errorDetails.join(",\n"),  // Join multiple selections with a newline
+      formData.errorLocation.join(",\n"), 
+      formData.errorDetails.join(",\n"),  
       formData.errorNotes,
       // Add more fields as necessary
     ]];
@@ -153,18 +153,22 @@ const onSubmit = async (formData: FormData) => {
     });
 
     if (response.ok) {
-      // Handle successful submission (e.g., resetting form, notifying user)
-      console.log("Form submitted successfully");
-      form.reset(); // Reset the form fields to initial values, if you're using React Hook Form or similar
+      // Popup alert for successful submission
+      alert("Audit Submitted Successfully");
+      // Reset the form fields to initial values
+      form.reset();
     } else {
       // Handle server-side or network error
       console.error("Form submission failed");
+      alert("Failed To Submit Audit");
     }
   } catch (error) {
     // Handle client-side error
     console.error("An error occurred during form submission:", error);
+    alert("An error occurred during form submission.");
   }
 };
+
 
 
 
