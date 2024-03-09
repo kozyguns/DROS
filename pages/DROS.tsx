@@ -114,8 +114,8 @@ const DROS = () => {
 const form = useForm<FormData>({
   resolver: zodResolver(formSchema),
   defaultValues: {
-    drosNumber: '',
     drosCancel: false, // Adjust according to your default values
+    drosNumber: '',
     salesRep: '',
     auditType: '',
     transDate: new Date(), // You might need to handle date default values appropriately
@@ -130,8 +130,8 @@ const form = useForm<FormData>({
 // Assuming you're calling this inside your component where useForm hook is used
 const onSubmit = async (formData: FormData) => {
   const values = [[
-    formData.drosNumber,
     formData.drosCancel ? "Yes" : "No", // Example transformation
+    formData.drosNumber,
     formData.salesRep,
     formData.auditType,
     formData.transDate ? format(formData.transDate, "yyyy-MM-dd") : "", // Formatting date
