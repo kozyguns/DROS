@@ -292,18 +292,7 @@ const onSubmit = async (formData: FormData) => {
               </FormItem>
             )}
           />
-          <Controller
-                name="auditType"
-                control={form.control}
-                render={({ field: { onChange, value } }) => (
-                    <DataTableFacetedFilter
-                        options={auditTypeOptions}
-                        title="Audit Category"
-                        selectedValues={value || []}
-                        onSelectionChange={onChange}
-                    />
-                )}
-            />
+          
           </div>
           <div className="flex flex-row md:flex-row md:space-x-4 mb-4">
           <FormField
@@ -396,6 +385,18 @@ const onSubmit = async (formData: FormData) => {
           />
           </div>
           <div className="flex flex-row md:flex-row md:space-x-4 mb-4">
+          <Controller
+                name="auditType"
+                control={form.control}
+                render={({ field: { onChange, value } }) => (
+                    <DataTableFacetedFilter
+                        options={auditTypeOptions}
+                        title="Audit Category"
+                        selectedValues={value || []}
+                        onSelectionChange={onChange}
+                    />
+                )}
+            />
           <Controller
                 name="errorLocation"
                 control={form.control}
