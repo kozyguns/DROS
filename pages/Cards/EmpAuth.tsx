@@ -31,7 +31,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                     <p>OR For Student VISA (Or Any Other Dependent VISA) Holders To Work Legally, For A Specific Period Of Time</p>
                     <hr className="my-4" />
                     <p>If A Customer Only Has An EAD | Work Authorization - They Are Still Waiting To Become A Permanent Resident</p>
-                    <p>We Cannot Sell Them A Firearm Without Permanent Resident Status</p>
+                    <p>We <span className="text-red-500">CANNOT</span> Sell Them A Firearm Without Permanent Resident Status</p>
                     <p>Please Advise Them We Are Excited To Sell Them A Firearm <span className="text-green-600">Once They Receive Their Permanent Resident Card</span> </p>
                     <hr className="my-4" />
                   </div>
