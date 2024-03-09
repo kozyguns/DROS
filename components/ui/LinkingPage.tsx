@@ -37,7 +37,7 @@ import PendingResident from "../../pages/Cards/PendingResident";
 const SubItemsContainer = styled.div`
   position: absolute;
   display: none; // Initially hidden
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(3, 2fr);
   gap: 8px;
   padding: 8px;
   background: none; // Background color for the sub-items container
