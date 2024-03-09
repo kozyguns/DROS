@@ -80,23 +80,25 @@ export function DataTableFacetedFilter<TData, TValue>({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0" align="start">
+      <PopoverContent className="w-full min-w-[200px] p-0" align="start">
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            {options.map((option) => {
-              const isSelected = selectedValues.includes(option.value);
-              return (
-                <CommandItem key={option.value} onSelect={() => handleSelect(option.value)}>
-                  <div className={cn("mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary", isSelected ? "bg-primary text-primary-foreground" : "opacity-50 [&_svg]:invisible")}>
-                    {isSelected && <CheckIcon className="h-4 w-4" />}
-                  </div>
-                  {option.icon && <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />}
-                  {option.label}
-                </CommandItem>
-              );
-            })}
+            {options
+              .filter((option) => option.value.trim() !== "") // Exclude options with empty values
+              .map((option) => {
+                const isSelected = selectedValues.includes(option.value);
+                return (
+                  <CommandItem key={option.value} onSelect={() => handleSelect(option.value)}>
+                    <div className={cn("mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary", isSelected ? "bg-primary text-primary-foreground" : "opacity-50 [&_svg]:invisible")}>
+                      {isSelected && <CheckIcon className="h-4 w-4" />}
+                    </div>
+                    {option.icon && <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />}
+                    {option.label}
+                  </CommandItem>
+                );
+              })}
           </CommandList>
         </Command>
       </PopoverContent>
