@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { SheetRow } from '../types/types';
+
 
 export default async function handler(req, res) {
   // Extract the 'range' query parameter from the request URL
