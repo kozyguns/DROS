@@ -41,6 +41,7 @@ import { Switch } from "../components/ui/switch";
 import { Label } from "../components/ui/label";
 import { MultiSelect } from "../components/ui/multi-select";
 import { DataTableFacetedFilter } from "../components/ui/faceted-filter";
+import { SheetRow as ImportedSheetRow } from '../types/types';
 
 const formSchema = z.object({
   drosCancel: z.boolean().optional(),
@@ -62,14 +63,51 @@ type OptionType = {
 type DataItem = string[]; // If `data` is an array of arrays of strings
 type Data = DataItem[];
 type DataRow = string[]; // or more specific type reflecting your data structure
+type SheetRow = string[];
 
 const DROS = () => {
   const [data, setData] = useState([]);
   const [selections, setSelections] = useState(Array(7).fill(null)); // Use null for uninitialized selections
-  const router = useRouter();
-  const [active, setActive] = useState<string | null>(null);
-  const [activeDialog, setActiveDialog] = useState(null);
-  const [selected, setSelected] = useState([]);
+  const [errorLocationOptions, setErrorLocationOptions] = useState<OptionType[]>([]);
+  const [errorDetailsOptions, setErrorDetailsOptions] = useState<OptionType[]>([]);
+  const [salesRepOptions, setSalesRepOptions] = useState<OptionType[]>([]);
+  const [auditTypeOptions, setAuditTypeOptions] = useState<OptionType[]>([]);
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+        // Assuming your API returns data in the structure of a 2D array, matching your Google Sheet's rows and columns
+        const response = await fetch(`/api/sheetData?range=List!A:D`);
+        const data = await response.json();
+
+        // Map Google Sheets data to OptionType format for each category
+        const fetchedSalesRepOptions = data.map((row: SheetRow) => ({
+            value: row[0], // Column 1 (Column A) for salesRep
+            label: row[0],
+        }));
+        const fetchedAuditTypeOptions = data.map((row: SheetRow) => ({
+            value: row[1], // Column 2 (Column B) for auditType
+            label: row[1],
+        }));
+        const fetchedErrorLocationOptions = data.map((row: SheetRow) => ({
+            value: row[2], // Column 3 (Column C) for errorLocation
+            label: row[2],
+        }));
+        const fetchedErrorDetailsOptions = data.map((row: SheetRow) => ({
+            value: row[3], // Column 4 (Column D) for errorDetail
+            label: row[3],
+        }));
+
+        // Update state with the fetched and mapped options
+        setSalesRepOptions(fetchedSalesRepOptions);
+        setAuditTypeOptions(fetchedAuditTypeOptions);
+        setErrorLocationOptions(fetchedErrorLocationOptions);
+        setErrorDetailsOptions(fetchedErrorDetailsOptions);
+    };
+
+    fetchOptions();
+}, []);
+
+  
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -89,24 +127,6 @@ const DROS = () => {
     console.log(values);
   };
 
-  // Simulated options for MultiSelect components
-  const errorLocationOptions: OptionType[] = [
-    { value: 'location1', label: 'Location 1' },
-    { value: 'location2', label: 'Location 2' },
-  ];
-  const errorDetailOptions: OptionType[] = [
-    { value: 'detail1', label: 'Detail 1' },
-    { value: 'detail2', label: 'Detail 2' },
-  ];
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/api/sheetData?range=Drops!A:H`);
-      const jsonData = await response.json();
-      setData(jsonData);
-    };
-    fetchData();
-  }, []);
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
     let updatedSelections = [...selections];
@@ -158,16 +178,14 @@ const DROS = () => {
   return (
     <main>
       <header>
-        <div className="flex flow-row items-center justify-center max w-full mb-24">
+        <div className="flex flow-row items-center justify-center max w-md mb-24">
           <LinkingPage />
         </div>
       </header>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col justify-center mx-auto p-4 space-y-8 max-w-md"
-        >
+      <form onSubmit={form.handleSubmit(data => console.log(data))}>
+            {/* Controllers with DataTableFacetedFilter */}
           <FormField
             control={form.control}
             name="drosCancel"
@@ -189,59 +207,56 @@ const DROS = () => {
               </FormItem>
             )}
           />
-          <FormField
+        <FormField
             control={form.control}
             name="salesRep"
-            render={({ field }) => (
+            render={({ field: { onChange, value } }) => (
               <FormItem>
                 <FormLabel>Sales Rep</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={onChange} defaultValue={value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select The Sales Rep" />
+                      <SelectValue placeholder="Select A Sales Rep" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="AJ">AJ</SelectItem>
-                    <SelectItem value="Sammy">Sammy</SelectItem>
-                    <SelectItem value="Amanda">Amanda</SelectItem>
+                    {salesRepOptions.filter(option => option.value !== "").map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  You can manage email addresses in your{" "}
-                  <Link href="/examples/forms">email settings</Link>.
+                  You can manage email addresses in your <Link href="/examples/forms">email settings</Link>.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="auditType"
-            render={({ field }) => (
+            render={({ field: { onChange, value } }) => (
               <FormItem>
                 <FormLabel>Audit Type</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+                <Select onValueChange={onChange} defaultValue={value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select The Audit Type" />
+                      <SelectValue placeholder="Select Where The Error Occurred" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Firearms">Firearms</SelectItem>
-                    <SelectItem value="Ammo">Ammo</SelectItem>
-                    <SelectItem value="AIM">AIM</SelectItem>
+                    {salesRepOptions.filter(option => option.value !== "").map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  You can manage email addresses in your{" "}
-                  <Link href="/examples/forms">email settings</Link>.
+                  You can manage email addresses in your <Link href="/examples/forms">email settings</Link>.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -336,29 +351,29 @@ const DROS = () => {
             )}
           />
           <Controller
-            name="errorLocation"
-            control={form.control}
-            render={({ field: { onChange, value } }) => (
-              <DataTableFacetedFilter
-                options={errorLocationOptions}
-                title="Error Location"
-                selectedValues={value || []}
-                onSelectionChange={(newSelectedValues) => onChange(newSelectedValues)}
-              />
-            )}
-          />
-          <Controller
-            name="errorDetails"
-            control={form.control}
-            render={({ field: { onChange, value } }) => (
-              <DataTableFacetedFilter
-                options={errorDetailOptions}
-                title="Error Details"
-                selectedValues={value || []}
-                onSelectionChange={(newSelectedValues) => onChange(newSelectedValues)}
-              />
-            )}
-          />
+                name="errorLocation"
+                control={form.control}
+                render={({ field: { onChange, value } }) => (
+                    <DataTableFacetedFilter
+                        options={errorLocationOptions}
+                        title="Error Location"
+                        selectedValues={value || []}
+                        onSelectionChange={onChange}
+                    />
+                )}
+            />
+            <Controller
+                name="errorDetails"
+                control={form.control}
+                render={({ field: { onChange, value } }) => (
+                    <DataTableFacetedFilter
+                        options={errorDetailsOptions}
+                        title="Error Details"
+                        selectedValues={value || []}
+                        onSelectionChange={onChange}
+                    />
+                )}
+            />
 
           <FormField
             control={form.control}

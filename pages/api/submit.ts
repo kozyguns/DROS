@@ -1,16 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { google } from "googleapis"; 
-
-type SheetForm = {
-    cancel: string;
-    dros: string;
-    salesrep: string;
-    error: string;
-    details: string;
-    notes: string;
-    options: string;
-    sheetName: string;
-};
+import type { SheetForm } from '../../types/types'; 
+import type { SheetRow } from '../../types/types'; 
 
 // Define an interface for your expected error structure
 interface ErrorResponse extends Error {
