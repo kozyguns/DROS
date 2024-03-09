@@ -132,7 +132,7 @@ const form = useForm<FormData>({
 // Assuming you're calling this inside your component where useForm hook is used
 const onSubmit = async (formData: FormData) => {
   try {
-    const response = await fetch("/api/Audits!A:I", {
+    const response = await fetch("/api/sheetData?range=Audits!A:I", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -293,7 +293,7 @@ const onSubmit = async (formData: FormData) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {salesRepOptions.filter(option => option.value !== "").map((option) => (
+                    {auditTypeOptions.filter(option => option.value !== "").map((option) => (
                       <SelectItem key={option.value} value={option.value}>
                         {option.label}
                       </SelectItem>
