@@ -74,6 +74,7 @@ const DROS = () => {
   const [errorDetailsOptions, setErrorDetailsOptions] = useState<OptionType[]>([]);
   const [salesRepOptions, setSalesRepOptions] = useState<OptionType[]>([]);
   const [auditTypeOptions, setAuditTypeOptions] = useState<OptionType[]>([]);
+  const [resetKey, setResetKey] = useState(0);
 
   useEffect(() => {
     const fetchOptions = async () => {
@@ -157,6 +158,7 @@ const onSubmit = async (formData: FormData) => {
       alert("Audit Submitted Successfully");
       // Reset the form fields to initial values
       form.reset();
+      setResetKey(prevKey => prevKey + 1); // Increment the key to force re-render
     } else {
       // Handle server-side or network error
       console.error("Form submission failed");
@@ -275,7 +277,11 @@ const onSubmit = async (formData: FormData) => {
             render={({ field: { onChange, value } }) => (
               <FormItem className="flex flex-col mb-4 w-full">
                 <FormLabel>Sales Rep</FormLabel>
-                <Select onValueChange={onChange} defaultValue={value}>
+                <Select 
+                key={resetKey} // resetKey changes to force re-render
+                onValueChange={onChange} 
+                defaultValue={value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select A Sales Rep" />
