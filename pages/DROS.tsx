@@ -47,7 +47,7 @@ const formSchema = z.object({
   drosNumber: z.string(),
   drosCancel: z.boolean(),
   salesRep: z.string(),
-  auditType: z.string(),
+  auditType: z.array(z.string()),
   transDate: z.date(),
   auditDate: z.date(),
   errorLocation: z.array(z.string()),
@@ -117,7 +117,7 @@ const form = useForm<FormData>({
     drosCancel: false, // Adjust according to your default values
     drosNumber: '',
     salesRep: '',
-    auditType: '',
+    auditType: [],
     transDate: new Date(), // You might need to handle date default values appropriately
     auditDate: new Date(),
     errorLocation: [],
@@ -133,7 +133,7 @@ const onSubmit = async (formData: FormData) => {
       formData.drosNumber,
       formData.drosCancel ? "Yes" : "No",
       formData.salesRep,
-      formData.auditType,
+      formData.auditType.join(",\n"),
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
       formData.errorLocation.join(",\n"), // Join multiple selections with a newline
@@ -292,34 +292,18 @@ const onSubmit = async (formData: FormData) => {
               </FormItem>
             )}
           />
-
-          <FormField
-            control={form.control}
-            name="auditType"
-            render={({ field: { onChange, value } }) => (
-              <FormItem className="flex flex-col mb-4 w-full">
-                <FormLabel>Audit Type</FormLabel>
-                <Select onValueChange={onChange} defaultValue={value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select Where The Error Occurred" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {auditTypeOptions.filter(option => option.value !== "").map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormDescription>
-                  You can manage email addresses in your <Link href="/examples/forms">email settings</Link>.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <Controller
+                name="auditType"
+                control={form.control}
+                render={({ field: { onChange, value } }) => (
+                    <DataTableFacetedFilter
+                        options={auditTypeOptions}
+                        title="Audit Category"
+                        selectedValues={value || []}
+                        onSelectionChange={onChange}
+                    />
+                )}
+            />
           </div>
           <div className="flex flex-row md:flex-row md:space-x-4 mb-4">
           <FormField
