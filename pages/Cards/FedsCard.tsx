@@ -41,9 +41,9 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <li>- Valid U.S. Immigrant VISA</li>
                 <li>- Approved Record Of Arrival|Departure (I-94) Form</li>
               </ul>
-                <li>- Certified Copy Of Birth Certificate From A U.S. Territory</li>
-                <li>- Certificate Of Naturalization Or U.S. Citizenship</li>
-                <li>- Valid, Unexpired Permanent Resident Card</li>
+                <li>Certified Copy Of Birth Certificate From A U.S. Territory</li>
+                <li>Certificate Of Naturalization Or U.S. Citizenship</li>
+                <li>Valid, Unexpired Permanent Resident Card</li>
           </ul>
           </div>
         </CardContent>
