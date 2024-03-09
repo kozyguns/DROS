@@ -45,7 +45,6 @@ import { SheetRow as ImportedSheetRow } from '../types/types';
 
 const formSchema = z.object({
   drosNumber: z.string(),
-  drosCancel: z.boolean(),
   salesRep: z.string(),
   auditType: z.array(z.string()),
   transDate: z.date(),
@@ -53,6 +52,7 @@ const formSchema = z.object({
   errorLocation: z.array(z.string()),
   errorDetails: z.array(z.string()),
   errorNotes: z.string(),
+  drosCancel: z.boolean(),
 });
 
 type OptionType = {
@@ -115,7 +115,6 @@ const DROS = () => {
 const form = useForm<FormData>({
   resolver: zodResolver(formSchema),
   defaultValues: {
-    drosCancel: false, // Adjust according to your default values
     drosNumber: '',
     salesRep: '',
     auditType: [],
@@ -124,6 +123,7 @@ const form = useForm<FormData>({
     errorLocation: [],
     errorDetails: [],
     errorNotes: '',
+    drosCancel: false, // Adjust according to your default values
   },
 });
 
