@@ -178,7 +178,7 @@ const DROS = () => {
   return (
     <main>
       <header>
-        <div className="flex flow-row items-center justify-center max w-md mb-24">
+        <div className="flex flow-row items-center justify-center max w-full mb-24">
           <LinkingPage />
         </div>
       </header>
