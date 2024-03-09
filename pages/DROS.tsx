@@ -59,6 +59,7 @@ type OptionType = {
   label: string;
   value: string;
 };
+type FormData = z.infer<typeof formSchema>;
 
 // Example type definition, adjust based on your actual data structure
 type DataItem = string[]; // If `data` is an array of arrays of strings
@@ -110,24 +111,49 @@ const DROS = () => {
 
   
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      drosNumber: '',
-      drosCancel: false,
-      salesRep: '',
-      auditType: '',
-      transDate: new Date(),
-      auditDate: new Date(),
-      errorLocation: [],
-      errorDetails: [],
-      errorNotes: '',
-    },
-  });
+const form = useForm<FormData>({
+  resolver: zodResolver(formSchema),
+  defaultValues: {
+    drosNumber: '',
+    drosCancel: false, // Adjust according to your default values
+    salesRep: '',
+    auditType: '',
+    transDate: new Date(), // You might need to handle date default values appropriately
+    auditDate: new Date(),
+    errorLocation: [],
+    errorDetails: [],
+    errorNotes: '',
+  },
+});
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-  };
+  // const handleSubmit = (values: z.infer<typeof formSchema>) => {
+  //   console.log(values);
+  // };
+// Assuming you're calling this inside your component where useForm hook is used
+const onSubmit = async (formData: FormData) => {
+  try {
+    const response = await fetch("/api/Audits!A:I", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      // Handle success (e.g., notification to the user)
+      console.log("Form submitted successfully");
+
+      // Use the reset method from the useForm instance
+      form.reset(); // Reset the form fields to initial values
+    } else {
+      // Handle error (e.g., show error message to the user)
+      console.error("Form submission failed");
+    }
+  } catch (error) {
+    console.error("An error occurred during form submission: ", error);
+  }
+};
 
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
@@ -186,7 +212,7 @@ const DROS = () => {
       </header>
       <div className="flex flex-row item-center justify-center w-full max-w-[2250px] p-4">
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(data => console.log(data))}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
             {/* Controllers with DataTableFacetedFilter */}
           <FormField
             control={form.control}
