@@ -26,9 +26,9 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <CardContent>
                   <div className="max-w-[425px]">
                     <p>When Someone States That They Are A Registered Alien,
-                        It Is Required To Make A Color Copy Of Their Alien Registration ID Card
+                        It Is Required To Make A Color Copy Of Their Alien Registration ID Card</p>
                         <hr className="my-4" />
-                        Alien Registration Numbers Are THE SAME As Their USCIS Number,
+                        <p>Alien Registration Numbers Are THE SAME As Their USCIS Number,
                         Which Can Be Found On <span className="text-green-600">Their Permanent Resident Card (AKA Their &quot;Green Card&quot;)</span>
                     </p>
                     <hr className="my-4" />
