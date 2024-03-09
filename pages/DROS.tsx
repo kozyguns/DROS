@@ -126,49 +126,61 @@ const form = useForm<FormData>({
   },
 });
 
-
+type Row = string[]; // A simple type definition for a row
+const rowsToAppend: Row[] = []; // Use this type for rowsToAppend
 // Assuming you're calling this inside your component where useForm hook is used
 const onSubmit = async (formData: FormData) => {
-  const values = [[
-    formData.drosCancel ? "Yes" : "No", // Example transformation
-    formData.drosNumber,
-    formData.salesRep,
-    formData.auditType,
-    formData.transDate ? format(formData.transDate, "yyyy-MM-dd") : "", // Formatting date
-    formData.auditDate ? format(formData.auditDate, "yyyy-MM-dd") : "",
-    // Assuming errorLocation and errorDetails are arrays, join them or handle as needed
-    formData.errorLocation.join(", "), 
-    formData.errorDetails.join(", "),
-    formData.errorNotes,
-    // Add more fields as per your form structure
-  ]];
   try {
+    // Initialize an array to hold all rows to be appended
+    const rowsToAppend: Row[] = []; // Use this type for rowsToAppend
+
+    // Generate a row for each combination of errorLocation and errorDetails
+    formData.errorLocation.forEach((location) => {
+      formData.errorDetails.forEach((detail) => {
+        // Assuming auditType is a single selection and included in each row
+        const newRow = [
+          formData.drosNumber,
+          formData.drosCancel ? "Yes" : "No",
+          formData.salesRep,
+          formData.auditType, // Assuming a single selection here
+          formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
+          formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
+          location, // One per row
+          detail, // One per row paired with location
+          formData.errorNotes,
+          // Include other form data as necessary
+        ];
+
+        // Add this new row to our list of rows to append
+        rowsToAppend.push(newRow);
+      });
+    });
+
+    // Submit rowsToAppend to your API endpoint
     const response = await fetch("/api/writeToSheet", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        range: "Audits!A:I", // This line is optional if you're always appending to the same range and handle it in the API.
-        values: values,
+        values: rowsToAppend
       }),
     });
-    
 
     if (response.ok) {
-      // Handle success (e.g., notification to the user)
+      // Handle successful submission (e.g., resetting form, notifying user)
       console.log("Form submitted successfully");
-
-      // Use the reset method from the useForm instance
-      form.reset(); // Reset the form fields to initial values
+      form.reset(); // Assuming you have form reset logic available
     } else {
-      // Handle error (e.g., show error message to the user)
+      // Handle server-side or network error
       console.error("Form submission failed");
     }
   } catch (error) {
-    console.error("An error occurred during form submission: ", error);
+    // Handle client-side error
+    console.error("An error occurred during form submission:", error);
   }
 };
+
 
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
