@@ -225,7 +225,7 @@ const onSubmit = async (formData: FormData) => {
   return (
     <main >
       <header>
-        <div className="flex flow-row items-center justify-center max w-full mb-24">
+        <div className="flex flow-row items-center justify-center max w-full mb-50">
           <LinkingPage />
         </div>
       </header>
