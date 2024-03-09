@@ -26,10 +26,10 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
         </CardHeader>
         <CardContent>
         <div className="max-w-full">
-        <h2>Required Documents:</h2>
+        <h2>Accepted Documents:</h2>
           <ul className="list-disc pl-4">
             <li>Valid, Unexpired U.S. Passport Or Passport Card</li>
-            <li>Certified Copy Of U.S. Birth Certificate, Or One Of The Following, As Long As They Are Issued By The U.S. Department Of State</li>
+            <li>Certified Copy Of U.S. Birth Certificate, Or One Of The Following, As Long As They Are Issued By The U.S. Department Of State:</li>
               <ul className="list-none list-inside pl-4">
                 <li>- Certification Of Birth Abroad (FS-545)</li>
                 <li>- Certification Of Report Of Birth (DS-1350)</li>
@@ -40,10 +40,10 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                 <li>- Unexpired Foreign Passport</li>
                 <li>- Valid U.S. Immigrant VISA</li>
                 <li>- Approved Record Of Arrival|Departure (I-94) Form</li>
+              </ul>
                 <li>- Certified Copy Of Birth Certificate From A U.S. Territory</li>
                 <li>- Certificate Of Naturalization Or U.S. Citizenship</li>
                 <li>- Valid, Unexpired Permanent Resident Card</li>
-              </ul>
           </ul>
           </div>
         </CardContent>

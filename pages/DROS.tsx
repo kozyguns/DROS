@@ -229,7 +229,7 @@ const onSubmit = async (formData: FormData) => {
           <LinkingPage />
         </div>
       </header>
-      <div className="flex flex-row item-center justify-center w-full max-w-[2250px] p-4">
+      <div className="flex flex-row item-center justify-center w-full max-w-[2250px] p-4 mt-24">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
             {/* Controllers with DataTableFacetedFilter */}

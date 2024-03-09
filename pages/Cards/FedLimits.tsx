@@ -31,7 +31,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
             <li>A Valid Photo DL | ID Containing The Following Info:</li>
               <ul className="list-none list-inside pl-4">
               <li>- Transferee&apos;s Name</li>
-              <li>- Residence Address</li>
+              <li>- CURRENT Residence Address</li>
               <li>- Date Of Birth</li>
               </ul>
             <li>A Valid Passport Which Contains The Following Info:</li>
