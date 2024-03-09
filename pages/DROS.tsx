@@ -126,19 +126,35 @@ const form = useForm<FormData>({
   },
 });
 
-  // const handleSubmit = (values: z.infer<typeof formSchema>) => {
-  //   console.log(values);
-  // };
+
 // Assuming you're calling this inside your component where useForm hook is used
 const onSubmit = async (formData: FormData) => {
+  const values = [
+    [
+      formData.drosNumber,
+      formData.drosCancel ? "Yes" : "No",
+      formData.salesRep,
+      formData.auditType,
+      formData.transDate,
+      formData.auditDate,
+      formData.errorLocation,
+      formData.errorDetails,
+      formData.errorNotes,
+      // Continue transforming the rest of your formData fields
+    ],
+  ];
   try {
-    const response = await fetch("/api/sheetData?range=Audits!A:I", {
+    const response = await fetch("/api/writeToSheet", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        range: "Audits!A:I", // This line is optional if you're always appending to the same range and handle it in the API.
+        values: values,
+      }),
     });
+    
 
     if (response.ok) {
       // Handle success (e.g., notification to the user)
