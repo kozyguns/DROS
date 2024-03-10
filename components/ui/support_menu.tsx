@@ -156,33 +156,52 @@ const dialogContentComponents = {
   // Add other mappings as necessary
 };
 
-const LinkingPage = () => {
+const support_menu = () => {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const dialogRef = useRef<HTMLDivElement>(null);
     const [activeDialogContent, setActiveDialogContent] = useState<React.ReactNode | null>(null);
     const [activeDialog, setActiveDialog] = useState(null);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    const fetchMenuItems = async () => {
-      // Make sure the endpoint and range are correct
-      const response = await fetch(`/api/sheetData?range=NavMenu!A2:E`);
-      const jsonData = await response.json();
-      const itemsMap = new Map();
-
-      jsonData.forEach((item: [string, string, string, string, string]) => {
-        const [label, subItemLabel, contentId, link] = item;
-        if (!itemsMap.has(label)) {
-          itemsMap.set(label, { label, subItems: [] });
+    useEffect(() => {
+      const fetchMenuItems = async () => {
+        const response = await fetch('/api/sheetOps', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            operation: 'read',
+            sheetName: 'DEFAULT', // Use the appropriate sheet name for your support menu
+            range: 'NavMenu!A2:E', // Adjust the range as needed
+          }),
+        });
+        if (!response.ok) {
+          console.error('Failed to fetch menu items:', await response.text());
+          return;
         }
-        const menuItem = itemsMap.get(label);
-        menuItem.subItems.push({ label: subItemLabel, contentId, link });
-      });
-  
-      setMenuItems(Array.from(itemsMap.values()));
-    };
-    fetchMenuItems();
-  }, []);
+        const jsonData = await response.json();
+        if (!jsonData.success) {
+          console.error('Fetching menu items failed:', jsonData.error);
+          return;
+        }
+        const itemsMap = new Map();
+    
+        // Assuming jsonData.data contains the rows from your sheet
+        jsonData.data.forEach((item: [string, string, string, string]) => {
+          const [label, subItemLabel, contentId, link] = item;
+          if (!itemsMap.has(label)) {
+            itemsMap.set(label, { label, subItems: [] });
+          }
+          const menuItem = itemsMap.get(label);
+          menuItem.subItems.push({ label: subItemLabel, contentId, link });
+        });
+    
+        setMenuItems(Array.from(itemsMap.values()));
+      };
+      fetchMenuItems();
+    }, []);
+    
 
     // Close active dialog
     const closeDialog = () => setActiveDialog(null);
@@ -241,7 +260,8 @@ const LinkingPage = () => {
       <NavigationMenu.Root>
         <NavigationMenu.List style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}>
           {menuItems.map((menuItem, index) => (
-            <NavigationMenu.Item key={index}
+            <NavigationMenu.Item 
+            key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -272,4 +292,4 @@ const LinkingPage = () => {
   );
 };
 
-export default LinkingPage;
+export default support_menu;

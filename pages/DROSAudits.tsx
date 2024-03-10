@@ -7,7 +7,7 @@ import { z } from "zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import { Textarea } from "../components/ui/textarea";
-import LinkingPage from "../components/ui/LinkingPage";
+import LinkingPage from "../components/ui/support_menu";
 import Link from "next/link";
 import { cn } from "../components/lib/utils";
 import {
@@ -67,7 +67,7 @@ type Data = DataItem[];
 type DataRow = string[]; // or more specific type reflecting your data structure
 type SheetRow = string[];
 
-const DROS = () => {
+const DROSAudits = () => {
   const [data, setData] = useState([]);
   const [selections, setSelections] = useState(Array(7).fill(null)); // Use null for uninitialized selections
   const [errorLocationOptions, setErrorLocationOptions] = useState<OptionType[]>([]);
@@ -78,37 +78,57 @@ const DROS = () => {
 
   useEffect(() => {
     const fetchOptions = async () => {
-        // Assuming your API returns data in the structure of a 2D array, matching your Google Sheet's rows and columns
-        const response = await fetch(`/api/sheetData?range=List!A:D`);
-        const data = await response.json();
-
+      const response = await fetch('/api/sheetOps', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          operation: 'read',
+          sheetName: 'AUDITS',
+          range: 'Lists!B2:E', // Adjust the range as needed
+        }),
+      });
+      if (!response.ok) {
+        console.error('Failed to fetch options:', await response.text());
+        return;
+      }
+      const jsonData = await response.json();
+      
+      // Assuming the API returns { success: true, data: [ ...rows ] }
+      if (jsonData.success && Array.isArray(jsonData.data)) {
+        const data = jsonData.data; 
+  
         // Map Google Sheets data to OptionType format for each category
         const fetchedSalesRepOptions = data.map((row: SheetRow) => ({
-            value: row[0], // Column 1 (Column A) for salesRep
-            label: row[0],
+          value: row[0], // Adjust index as per actual data structure
+          label: row[0],
         }));
         const fetchedAuditTypeOptions = data.map((row: SheetRow) => ({
-            value: row[1], // Column 2 (Column B) for auditType
-            label: row[1],
+          value: row[1], // Adjust index as per actual data structure
+          label: row[1],
         }));
-        const fetchedErrorLocationOptions = data.map((row: SheetRow) => ({
-            value: row[2], // Column 3 (Column C) for errorLocation
-            label: row[2],
+        const fetchedErrorLocationOptions = data.map((row: SheetRow)=> ({
+          value: row[2], // Adjust index as per actual data structure
+          label: row[2],
         }));
-        const fetchedErrorDetailsOptions = data.map((row: SheetRow) => ({
-            value: row[3], // Column 4 (Column D) for errorDetail
-            label: row[3],
+        const fetchedErrorDetailsOptions = data.map((row: SheetRow)=> ({
+          value: row[3], // Adjust index as per actual data structure
+          label: row[3],
         }));
-
+  
         // Update state with the fetched and mapped options
         setSalesRepOptions(fetchedSalesRepOptions);
         setAuditTypeOptions(fetchedAuditTypeOptions);
         setErrorLocationOptions(fetchedErrorLocationOptions);
         setErrorDetailsOptions(fetchedErrorDetailsOptions);
+      } else {
+        console.error('Invalid data format received:', jsonData);
+      }
     };
-
+  
     fetchOptions();
-}, []);
+  }, []);  
 
   
 
@@ -143,15 +163,19 @@ const onSubmit = async (formData: FormData) => {
       // Add more fields as necessary
     ]];
 
-    const response = await fetch("/api/writeToSheet", {
-      method: "POST",
+    const response = await fetch('/api/sheetOps', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        values // Sending the structured data
+        operation: 'append',
+        sheetName: 'AUDITS',
+        range: 'Audits!A:I', // Specify the range dynamically
+        values: values,
       }),
     });
+    
 
     if (response.ok) {
       // Popup alert for successful submission
@@ -229,7 +253,7 @@ const onSubmit = async (formData: FormData) => {
           <LinkingPage />
         </div>
       </header>
-      <div className="flex flex-row item-center justify-center w-full max-w-[2250px] p-4 mt-24">
+      <div className="flex flex-row item-center justify-center mx-auto w-full max-w-[2250px] mt-48">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
             {/* Controllers with DataTableFacetedFilter */}
@@ -460,4 +484,4 @@ const onSubmit = async (formData: FormData) => {
   );
 };
 
-export default DROS;
+export default DROSAudits;

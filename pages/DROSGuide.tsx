@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Button } from "../components/ui/button";
-import LinkingPage from '../components/ui/LinkingPage';
+import LinkingPage from '../components/ui/support_menu';
 import {
   Select,
   SelectContent,
@@ -9,15 +9,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import IDsCard from '../pages/Cards/IDsCard';
-import FedsCard from '../pages/Cards/FedsCard';
+import IDsCard from './Cards/IDsCard';
+import FedsCard from './Cards/FedsCard';
 
 // Example type definition, adjust based on your actual data structure
 type DataItem = string[]; // If `data` is an array of arrays of strings
 type Data = DataItem[];
 type DataRow = string[]; // or more specific type reflecting your data structure
 
-const DialogPage = () => {
+const DROSGuide = () => {
   const [data, setData] = useState([]);
   const [selections, setSelections] = useState(Array(7).fill(null)); // Use null for uninitialized selections
   const router = useRouter();
@@ -43,15 +43,33 @@ const DialogPage = () => {
     }
   };
   
-
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/sheetData?range=Drops!A:H`);
-      const jsonData = await response.json();
-      setData(jsonData);
+      // Update the request to use the /api/sheetOps endpoint, specifying operation, sheetName, and range
+      const response = await fetch(`/api/sheetOps`, {
+        method: 'POST', // Using POST to include body data
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          operation: 'read',
+          sheetName: 'DEFAULT', // Assuming 'GUIDE' maps to GOOGLE_SHEET_ID_GUIDE in sheetOps.js
+          range: 'Drops!A:H', // Specify the exact range you want to read from
+        }),
+      });
+  
+      if (!response.ok) {
+        console.error('Failed to fetch data');
+        return;
+      }
+  
+      const { data } = await response.json();
+      setData(data); // Assuming setData updates your component's state with the fetched data
     };
+  
     fetchData();
   }, []);
+  
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
     let updatedSelections = [...selections];
@@ -95,37 +113,40 @@ const DialogPage = () => {
          {/* Render dialog content */}
       {activeDialogContentId && renderDialogContent()}
          </div>
-    <div className="flex flex-col items-center justify-center p-4 space-y-4 mt-24">
-        
+    <div className="flex flex-col justify-center px-4 space-y-6 mx-auto max-w-lg">
       {selections.map((selection, index) => (
         <Select key={index}
                 disabled={index > 0 && selections[index - 1] === null}
                 onValueChange={(value) => handleSelectionChange(index, value)}
                 value={selection || 'none'}>
-          <SelectTrigger className="flex max-w-[300px]">
+          <SelectTrigger className="flex max-w-full">
             <SelectValue placeholder={`Select from ${String.fromCharCode('A'.charCodeAt(0) + index)}`} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="none">Select...</SelectItem>
+            <SelectItem value="none">...</SelectItem>
             {getOptionsForSelect(index).map((option, optionIndex) => (
               <SelectItem key={optionIndex} value={option}>{option}</SelectItem>
             ))}
           </SelectContent>
         </Select>
       ))}
+      </div>
+      <br/>
+      <div className="flex flex-row justify-center mx-auto max-w-[700px]">
       {columnHText && (columnHText as string).split('\n').map((line, index) => (
         <React.Fragment key={index}>
           {line}
           <br />
         </React.Fragment>
       ))}
+      </div>
       <div className="flex flex-row justify-center mt-10 md:mt-10 lg:mt-12">
       <Button onClick={resetSelections} className="mr-1 flex-shrink mt-10 py-2">
           Reset Selections
         </Button>
       </div>
     </div>
-    </div>
+
   );
 };
-export default DialogPage;
+export default DROSGuide;
