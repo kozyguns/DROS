@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Button } from "../components/ui/button";
-import LinkingPage from '../components/ui/support_menu';
+import SupportMenu from "../components/ui/SupportMenu";
 import {
   Select,
   SelectContent,
@@ -109,7 +109,7 @@ const DROSGuide = () => {
   return (
     <div >
      <div className="flex flow-row items-center justify-center max w-full mb-48">
-         <LinkingPage />
+         <SupportMenu />
          {/* Render dialog content */}
       {activeDialogContentId && renderDialogContent()}
          </div>

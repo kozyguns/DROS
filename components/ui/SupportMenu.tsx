@@ -156,7 +156,7 @@ const dialogContentComponents = {
   // Add other mappings as necessary
 };
 
-const support_menu = () => {
+const SupportMenu = () => {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
     const dialogRef = useRef<HTMLDivElement>(null);
     const [activeDialogContent, setActiveDialogContent] = useState<React.ReactNode | null>(null);
@@ -292,4 +292,4 @@ const support_menu = () => {
   );
 };
 
-export default support_menu;
+export default SupportMenu;

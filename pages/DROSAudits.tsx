@@ -7,7 +7,7 @@ import { z } from "zod";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { format } from "date-fns";
 import { Textarea } from "../components/ui/textarea";
-import LinkingPage from "../components/ui/support_menu";
+import SupportMenu from "../components/ui/SupportMenu";
 import Link from "next/link";
 import { cn } from "../components/lib/utils";
 import {
@@ -250,7 +250,7 @@ const onSubmit = async (formData: FormData) => {
     <main >
       <header>
         <div className="flex flow-row items-center justify-center max w-full mb-55">
-          <LinkingPage />
+          <SupportMenu />
         </div>
       </header>
       <div className="flex flex-row item-center justify-center mx-auto w-full max-w-[2250px] mt-48">
