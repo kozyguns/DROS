@@ -86,7 +86,7 @@ const DROSAudits = () => {
         body: JSON.stringify({
           operation: 'read',
           sheetName: 'AUDITS',
-          range: 'Lists!B:E', // Adjust the range as needed
+          range: 'Lists!B2:E', // Adjust the range as needed
         }),
       });
       if (!response.ok) {
