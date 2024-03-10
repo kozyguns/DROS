@@ -82,17 +82,14 @@ const Home: NextPage = () => {
             <Button onClick={() => handleButtonClick("/AuditForm")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
               Auditing Form
             </Button>
-            <Button onClick={() => handleButtonClick("/DROSInWorks")} className="ml-2 flex-shrink">
-              Future DROS
-            </Button>
             <Button onClick={() => handleButtonClick("/DialogHover")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
               Menu & Short Form
             </Button>
             <Button onClick={() => handleButtonClick("/DialogPage")} className="ml-2 flex-shrink">
-              Full Menu
+              DROS Guide
             </Button>
             <Button onClick={() => handleButtonClick("/Profiles/DROSDropdowns")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              DROS Support Page
+              Beta DROS Support Page
             </Button>
             {/* </div>
             <div className="flex flex-row justify-center mt-5"> */}
@@ -100,7 +97,7 @@ const Home: NextPage = () => {
               Text Generation Page
             </Button>
         <Button onClick={() => handleButtonClick("/DROS")} className="ml-2 flex-shrink px-8 py-2 rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
-              Full Menu & Form
+              DROS Auditing
             </Button>
             </div>
         <div className="max-w-8xl mx-auto py-10">
