@@ -48,7 +48,7 @@ const formSchema = z.object({
   salesRep: z.string(),
   auditType: z.array(z.string()),
   transDate: z.date(),
-  auditDate: z.date(),
+  auditDate: z.date().optional(),
   errorLocation: z.array(z.string()),
   errorDetails: z.array(z.string()),
   errorNotes: z.string(),
@@ -139,7 +139,7 @@ const form = useForm<FormData>({
     salesRep: '',
     auditType: [],
     transDate: new Date(), // You might need to handle date default values appropriately
-    auditDate: new Date(),
+    auditDate: new Date(Date.now()),
     errorLocation: [],
     errorDetails: [],
     errorNotes: '',
@@ -159,7 +159,7 @@ const onSubmit = async (formData: FormData) => {
       formData.errorLocation.join(",\n"), 
       formData.errorDetails.join(",\n"),  
       formData.errorNotes,
-      formData.drosCancel ? "Yes" : "No",
+      formData.drosCancel ? "Yes" : null,
       // Add more fields as necessary
     ]];
 
@@ -411,7 +411,7 @@ const onSubmit = async (formData: FormData) => {
                   </PopoverContent>
                 </Popover>
                 <FormDescription>
-                  The Date That You Are Auditing
+                  Only Select If Different From Today
                 </FormDescription>
                 <FormMessage />
               </FormItem>
