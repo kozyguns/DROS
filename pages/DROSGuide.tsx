@@ -141,7 +141,7 @@ const DROSGuide = () => {
       ))}
       </div>
       <div className="flex flex-row justify-center mt-10 md:mt-10 lg:mt-12">
-      <Button onClick={resetSelections} className="mr-1 flex-shrink mt-10 py-2">
+      <Button onClick={resetSelections} className="mb-6 flex-shrink mt-10 py-2">
           Reset Selections
         </Button>
       </div>
