@@ -75,6 +75,11 @@ const DROSAudits = () => {
   const [salesRepOptions, setSalesRepOptions] = useState<OptionType[]>([]);
   const [auditTypeOptions, setAuditTypeOptions] = useState<OptionType[]>([]);
   const [resetKey, setResetKey] = useState(0);
+  const router = useRouter();
+
+  const handleButtonClick = (path: string) => {
+    router.push(path);
+  };
 
   useEffect(() => {
     const fetchOptions = async () => {
@@ -476,7 +481,12 @@ const onSubmit = async (formData: FormData) => {
               </FormItem>
             )}
           />
+          <div className="flex justify-between mb-4">
           <Button type="submit">Submit</Button>
+            <Button type="button" onClick={() => handleButtonClick("/DROSGuide")}>
+              DROS Guide
+            </Button>
+            </div>
         </form>
       </Form>
       </div>
