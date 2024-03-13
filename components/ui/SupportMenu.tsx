@@ -173,7 +173,7 @@ const SupportMenu = () => {
           body: JSON.stringify({
             operation: 'read',
             sheetName: 'DEFAULT', // Use the appropriate sheet name for your support menu
-            range: 'NavMenu!A2:E', // Adjust the range as needed
+            range: 'NavMenu!A2:C', // Adjust the range as needed
           }),
         });
         if (!response.ok) {
