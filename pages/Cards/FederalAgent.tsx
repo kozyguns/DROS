@@ -85,7 +85,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                   <span className="text-orange-500">Federal Doc Worksheet</span>
                   </a>
                 {/* Remove <br/> from here */}
-                <a href="https://law.justia.com/codes/california/2022/code-pen/part-2/title-3/chapter-4-5/">
+                <a href="https://california.public.law/codes/ca_penal_code_part_2_title_3_chap_4.5">
                   <span className="text-orange-500">Penal Codes Defined</span>
                 </a>
               </CardFooter>

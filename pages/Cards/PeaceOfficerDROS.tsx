@@ -130,7 +130,7 @@ const StyledTabsList = styled(TabsList)`
             </Tabs>
             </CardContent>
             <CardFooter className="flex justify-between">
-            <a href="https://law.justia.com/codes/california/2022/code-pen/part-2/title-3/chapter-4-5/"><span className="text-orange-500">Penal Codes Defined</span></a>
+            <a href="https://california.public.law/codes/ca_penal_code_part_2_title_3_chap_4.5"><span className="text-orange-500">Penal Codes Defined</span></a>
             <a href="https://oag.ca.gov/firearms/exemptpo"><span className="text-orange-500">Agency Group Info</span></a>  
             </CardFooter>
             </Card>
