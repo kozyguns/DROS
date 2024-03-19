@@ -154,19 +154,22 @@ const form = useForm<FormData>({
 
 const onSubmit = async (formData: FormData) => {
   try {
-    // Prepare the single row to be appended, with multiple selections separated by newlines
-    const values = [[
+    // Find the longest array among auditType, errorLocation, and errorDetails to determine the number of rows needed
+    const maxLength = Math.max(formData.auditType.length, formData.errorLocation.length, formData.errorDetails.length);
+    const errorNotesArray = formData.errorNotes.split('\n'); // Split errorNotes by newline to align with selections
+
+    // Create an array of values for each row based on the length of the longest array
+    const values = Array.from({ length: maxLength }).map((_, index) => [
       formData.drosNumber,
       formData.salesRep,
-      formData.auditType.join(",\n"),
+      formData.auditType[index] || '', // Use index to access element or default to an empty string
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
-      formData.errorLocation.join(",\n"), 
-      formData.errorDetails.join(",\n"),  
-      formData.errorNotes,
-      formData.drosCancel ? "Yes" : null,
-      // Add more fields as necessary
-    ]];
+      formData.errorLocation[index] || '', // Repeat for other arrays
+      formData.errorDetails[index] || '',
+      errorNotesArray[index] || '', // Align notes with the respective selection
+      index === 0 ? (formData.drosCancel ? "Yes" : "No") : '', // Only add drosCancel status on the first row
+    ]);
 
     const response = await fetch('/api/sheetOps', {
       method: 'POST',
@@ -176,32 +179,24 @@ const onSubmit = async (formData: FormData) => {
       body: JSON.stringify({
         operation: 'append',
         sheetName: 'AUDITS',
-        range: 'Audits!A:I', // Specify the range dynamically
-        values: values,
+        range: 'Audits!A:I',
+        values: values, // Pass the multi-row values array
       }),
     });
-    
 
     if (response.ok) {
-      // Popup alert for successful submission
       alert("Audit Submitted Successfully");
-      // Reset the form fields to initial values
       form.reset();
-      setResetKey(prevKey => prevKey + 1); // Increment the key to force re-render
+      setResetKey(prevKey => prevKey + 1); // Force re-render
     } else {
-      // Handle server-side or network error
       console.error("Form submission failed");
       alert("Failed To Submit Audit");
     }
   } catch (error) {
-    // Handle client-side error
     console.error("An error occurred during form submission:", error);
     alert("An error occurred during form submission.");
   }
-};
-
-
-
+};  
 
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
