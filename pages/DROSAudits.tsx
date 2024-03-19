@@ -168,7 +168,7 @@ const onSubmit = async (formData: FormData) => {
       formData.errorLocation[index] || '', // Repeat for other arrays
       formData.errorDetails[index] || '',
       errorNotesArray[index] || '', // Align notes with the respective selection
-      index === 0 ? (formData.drosCancel ? "Yes" : "No") : '', // Only add drosCancel status on the first row
+      '', // Only add drosCancel status on the first row
     ]);
 
     const response = await fetch('/api/sheetOps', {
