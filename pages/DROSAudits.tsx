@@ -157,6 +157,7 @@ const onSubmit = async (formData: FormData) => {
     // Find the longest array among auditType, errorLocation, and errorDetails to determine the number of rows needed
     const maxLength = Math.max(formData.auditType.length, formData.errorLocation.length, formData.errorDetails.length);
     const errorNotesArray = formData.errorNotes.split('\n'); // Split errorNotes by newline to align with selections
+    const drosCancelStatus = formData.drosCancel ? "Yes" : "";
 
     // Create an array of values for each row based on the length of the longest array
     const values = Array.from({ length: maxLength }).map((_, index) => [
@@ -168,7 +169,7 @@ const onSubmit = async (formData: FormData) => {
       formData.errorLocation[index] || '', // Repeat for other arrays
       formData.errorDetails[index] || '',
       errorNotesArray[index] || '', // Align notes with the respective selection
-      '', // Only add drosCancel status on the first row
+      index === 0 ? drosCancelStatus : '', // Add drosCancel status only on the first row
     ]);
 
     const response = await fetch('/api/sheetOps', {
