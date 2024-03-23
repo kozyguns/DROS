@@ -152,76 +152,68 @@ const form = useForm<FormData>({
   },
 });
 
+// Adjust T to match the type of elements in your arrays if they're not strings
+function repeatArrayElements<T>(array: T[], targetLength: number): T[] {
+  let result: T[] = [];
+  for (let i = 0; i < targetLength; i++) {
+    result.push(array[i % array.length]);
+  }
+  return result;
+}
+
 const onSubmit = async (formData: FormData) => {
   try {
-    // Find the longest array among auditType, errorLocation, and errorDetails to determine the number of rows needed
-    const maxLength = Math.max(formData.auditType.length, formData.errorLocation.length, formData.errorDetails.length);
-    const errorNotesArray = formData.errorNotes.split('\n'); // Split errorNotes by newline
+    const maxLength = Math.max(
+      formData.auditType.length,
+      formData.errorLocation.length,
+      formData.errorDetails.length
+    );
+    const errorNotesArray = formData.errorNotes.split('\n');
 
-    // Define a local function to repeat array elements until the array reaches a specific length
-    const repeatArrayElements = <T,>(array: T[], targetLength: number): T[] => {
-      let result: T[] = [];
-      for (let i = 0; i < targetLength; i++) {
-        result.push(array[i % array.length]);
-      }
-      return result;
-    };
+    // Use repeatArrayElements to ensure all arrays are the same length
+    const auditTypeArray = repeatArrayElements(formData.auditType, maxLength);
+    const errorLocationArray = repeatArrayElements(formData.errorLocation, maxLength);
+    const errorDetailsArray = repeatArrayElements(formData.errorDetails, maxLength);
 
-    // Use the local repeatArrayElements function to repeat elements of shorter arrays to match the length of the longest array
-    const repeatedAuditType = repeatArrayElements(formData.auditType, maxLength);
-    const repeatedErrorLocation = repeatArrayElements(formData.errorLocation, maxLength);
-    const repeatedErrorDetails = repeatArrayElements(formData.errorDetails, maxLength);
-
-    // Map over the length of the longest array to generate the values for each row
     const values = Array.from({ length: maxLength }).map((_, index) => [
       formData.drosNumber,
       formData.salesRep,
-      repeatedAuditType[index],
+      auditTypeArray[index], // Now using repeated array
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
-      repeatedErrorLocation[index],
-      repeatedErrorDetails[index],
-      errorNotesArray[index] || '', // Keep original logic for errorNotes
-      index === 0 ? (formData.drosCancel ? "Yes" : "") : '', // Add "Yes" for drosCancel only on the first row
+      errorLocationArray[index], // Now using repeated array
+      errorDetailsArray[index], // Now using repeated array
+      errorNotesArray[index] || '', // Assuming you want to keep original logic for errorNotes
+      index === 0 ? (formData.drosCancel ? "Yes" : "") : '', // Append "Yes" for the first row if checked, else blank
     ]);
 
-    // Proceed with appending values to the sheet or any other asynchronous operations
-    // Make sure to use await for any asynchronous operation inside this async function
+    const response = await fetch('/api/sheetOps', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        operation: 'append',
+        sheetName: 'AUDITS',
+        range: 'Audits!A:I',
+        values: values,
+      }),
+    });
+
+    if (response.ok) {
+      alert("Audit Submitted Successfully");
+      form.reset();
+      // Assuming setResetKey is a method to force re-render, e.g., by updating a state variable
+      setResetKey((prevKey) => prevKey + 1);
+    } else {
+      console.error("Form submission failed");
+      alert("Failed To Submit Audit");
+    }
   } catch (error) {
     console.error("An error occurred during form submission:", error);
-    // Handle the error appropriately...
+    alert("An error occurred during form submission.");
   }
 };
-  
-      const response = await fetch('/api/sheetOps', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          operation: 'append',
-          sheetName: 'AUDITS',
-          range: 'Audits!A:I',
-          values: values, // Pass the multi-row values array
-        }),
-      });
-  
-      if (response.ok) {
-        alert("Audit Submitted Successfully");
-        form.reset();
-        setResetKey(prevKey => prevKey + 1); // Force re-render
-      } else {
-        console.error("Form submission failed");
-        alert("Failed To Submit Audit");
-      }
-    } catch (error) {
-      console.error("An error occurred during form submission:", error);
-      alert("An error occurred during form submission.");
-    }
-  };  
-
-
-
 
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
