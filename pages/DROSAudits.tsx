@@ -152,24 +152,39 @@ const form = useForm<FormData>({
   },
 });
 
+// Adjust T to match the type of elements in your arrays if they're not strings
+function repeatArrayElements<T>(array: T[], targetLength: number): T[] {
+  let result: T[] = [];
+  for (let i = 0; i < targetLength; i++) {
+    result.push(array[i % array.length]);
+  }
+  return result;
+}
+
 const onSubmit = async (formData: FormData) => {
   try {
-    // Find the longest array among auditType, errorLocation, and errorDetails to determine the number of rows needed
-    const maxLength = Math.max(formData.auditType.length, formData.errorLocation.length, formData.errorDetails.length);
-    const errorNotesArray = formData.errorNotes.split('\n'); // Split errorNotes by newline to align with selections
-    const drosCancelStatus = formData.drosCancel ? "Yes" : "";
+    const maxLength = Math.max(
+      formData.auditType.length,
+      formData.errorLocation.length,
+      formData.errorDetails.length
+    );
+    const errorNotesArray = formData.errorNotes.split('\n');
 
-    // Create an array of values for each row based on the length of the longest array
+    // Use repeatArrayElements to ensure all arrays are the same length
+    const auditTypeArray = repeatArrayElements(formData.auditType, maxLength);
+    const errorLocationArray = repeatArrayElements(formData.errorLocation, maxLength);
+    const errorDetailsArray = repeatArrayElements(formData.errorDetails, maxLength);
+
     const values = Array.from({ length: maxLength }).map((_, index) => [
       formData.drosNumber,
       formData.salesRep,
-      formData.auditType[index] || '', // Use index to access element or default to an empty string
+      auditTypeArray[index], // Now using repeated array
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
-      formData.errorLocation[index] || '', // Repeat for other arrays
-      formData.errorDetails[index] || '',
-      errorNotesArray[index] || '', // Align notes with the respective selection
-      index === 0 ? drosCancelStatus : '', // Add drosCancel status only on the first row
+      errorLocationArray[index], // Now using repeated array
+      errorDetailsArray[index], // Now using repeated array
+      errorNotesArray[index] || '', // Assuming you want to keep original logic for errorNotes
+      index === 0 ? (formData.drosCancel ? "Yes" : "") : '', // Append "Yes" for the first row if checked, else blank
     ]);
 
     const response = await fetch('/api/sheetOps', {
@@ -181,14 +196,15 @@ const onSubmit = async (formData: FormData) => {
         operation: 'append',
         sheetName: 'AUDITS',
         range: 'Audits!A:I',
-        values: values, // Pass the multi-row values array
+        values: values,
       }),
     });
 
     if (response.ok) {
       alert("Audit Submitted Successfully");
       form.reset();
-      setResetKey(prevKey => prevKey + 1); // Force re-render
+      // Assuming setResetKey is a method to force re-render, e.g., by updating a state variable
+      setResetKey((prevKey) => prevKey + 1);
     } else {
       console.error("Form submission failed");
       alert("Failed To Submit Audit");
@@ -197,8 +213,7 @@ const onSubmit = async (formData: FormData) => {
     console.error("An error occurred during form submission:", error);
     alert("An error occurred during form submission.");
   }
-};  
-
+};
 
   const handleSelectionChange = (selectIndex: number, value: string) => {
     let updatedSelections = [...selections];
