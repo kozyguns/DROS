@@ -154,11 +154,20 @@ const form = useForm<FormData>({
 
 const onSubmit = async (formData: FormData) => {
   try {
-    // Find the longest array among auditType, errorLocation, and errorDetails
+    // Find the longest array among auditType, errorLocation, and errorDetails to determine the number of rows needed
     const maxLength = Math.max(formData.auditType.length, formData.errorLocation.length, formData.errorDetails.length);
     const errorNotesArray = formData.errorNotes.split('\n'); // Split errorNotes by newline
 
-    // Repeat elements of shorter arrays to match the length of the longest array
+    // Define a local function to repeat array elements until the array reaches a specific length
+    const repeatArrayElements = <T,>(array: T[], targetLength: number): T[] => {
+      let result: T[] = [];
+      for (let i = 0; i < targetLength; i++) {
+        result.push(array[i % array.length]);
+      }
+      return result;
+    };
+
+    // Use the local repeatArrayElements function to repeat elements of shorter arrays to match the length of the longest array
     const repeatedAuditType = repeatArrayElements(formData.auditType, maxLength);
     const repeatedErrorLocation = repeatArrayElements(formData.errorLocation, maxLength);
     const repeatedErrorDetails = repeatArrayElements(formData.errorDetails, maxLength);
@@ -167,30 +176,22 @@ const onSubmit = async (formData: FormData) => {
     const values = Array.from({ length: maxLength }).map((_, index) => [
       formData.drosNumber,
       formData.salesRep,
-      repeatedAuditType[index], // Now using the repeated array
+      repeatedAuditType[index],
       formData.transDate ? format(formData.transDate, "M-d-yyyy") : "",
       formData.auditDate ? format(formData.auditDate, "M-d-yyyy") : "",
-      repeatedErrorLocation[index], // Now using the repeated array
-      repeatedErrorDetails[index], // Now using the repeated array
-      errorNotesArray[index] || '', // Assuming you want to keep original logic for errorNotes
-      index === 0 ? (formData.drosCancel ? "Yes" : "") : '', // Only add "Yes" for drosCancel on the first row
+      repeatedErrorLocation[index],
+      repeatedErrorDetails[index],
+      errorNotesArray[index] || '', // Keep original logic for errorNotes
+      index === 0 ? (formData.drosCancel ? "Yes" : "") : '', // Add "Yes" for drosCancel only on the first row
     ]);
 
-    // Your existing logic to append values to the sheet...
+    // Proceed with appending values to the sheet or any other asynchronous operations
+    // Make sure to use await for any asynchronous operation inside this async function
   } catch (error) {
     console.error("An error occurred during form submission:", error);
     // Handle the error appropriately...
   }
 };
-
-// Helper function to repeat array elements until the array reaches a specific length
-function repeatArrayElements<T>(array: T[], targetLength: number): T[] {
-  let result: T[] = [];
-  for (let i = 0; i < targetLength; i++) {
-    result.push(array[i % array.length]);
-  }
-  return result;
-}
   
       const response = await fetch('/api/sheetOps', {
         method: 'POST',
