@@ -60,7 +60,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
                       </ul>
                     <p>Non-Roster Exemption</p>
                       <ul className="list-none pl-4">
-                        <li>(AGENCY THEY ARE EMPLOYED WITH)</li>
+                        <li>(AGENCY THEY WERE EMPLOYED WITH)</li>
                       </ul>
                       </ul>
                       </div>
