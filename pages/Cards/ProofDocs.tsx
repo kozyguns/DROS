@@ -37,7 +37,11 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
               <li>- Off Road Vehicle Registration</li>
             </ul >
             <li>Signed & Dated Lease Agreement For A Duration Of 1 Year</li>
-            <li>(If The Customer Is The Homeowner) - Most Recent Property Tax Bill (Meets ATF Federal Req)</li>
+            <li>Most Recent Property Tax Bill (Meets ATF Federal Req), With One Of The Following:</li>
+            <ul className="list-none list-inside pl-4">
+              <li>- Property Deed (Meets DOJ State Req)</li>
+              <li>- Current (Wtihin 90 Days) Utility Bill</li>
+            </ul>
             <li>Property Deed (Meets DOJ State Req)</li>
             <li>Current (Within 90 Days) Utility Bill For Current Physical Address, Such As:</li>
             <ul className="list-none list-inside pl-4">
@@ -54,6 +58,8 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../../components/ui/na
             <li>Valid CA Hunting License</li>
             <li>Valid CA Fishing License</li>
             <li>Current & Valid Guard Card + Exposed Carry Card With Current Physical Address</li>
+            <li>Current & Valid CA ID | DL + Retired Peace Officer Department ID (Addresses Must Match)</li>
+            <li>Current & Valid CA ID | DL + Active Peace Officer Department ID (Addresses Must Match)</li>
               </ul>
           </div>
         </CardContent>
